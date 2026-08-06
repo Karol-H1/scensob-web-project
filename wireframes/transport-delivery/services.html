@@ -1,0 +1,191 @@
+<title>SCENSOB Transport &amp; Delivery — Services</title>
+<style>
+  :root, :root[data-theme="dark"], :root[data-theme="light"]{
+    --bg:#FFFFFF; --surface:#FFFFFF; --ink:#33302B; --muted:#7A7168;
+    --line:#E7E2DA; --line-strong:#D3CCC0; --accent:#2F5FAE; --accent-soft:#2F5FAE1A; --accent-ink:#FFFFFF;
+    --stripe: repeating-linear-gradient(135deg, rgba(122,113,104,0.08) 0 10px, transparent 10px 20px);
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family: ui-sans-serif,"Segoe UI",system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family: ui-serif, Georgia, "Times New Roman", serif; text-wrap:balance; margin:0; font-weight:600; }
+  a{ color:inherit; }
+  .eyebrow{ font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  .band{ padding:64px 0; border-bottom:1px solid var(--line); }
+  .band:last-of-type{ border-bottom:none; }
+  header{ position:sticky; top:0; z-index:10; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  .navrow{ display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1120px; margin:0 auto; gap:20px; flex-wrap:wrap; }
+  .word{ font-family: ui-serif, Georgia, serif; font-weight:700; font-size:19px; letter-spacing:.01em; text-decoration:none; }
+  .word small{ display:block; font-family:ui-sans-serif,system-ui,sans-serif; font-size:10px; font-weight:600; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; }
+  nav{ display:flex; gap:24px; font-size:14px; font-weight:600; }
+  nav a{ color:var(--muted); text-decoration:none; }
+  nav a.current{ color:var(--ink); }
+  .navctas{ display:flex; gap:10px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:11px 22px; border-radius:8px; font-size:14px; font-weight:700; text-decoration:none; cursor:pointer; border:1px solid transparent; white-space:nowrap; }
+  .btn.primary{ background:var(--accent); color:var(--accent-ink); }
+  .btn.ghost{ border-color:var(--line-strong); color:var(--ink); }
+  .btn.sm{ padding:8px 16px; font-size:13px; }
+  .hero{ padding:72px 0 20px; }
+  .hero h1{ font-size:clamp(32px,4.6vw,50px); line-height:1.08; max-width:16ch; }
+  .hero p.lede{ font-size:17px; color:var(--muted); max-width:62ch; margin:18px 0 0; line-height:1.6; }
+
+  .service{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; padding:56px 0; border-bottom:1px solid var(--line); }
+  .service:last-of-type{ border-bottom:none; }
+  .service .tagchip{ font-size:11px; font-weight:800; letter-spacing:.1em; color:var(--accent); text-transform:uppercase; margin-bottom:8px; }
+  .service h2{ font-size:26px; margin-bottom:6px; }
+  .service .sub{ font-size:14px; color:var(--muted); font-weight:600; margin-bottom:14px; }
+  .service p{ color:var(--ink); line-height:1.65; font-size:15px; margin:0 0 20px; }
+  .checks{ list-style:none; padding:0; margin:0 0 24px; display:grid; gap:8px; }
+  .checks li{ font-size:13.5px; color:var(--muted); display:flex; gap:8px; align-items:flex-start; }
+  .checks li::before{ content:"✓"; color:var(--accent); font-weight:700; }
+  .service .actions{ display:flex; gap:12px; flex-wrap:wrap; }
+  .ph{ background:var(--stripe); border:1px dashed var(--line-strong); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:12px; text-align:center; padding:10px; aspect-ratio:4/3; }
+
+  .grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  @media (max-width:820px){ .grid-4{ grid-template-columns:1fr 1fr; } .service{ grid-template-columns:1fr; } }
+  @media (max-width:560px){ .grid-4{ grid-template-columns:1fr; } }
+  .sla-card{ border:1px solid var(--line); border-radius:12px; padding:22px; box-shadow:0 1px 2px rgba(51,48,43,.03), 0 10px 24px rgba(51,48,43,.04); }
+  .sla-card .n{ font-family:ui-serif,Georgia,serif; font-size:28px; color:var(--accent); }
+  .sla-card .t{ font-size:13px; font-weight:700; margin:6px 0 8px; }
+  .sla-card .d{ font-size:13px; color:var(--muted); line-height:1.5; }
+
+  footer{ padding:40px 0 60px; }
+  .footcols{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; font-size:13px; color:var(--muted); }
+  .footcols .col h4{ color:var(--ink); font-size:12px; text-transform:uppercase; letter-spacing:.08em; margin:0 0 12px; }
+  .footcols .col a{ display:block; color:var(--muted); text-decoration:none; margin-bottom:8px; }
+</style>
+
+<header>
+  <div class="navrow">
+    <a class="word" href="#" data-nav="home">SCENSOB<small>Transport &amp; Delivery</small></a>
+    <nav>
+      <a data-nav="home" href="#">Home</a>
+      <a class="current" data-nav="services" href="#">Services</a>
+      <a data-nav="about" href="#">About</a>
+      <a data-nav="catalog" href="#">Service Catalog</a>
+      <a data-nav="contact" href="#">Contact</a>
+    </nav>
+    <div class="navctas">
+      <a class="btn ghost sm" data-nav="contact" href="#">I'm a candidate</a>
+      <a class="btn primary sm" data-nav="contact" href="#">Request staff</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap band hero">
+  <div class="eyebrow">Our services</div>
+  <h1>Staffing built for transport.</h1>
+  <p class="lede">Three specialist services. One agency that understands the compliance demands, shift patterns, and urgency of transport and logistics operations.</p>
+</div>
+
+<div class="wrap">
+  <div class="service">
+    <div>
+      <div class="tagchip">Hire</div>
+      <h2>Vehicle &amp; Equipment Hire</h2>
+      <div class="sub">Hire desk to fleet yard — every role covered</div>
+      <p>We staff rental and hire operators with experienced front-desk, PDI, workshop, and delivery staff. Whether you need short-notice cover for a busy Saturday or a permanent branch manager, we have a verified pipeline ready.</p>
+      <ul class="checks">
+        <li>DVSA licence checked</li>
+        <li>Full driving record verified</li>
+        <li>Reference screened</li>
+        <li>Right to Work confirmed</li>
+      </ul>
+      <div class="actions">
+        <a class="btn ghost sm" data-nav="catalog" href="#">View roles we fill</a>
+        <a class="btn primary sm" data-nav="contact" href="#">Get a quote for this service</a>
+      </div>
+    </div>
+    <div class="ph">Hire desk / fleet yard photo placeholder</div>
+  </div>
+
+  <div class="service">
+    <div class="ph">Van driver / courier photo placeholder</div>
+    <div>
+      <div class="tagchip">Courier</div>
+      <h2>Courier &amp; Delivery</h2>
+      <div class="sub">Multi-drop, same-day, and B2B delivery networks</div>
+      <p>Van drivers, couriers, and last-mile operatives for residential, commercial, and business delivery routes. We cover volume surges, sickness absence, and permanent headcount — with the same compliance rigour every time.</p>
+      <ul class="checks">
+        <li>Licence &amp; endorsement check</li>
+        <li>DBS where required</li>
+        <li>Route-type assessed</li>
+        <li>Reference screened</li>
+      </ul>
+      <div class="actions">
+        <a class="btn ghost sm" data-nav="catalog" href="#">View roles we fill</a>
+        <a class="btn primary sm" data-nav="contact" href="#">Get a quote for this service</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="service">
+    <div>
+      <div class="tagchip">Pharma</div>
+      <h2>Pharmaceutical Logistics</h2>
+      <div class="sub">GDP-aware staff for temperature-critical supply chains</div>
+      <p>Pharmaceutical delivery demands more than a clean licence. Every candidate placed for pharma clients is GDP-briefed, temperature-protocol trained, and chain-of-custody aware. Full documentation provided as standard.</p>
+      <ul class="checks">
+        <li>GDP awareness verified</li>
+        <li>MHRA guidelines briefed</li>
+        <li>Cold-chain protocol trained</li>
+        <li>Full audit trail provided</li>
+        <li>DBS enhanced check</li>
+      </ul>
+      <div class="actions">
+        <a class="btn ghost sm" data-nav="catalog" href="#">View roles we fill</a>
+        <a class="btn primary sm" data-nav="contact" href="#">Get a quote for this service</a>
+      </div>
+    </div>
+    <div class="ph">Cold-chain driver photo placeholder</div>
+  </div>
+</div>
+
+<div class="wrap band">
+  <div class="eyebrow">SLA guarantee</div>
+  <h2 style="font-size:26px; margin-bottom:6px;">Commitments we put in writing</h2>
+  <p style="color:var(--muted); margin:0 0 26px;">Our SLAs are contractual — if we miss them, we make it right.</p>
+  <div class="grid-4">
+    <div class="sla-card"><div class="n">4 hrs</div><div class="t">Emergency fill</div><div class="d">Critical vacancy? We mobilise within 4 hours for urgent requests across all three sectors.</div></div>
+    <div class="sla-card"><div class="n">24 hrs</div><div class="t">Standard placement</div><div class="d">For planned requirements, expect a shortlist of vetted candidates within one working day.</div></div>
+    <div class="sla-card"><div class="n">48 hrs</div><div class="t">Free replacement</div><div class="d">If a placed candidate doesn't work out within 48 hours, we replace them at no additional cost.</div></div>
+    <div class="sla-card"><div class="n">Always</div><div class="t">On-call support</div><div class="d">A dedicated account manager is reachable outside office hours for urgent operational needs.</div></div>
+  </div>
+</div>
+
+<div class="wrap band" style="border-bottom:none; text-align:center;">
+  <h2 style="font-size:26px; margin-bottom:10px;">Ready to discuss your requirement?</h2>
+  <p style="color:var(--muted); margin:0 0 22px;">One conversation with our team is all it takes to get staffing underway.</p>
+  <a class="btn primary" data-nav="contact" href="#">Request staff now</a>
+</div>
+
+<footer class="wrap">
+  <div class="footcols">
+    <div class="col">
+      <h4>SCENSOB Transport &amp; Delivery</h4>
+      <a data-nav="services" href="#">Services</a><a data-nav="about" href="#">About</a><a data-nav="catalog" href="#">Service Catalog</a><a data-nav="contact" href="#">Contact</a>
+    </div>
+    <div class="col">
+      <h4>Group</h4>
+      <a href="#">← Back to SCENSOB Global</a>
+    </div>
+    <div class="col">
+      <h4>Status</h4>
+      <span>Content ported from the Figma draft · photography still placeholder</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var NAV_URLS = {
+    home: "https://claude.ai/code/artifact/2f216a05-5889-4a64-b091-023ac9500aab",
+    services: "https://claude.ai/code/artifact/b4f515d3-91cd-4043-b81a-b91e50ea77a0",
+    about: "https://claude.ai/code/artifact/4764e5f1-cd65-45ed-bf1e-5a391d476b0c",
+    catalog: "https://claude.ai/code/artifact/d239cd86-c25c-42ba-bc12-8f10bd458957",
+    contact: "https://claude.ai/code/artifact/1dc0de6b-f1c7-49a6-8572-76c874813597"
+  };
+  document.querySelectorAll('[data-nav]').forEach(function(el){
+    var url = NAV_URLS[el.getAttribute('data-nav')];
+    if (url) el.setAttribute('href', url);
+  });
+</script>

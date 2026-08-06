@@ -1,0 +1,160 @@
+<title>SCENSOB Transport &amp; Delivery — Contact</title>
+<style>
+  :root, :root[data-theme="dark"], :root[data-theme="light"]{
+    --bg:#FFFFFF; --surface:#FFFFFF; --ink:#33302B; --muted:#7A7168;
+    --line:#E7E2DA; --line-strong:#D3CCC0; --accent:#2F5FAE; --accent-soft:#2F5FAE1A; --accent-ink:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family: ui-sans-serif,"Segoe UI",system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family: ui-serif, Georgia, "Times New Roman", serif; text-wrap:balance; margin:0; font-weight:600; }
+  a{ color:inherit; }
+  .eyebrow{ font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  .band{ padding:64px 0; border-bottom:1px solid var(--line); }
+  .band:last-of-type{ border-bottom:none; }
+  header{ position:sticky; top:0; z-index:10; background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  .navrow{ display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1120px; margin:0 auto; gap:20px; flex-wrap:wrap; }
+  .word{ font-family: ui-serif, Georgia, serif; font-weight:700; font-size:19px; letter-spacing:.01em; text-decoration:none; }
+  .word small{ display:block; font-family:ui-sans-serif,system-ui,sans-serif; font-size:10px; font-weight:600; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; }
+  nav{ display:flex; gap:24px; font-size:14px; font-weight:600; }
+  nav a{ color:var(--muted); text-decoration:none; }
+  nav a.current{ color:var(--ink); }
+  .navctas{ display:flex; gap:10px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:11px 22px; border-radius:8px; font-size:14px; font-weight:700; text-decoration:none; cursor:pointer; border:1px solid transparent; white-space:nowrap; }
+  .btn.primary{ background:var(--accent); color:var(--accent-ink); }
+  .btn.ghost{ border-color:var(--line-strong); color:var(--ink); }
+  .btn.sm{ padding:8px 16px; font-size:13px; }
+  .hero h1{ font-size:clamp(32px,4.6vw,50px); line-height:1.08; max-width:14ch; }
+  .hero p.lede{ font-size:17px; color:var(--muted); max-width:60ch; margin:18px 0 0; line-height:1.6; }
+
+  .grid-2{ display:grid; grid-template-columns:1.1fr .9fr; gap:44px; align-items:start; }
+  @media (max-width:820px){ .grid-2{ grid-template-columns:1fr; } }
+
+  .steps{ display:flex; gap:8px; margin-bottom:24px; }
+  .step{ width:28px; height:28px; border-radius:50%; border:1px solid var(--line-strong); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:var(--muted); }
+  .step.active{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+  .step-label{ font-size:12px; color:var(--muted); margin-bottom:18px; }
+  .options{ display:grid; gap:10px; margin-bottom:8px; }
+  .option{ border:1px solid var(--line-strong); border-radius:8px; padding:14px 16px; font-size:14px; font-weight:600; cursor:pointer; }
+  .option.selected{ border-color:var(--accent); background:var(--accent-soft); color:var(--accent); }
+  .resp-list{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+  .resp-list li{ display:flex; justify-content:space-between; font-size:14px; border-bottom:1px dashed var(--line); padding-bottom:10px; }
+  .resp-list b{ font-weight:700; }
+  .resp-list span{ color:var(--muted); }
+
+  .spec-list{ list-style:none; padding:0; margin:0 0 26px; display:grid; gap:10px; }
+  .spec-list li{ font-size:14px; }
+  .spec-list b{ display:block; }
+  .spec-list span{ color:var(--muted); font-size:13px; }
+
+  .office-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  @media (max-width:560px){ .office-grid{ grid-template-columns:1fr; } }
+  .office-card{ border:1px solid var(--line); border-radius:10px; padding:16px 18px; }
+  .office-card h3{ font-family:ui-sans-serif,system-ui,sans-serif; font-size:14.5px; margin-bottom:6px; }
+  .office-card p{ font-size:13px; color:var(--muted); margin:0; line-height:1.55; }
+
+  footer{ padding:40px 0 60px; }
+  .footcols{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; font-size:13px; color:var(--muted); }
+  .footcols .col h4{ color:var(--ink); font-size:12px; text-transform:uppercase; letter-spacing:.08em; margin:0 0 12px; }
+  .footcols .col a{ display:block; color:var(--muted); text-decoration:none; margin-bottom:8px; }
+</style>
+
+<header>
+  <div class="navrow">
+    <a class="word" data-nav="home" href="#">SCENSOB<small>Transport &amp; Delivery</small></a>
+    <nav>
+      <a data-nav="home" href="#">Home</a>
+      <a data-nav="services" href="#">Services</a>
+      <a data-nav="about" href="#">About</a>
+      <a data-nav="catalog" href="#">Service Catalog</a>
+      <a class="current" data-nav="contact" href="#">Contact</a>
+    </nav>
+    <div class="navctas">
+      <a class="btn ghost sm" href="#form">I'm a candidate</a>
+      <a class="btn primary sm" href="#form">Request staff</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap band hero">
+  <div class="eyebrow">Contact</div>
+  <h1>Let's get to work.</h1>
+  <p class="lede">Whether you need staff urgently or want to plan a longer-term buildout — one conversation with our team is all it takes to get started.</p>
+</div>
+
+<div class="wrap band" id="form">
+  <div class="grid-2">
+    <div>
+      <h2 style="font-size:22px; margin-bottom:6px;">Send us an enquiry</h2>
+      <p style="color:var(--muted); font-size:14px; margin:0 0 24px;">We respond within 30 minutes during business hours (Mon–Fri, 7am–7pm).</p>
+
+      <div class="steps"><div class="step active">1</div><div class="step">2</div><div class="step">3</div></div>
+      <div class="step-label">Step 1 of 3 — What can we help you with?</div>
+      <div class="options">
+        <div class="option selected">I need to hire staff</div>
+        <div class="option">I'm looking for a job</div>
+        <div class="option">GDP / compliance query</div>
+        <div class="option">General enquiry</div>
+      </div>
+      <p style="font-size:12px; color:var(--muted); margin:14px 0 0;">[Placeholder — steps 2–3 collect contact details and requirement specifics before submission.]</p>
+    </div>
+
+    <div>
+      <h2 style="font-size:22px; margin-bottom:16px;">Response times</h2>
+      <ul class="resp-list">
+        <li><b>Emergency fill</b><span>Within 4 hours</span></li>
+        <li><b>Standard enquiry</b><span>Within 30 minutes</span></li>
+        <li><b>Out-of-hours</b><span>Next morning, 7am</span></li>
+      </ul>
+
+      <h2 style="font-size:18px; margin:28px 0 14px;">Sector specialists</h2>
+      <ul class="spec-list">
+        <li><b>Vehicle &amp; Equipment Hire</b><span>Tom Baxter</span></li>
+        <li><b>Courier &amp; Delivery</b><span>Priya Nair</span></li>
+        <li><b>Pharmaceutical</b><span>Marcus Webb</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="wrap band" style="border-bottom:none;">
+  <h2 style="font-size:20px; margin-bottom:20px;">Our offices</h2>
+  <div class="office-grid">
+    <div class="office-card"><h3>Birmingham (HQ)</h3><p>14 Stratford Road, Digbeth, B5 6NR<br>0121 456 7890</p></div>
+    <div class="office-card"><h3>London</h3><p>3 Bermondsey Street, SE1 3UH<br>020 7946 0812</p></div>
+    <div class="office-card"><h3>Manchester</h3><p>7 Piccadilly Place, M1 3BR<br>0161 234 5678</p></div>
+    <div class="office-card"><h3>Bristol</h3><p>22 Temple Way, BS1 6JL<br>0117 900 1234</p></div>
+  </div>
+  <p style="margin-top:22px; font-size:14px;">hello@scensob.co.uk</p>
+</div>
+
+<footer class="wrap">
+  <div class="footcols">
+    <div class="col">
+      <h4>SCENSOB Transport &amp; Delivery</h4>
+      <a data-nav="services" href="#">Services</a><a data-nav="about" href="#">About</a><a data-nav="catalog" href="#">Service Catalog</a><a data-nav="contact" href="#">Contact</a>
+    </div>
+    <div class="col">
+      <h4>Group</h4>
+      <a href="#">← Back to SCENSOB Global</a>
+    </div>
+    <div class="col">
+      <h4>Status</h4>
+      <span>Content ported from the Figma draft · form is 1 of 3 real steps, static here</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var NAV_URLS = {
+    home: "https://claude.ai/code/artifact/2f216a05-5889-4a64-b091-023ac9500aab",
+    services: "https://claude.ai/code/artifact/b4f515d3-91cd-4043-b81a-b91e50ea77a0",
+    about: "https://claude.ai/code/artifact/4764e5f1-cd65-45ed-bf1e-5a391d476b0c",
+    catalog: "https://claude.ai/code/artifact/d239cd86-c25c-42ba-bc12-8f10bd458957",
+    contact: "https://claude.ai/code/artifact/1dc0de6b-f1c7-49a6-8572-76c874813597"
+  };
+  document.querySelectorAll('[data-nav]').forEach(function(el){
+    var url = NAV_URLS[el.getAttribute('data-nav')];
+    if (url) el.setAttribute('href', url);
+  });
+</script>
