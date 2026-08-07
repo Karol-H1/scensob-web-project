@@ -8,6 +8,6 @@
 	"features": { "networking": false },
 	"steps": [
 		{ "step": "activateTheme", "themeFolderName": "scensob" },
-		{ "step": "runPHP", "code": "<?php require '/setup/global.php';" }
+		{ "step": "runPHP", "code": "<?php require '/setup/it.php';" }
 	]
 }

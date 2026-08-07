@@ -20,17 +20,17 @@
 	<!-- /wp:heading -->
 
 	<!-- wp:paragraph {"className":"scensob-lede","textColor":"muted","fontSize":"large","style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|50"}}}} -->
-	<p class="scensob-lede has-muted-color has-text-color has-large-font-size" style="margin-top:var(--wp--preset--spacing--30);margin-bottom:var(--wp--preset--spacing--50)">[ Placeholder — the Global site's role is to connect the divisional sites, per the brief. Positioning and copy to be confirmed with the CEO. ]</p>
+	<p class="scensob-lede has-muted-color has-text-color has-large-font-size" style="margin-top:var(--wp--preset--spacing--30);margin-bottom:var(--wp--preset--spacing--50)">[ Placeholder — positioning and opening copy to be confirmed with the division lead. ]</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:buttons {"style":{"spacing":{"blockGap":"14px"}}} -->
 	<div class="wp-block-buttons">
 		<!-- wp:button -->
-		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#">Explore our divisions</a></div>
+		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#">See what we do</a></div>
 		<!-- /wp:button -->
 
 		<!-- wp:button {"className":"is-style-outline","textColor":"contrast","style":{"border":{"color":"var:preset|color|line-strong","width":"1px"}}} -->
-		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-contrast-color has-text-color has-border-color wp-element-button" style="border-color:var(--wp--preset--color--line-strong);border-width:1px" href="#">Contact head office</a></div>
+		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-contrast-color has-text-color has-border-color wp-element-button" style="border-color:var(--wp--preset--color--line-strong);border-width:1px" href="#">Contact us</a></div>
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->

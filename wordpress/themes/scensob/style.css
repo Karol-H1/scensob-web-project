@@ -44,14 +44,23 @@ Tags: full-site-editing, block-patterns, one-column, custom-colors, custom-logo
 	}
 }
 
-/* Hero headline wraps early so it reads as a statement, not a banner line. */
+/* Hero headline wraps early so it reads as a statement, not a banner line, and
+   the lede holds a comfortable measure. Both need !important on the margins:
+   the constrained layout sets `margin-left: auto !important` on any child with
+   a max-width, which would otherwise centre them against the left-aligned
+   eyebrow and buttons. */
 .scensob-hero-title {
 	max-width: 16ch;
 }
 
-/* Lede paragraph under the hero headline. */
 .scensob-lede {
 	max-width: 56ch;
+}
+
+.scensob-hero-title,
+.scensob-lede {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
 }
 
 /* Small uppercase section label used above headings. */
@@ -121,6 +130,57 @@ Tags: full-site-editing, block-patterns, one-column, custom-colors, custom-logo
 
 .scensob-media.is-wide img {
 	aspect-ratio: 16 / 6;
+}
+
+/* Neutral box standing in for a photo that hasn't been supplied yet. */
+.scensob-media-placeholder {
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	border: 1.5px dashed var(--wp--preset--color--line-strong);
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--wp--preset--color--muted);
+	font-size: 12px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.scensob-gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 20px;
+}
+
+.scensob-gallery figure {
+	margin: 0;
+}
+
+/* Greyed-out shape of the enquiry form, so the page reads as finished while
+   the real Contact Form 7 form is still pending an address to send to. */
+.scensob-form-skeleton {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+.scensob-form-skeleton__field,
+.scensob-form-skeleton__button {
+	display: block;
+	border-radius: 8px;
+	background: var(--wp--preset--color--line);
+	height: 40px;
+}
+
+.scensob-form-skeleton__field.is-tall {
+	height: 96px;
+}
+
+.scensob-form-skeleton__button {
+	width: 140px;
+	background: var(--wp--preset--color--line-strong);
 }
 
 /* Keep focus rings visible against the light background. */

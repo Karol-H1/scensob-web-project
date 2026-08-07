@@ -65,6 +65,47 @@ function scensob_division_label() {
 }
 
 /**
+ * Images from this site's media library, newest first.
+ *
+ * Patterns use this instead of naming files, so each division shows its own
+ * photography without the pattern needing to know which site it's on.
+ *
+ * @param int $limit Maximum number of images.
+ * @return array List of array( url, alt ) pairs.
+ */
+function scensob_photos( $limit = 6 ) {
+	$attachments = get_posts(
+		array(
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'image',
+			'post_status'    => 'inherit',
+			'numberposts'    => $limit,
+			'orderby'        => 'date',
+			'order'          => 'ASC',
+		)
+	);
+
+	$photos = array();
+
+	foreach ( $attachments as $attachment ) {
+		$url = wp_get_attachment_image_url( $attachment->ID, 'large' );
+
+		if ( ! $url ) {
+			continue;
+		}
+
+		$alt = get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true );
+
+		$photos[] = array(
+			'url' => $url,
+			'alt' => $alt ? $alt : $attachment->post_title,
+		);
+	}
+
+	return $photos;
+}
+
+/**
  * The SCENSOB logo mark, read from assets/logo.svg.
  *
  * Inlined rather than uploaded to the media library so it inherits page colours
