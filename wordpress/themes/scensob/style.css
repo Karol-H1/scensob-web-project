@@ -1,0 +1,102 @@
+/*
+Theme Name: SCENSOB
+Theme URI: https://github.com/Karol-H1/scensob-web-project
+Author: SCENSOB
+Description: Shared block theme for the SCENSOB group of sites. One theme, one design system, with a style variation per division so additional divisions can be added without a new theme.
+Version: 0.1.0
+Requires at least: 6.6
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: scensob
+Tags: full-site-editing, block-patterns, one-column, custom-colors, custom-logo
+*/
+
+/* Nearly all styling lives in theme.json. This file holds only what the
+   block system can't express: the inline logo mark and a few utilities. */
+
+.scensob-logo {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2px;
+	text-decoration: none;
+}
+
+.scensob-logo svg {
+	height: 42px;
+	width: auto;
+	display: block;
+}
+
+.scensob-logo .scensob-logo__division {
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--muted);
+}
+
+@media (max-width: 600px) {
+	.scensob-logo svg {
+		height: 34px;
+	}
+}
+
+/* Small uppercase section label used above headings. */
+.scensob-eyebrow {
+	display: inline-block;
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--wp--preset--color--muted);
+	border: 1px solid var(--wp--preset--color--line-strong);
+	border-radius: 3px;
+	padding: 2px 8px;
+	font-weight: 600;
+}
+
+/* Dashed "add another division later" card. */
+.scensob-card-ghost {
+	border: 1.5px dashed var(--wp--preset--color--line-strong) !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	color: var(--wp--preset--color--muted);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 150px;
+}
+
+/* Cards sit in a grid; make them equal height with the link pinned to the base. */
+.scensob-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	box-shadow: 0 1px 2px rgba(51, 48, 43, 0.03), 0 10px 24px rgba(51, 48, 43, 0.04);
+}
+
+.scensob-card .scensob-card__link {
+	margin-top: auto;
+}
+
+/* Images keep the wireframe's aspect ratios. */
+.scensob-media img {
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	display: block;
+	border-radius: 10px;
+}
+
+.scensob-media.is-wide img {
+	aspect-ratio: 16 / 6;
+}
+
+/* Keep focus rings visible against the light background. */
+:where(a, button, input, textarea, select):focus-visible {
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 2px;
+}

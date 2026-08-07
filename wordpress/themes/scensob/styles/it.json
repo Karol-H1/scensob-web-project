@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "IT Division",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "base", "color": "#FFFFFF", "name": "Base" },
+				{ "slug": "surface", "color": "#FFFFFF", "name": "Surface" },
+				{ "slug": "contrast", "color": "#33302B", "name": "Ink" },
+				{ "slug": "muted", "color": "#7A7168", "name": "Muted" },
+				{ "slug": "line", "color": "#E7E2DA", "name": "Line" },
+				{ "slug": "line-strong", "color": "#D3CCC0", "name": "Line strong" },
+				{ "slug": "accent", "color": "#2E8B78", "name": "Accent" },
+				{ "slug": "accent-soft", "color": "#E9F3F1", "name": "Accent soft" },
+				{ "slug": "accent-contrast", "color": "#FFFFFF", "name": "Accent contrast" }
+			]
+		}
+	}
+}

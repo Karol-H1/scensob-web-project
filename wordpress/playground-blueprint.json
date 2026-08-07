@@ -1,0 +1,27 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"landingPage": "/",
+	"preferredVersions": {
+		"php": "8.2",
+		"wp": "latest"
+	},
+	"features": { "networking": false },
+	"steps": [
+		{
+			"step": "activateTheme",
+			"themeFolderName": "scensob"
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "SCENSOB",
+				"blogdescription": "Global",
+				"permalink_structure": "/%postname%/"
+			}
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require_once '/wordpress/wp-load.php'; $pages = array('Home','Divisions','About','Gallery','Contact'); $ids = array(); foreach ($pages as $title) { $existing = get_page_by_path(sanitize_title($title)); if ($existing) { $ids[$title] = $existing->ID; continue; } $ids[$title] = wp_insert_post(array('post_title'=>$title,'post_name'=>sanitize_title($title),'post_type'=>'page','post_status'=>'publish','post_content'=>'')); } update_option('show_on_front','page'); update_option('page_on_front',$ids['Home']); foreach ($ids as $title=>$id) { update_post_meta($id,'_wp_page_template','default'); } "
+		}
+	]
+}
