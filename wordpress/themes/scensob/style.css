@@ -44,6 +44,16 @@ Tags: full-site-editing, block-patterns, one-column, custom-colors, custom-logo
 	}
 }
 
+/* Hero headline wraps early so it reads as a statement, not a banner line. */
+.scensob-hero-title {
+	max-width: 16ch;
+}
+
+/* Lede paragraph under the hero headline. */
+.scensob-lede {
+	max-width: 56ch;
+}
+
 /* Small uppercase section label used above headings. */
 .scensob-eyebrow {
 	display: inline-block;
@@ -70,16 +80,34 @@ Tags: full-site-editing, block-patterns, one-column, custom-colors, custom-logo
 	min-height: 150px;
 }
 
-/* Cards sit in a grid; make them equal height with the link pinned to the base. */
+/* Cards sit in a grid; make them equal height with the link pinned to the base.
+   The column has to become a flex container too, otherwise the card can't
+   stretch and its content spills past the border. */
 .scensob-card {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
 	box-shadow: 0 1px 2px rgba(51, 48, 43, 0.03), 0 10px 24px rgba(51, 48, 43, 0.04);
+}
+
+.scensob-card-grid .wp-block-column {
+	display: flex;
+}
+
+.scensob-card-grid .scensob-card {
+	flex: 1;
 }
 
 .scensob-card .scensob-card__link {
 	margin-top: auto;
+	margin-bottom: 0;
+}
+
+/* Cancel the auto side-margins the block layout adds; as flex items they would
+   shrink-wrap each child and centre it. */
+.scensob-card > * {
+	margin-left: 0;
+	margin-right: 0;
+	max-width: 100%;
 }
 
 /* Images keep the wireframe's aspect ratios. */

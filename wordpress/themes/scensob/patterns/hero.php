@@ -15,12 +15,12 @@
 	<p class="scensob-eyebrow">[ Hero ]</p>
 	<!-- /wp:paragraph -->
 
-	<!-- wp:heading {"level":1,"style":{"typography":{"maxWidth":"16ch"}}} -->
-	<h1 class="wp-block-heading">[ Headline ]</h1>
+	<!-- wp:heading {"level":1,"className":"scensob-hero-title"} -->
+	<h1 class="wp-block-heading scensob-hero-title">[ Headline ]</h1>
 	<!-- /wp:heading -->
 
-	<!-- wp:paragraph {"textColor":"muted","fontSize":"large","style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|50"}}}} -->
-	<p class="has-muted-color has-text-color has-large-font-size" style="margin-top:var(--wp--preset--spacing--30);margin-bottom:var(--wp--preset--spacing--50)">[ Placeholder — the Global site's role is to connect the divisional sites, per the brief. Positioning and copy to be confirmed with the CEO. ]</p>
+	<!-- wp:paragraph {"className":"scensob-lede","textColor":"muted","fontSize":"large","style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|50"}}}} -->
+	<p class="scensob-lede has-muted-color has-text-color has-large-font-size" style="margin-top:var(--wp--preset--spacing--30);margin-bottom:var(--wp--preset--spacing--50)">[ Placeholder — the Global site's role is to connect the divisional sites, per the brief. Positioning and copy to be confirmed with the CEO. ]</p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:buttons {"style":{"spacing":{"blockGap":"14px"}}} -->
