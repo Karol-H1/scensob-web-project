@@ -51,7 +51,8 @@
     border-bottom:1px solid var(--line);
   }
   .navrow{ display:flex; align-items:center; justify-content:space-between; padding:18px 28px; max-width:1120px; margin:0 auto; }
-  .word{ font-family: ui-serif, Georgia, serif; font-weight:700; font-size:19px; letter-spacing:.01em; }
+  .word{ display:inline-flex; flex-direction:column; align-items:flex-start; gap:2px; text-decoration:none; }
+  .word svg{ height:42px; width:auto; display:block; }
   .word small{ display:block; font-family:ui-sans-serif,system-ui,sans-serif; font-size:10px; font-weight:600; letter-spacing:.12em; color:var(--muted); text-transform:uppercase; }
   nav{ display:flex; gap:26px; font-size:14px; font-weight:600; }
   nav a{ color:var(--muted); text-decoration:none; }
@@ -127,7 +128,40 @@
 
 <header>
   <div class="navrow">
-    <a class="word" href="#top">SCENSOB<small>Global</small></a>
+    <a class="word" href="#top">
+      <svg viewBox="33 15 676 210">
+        <path d="M214.25,194.25 A105,105 0 0,1 163.63,222.31 L159.35,203.80 A86,86 0 0,0 200.81,180.81 Z" fill="#3AAEDD"/>
+        <path d="M160.03,223.07 A105,105 0 0,1 102.37,218.03 L109.18,200.29 A86,86 0 0,0 156.41,204.42 Z" fill="#2456A6"/>
+        <path d="M98.98,216.65 A105,105 0 0,1 53.98,180.23 L69.55,169.33 A86,86 0 0,0 106.40,199.16 Z" fill="#5B3F96"/>
+        <path d="M51.94,177.18 A105,105 0 0,1 35.02,121.84 L54.02,121.51 A86,86 0 0,0 67.87,166.84 Z" fill="#7A3E97"/>
+        <path d="M35.02,118.16 A105,105 0 0,1 51.94,62.82 L67.87,73.16 A86,86 0 0,0 54.02,118.49 Z" fill="#D6208F"/>
+        <path d="M53.98,59.77 A105,105 0 0,1 98.98,23.35 L106.40,40.84 A86,86 0 0,0 69.55,70.67 Z" fill="#E42320"/>
+        <path d="M102.37,21.97 A105,105 0 0,1 160.03,16.93 L156.41,35.58 A86,86 0 0,0 109.18,39.71 Z" fill="#F5821F"/>
+        <path d="M163.63,17.69 A105,105 0 0,1 214.25,45.75 L200.81,59.19 A86,86 0 0,0 159.35,36.20 Z" fill="#FFC90E"/>
+        <g transform="translate(0,15)">
+          <g fill="#2E4E7A">
+            <circle cx="92" cy="75" r="11"/>
+            <path d="M82,86 Q79,100 78,116 L78,122 L106,122 L106,116 Q105,100 102,86 Q92,80 82,86 Z"/>
+            <path d="M80,122 L91,122 L90,148 Q89,155 82,156 Q75,154 77,148 Z"/>
+            <path d="M104,122 L93,122 L94,148 Q95,155 102,156 Q109,154 107,148 Z"/>
+            <circle cx="188" cy="75" r="11"/>
+            <path d="M198,86 Q201,100 202,116 L202,122 L174,122 L174,116 Q175,100 178,86 Q188,80 198,86 Z"/>
+            <path d="M200,122 L189,122 L190,148 Q191,155 198,156 Q205,154 203,148 Z"/>
+            <path d="M176,122 L187,122 L186,148 Q185,155 178,156 Q171,154 173,148 Z"/>
+          </g>
+          <g fill="#1B3B63">
+            <path d="M124,80 Q108,70 105,48 Q104,42 111,41 Q117,43 119,50 Q122,64 130,78 Z"/>
+            <path d="M156,80 Q172,70 175,48 Q176,42 169,41 Q163,43 161,50 Q158,64 150,78 Z"/>
+            <circle cx="140" cy="58" r="14"/>
+            <path d="M124,74 Q120,92 118,110 L118,116 L162,116 L162,110 Q160,92 156,74 Q140,64 124,74 Z"/>
+            <path d="M120,116 L134,116 L132,148 Q131,156 122,158 Q114,156 116,148 Z"/>
+            <path d="M160,116 L146,116 L148,148 Q149,156 158,158 Q166,156 164,148 Z"/>
+          </g>
+        </g>
+        <text x="250" y="150" font-family="'Arial Black', Arial, 'Segoe UI', sans-serif" font-weight="900" font-size="86" letter-spacing="-1" fill="#1B3B63">SCENSOB</text>
+      </svg>
+      <small>Global</small>
+    </a>
     <nav>
       <a class="current" href="#top">Home</a>
       <a href="#divisions">Divisions</a>
