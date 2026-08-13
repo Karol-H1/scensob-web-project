@@ -1,191 +1,199 @@
 <!doctype html>
-<!--
-  SCENSOB Transport & Delivery — Contact
-  HTML/CSS build of the published Figma design.
-
-  The generated draft listed four offices with street addresses and phone
-  numbers, plus three named sector specialists. All invented, so all held as
-  placeholders. The enquiry-type selector is working, driven by site.js.
--->
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact — SCENSOB</title>
-<meta name="description" content="Talk to SCENSOB about staffing for vehicle hire, courier delivery or pharmaceutical logistics.">
+<meta name="description" content="Whether you need staff urgently or want to plan a longer-term buildout — one conversation with our team is all it takes to get started.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Mulish:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Mulish:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 
-<header class="site">
-  <div class="navrow">
-    <a class="brand" href="index.html">SCENSOB</a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
-    <nav class="main" id="primary-nav">
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+      <span>SCENSOB</span>
+    </a>
+    <nav class="site-nav" id="primary-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
       <a href="catalog.html">Service Catalog</a>
       <a href="contact.html" aria-current="page">Contact</a>
     </nav>
-    <div class="nav-actions">
-      <a class="btn btn-ghost" href="contact.html">I&rsquo;m a candidate</a>
+    <div class="header-actions">
+      <a class="btn btn-quiet" href="contact.html">I&rsquo;m a candidate</a>
       <a class="btn btn-primary" href="contact.html">Request staff</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
     </div>
   </div>
 </header>
 
 <main>
 
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">Contact</span>
-      <h1 class="display">Let&rsquo;s get<br>to work.</h1>
-      <p class="lede" style="margin-top:24px;">
-        Whether you need staff urgently or want to plan a longer-term buildout &mdash; one
-        conversation with our team is all it takes to get started.
-      </p>
-    </div>
+  <section class="container" style="padding-top:56px;padding-bottom:40px;">
+    <p class="eyebrow">Contact</p>
+    <h1 class="h1" style="margin-top:24px;">Let&rsquo;s get<br>to work.</h1>
+    <p class="lede" style="margin-top:24px;max-width:640px;">
+      Whether you need staff urgently or want to plan a longer-term buildout &mdash; one
+      conversation with our team is all it takes to get started.
+    </p>
   </section>
 
-  <section class="tight">
-    <div class="wrap">
-      <div class="contact-grid">
+  <section class="container" style="padding-bottom:96px;">
+    <div class="contact-grid">
 
-        <div class="card card-white">
-          <h2 class="section-title" style="font-size:26px;">Send us an enquiry</h2>
-          <p class="muted" style="font-size:14.5px; margin-top:10px;">
-            We respond within 30 minutes during business hours (Mon&ndash;Fri, 7am&ndash;7pm).
-          </p>
+      <div class="card" style="padding:32px;">
+        <h2 class="h3" style="font-size:24px;">Send us an enquiry</h2>
+        <p class="body-sm" style="margin-top:8px;">
+          We respond within 30 minutes during business hours (Mon&ndash;Fri, 7am&ndash;7pm).
+        </p>
 
-          <div class="steps" style="margin-top:26px;">
-            <span class="step" aria-current="step">1</span>
-            <span class="step">2</span>
-            <span class="step">3</span>
-            <span class="step-label" style="margin-left:8px;">Step 1 of 3</span>
-          </div>
-
-          <h3 style="font-family:var(--display); font-size:20px; margin-top:22px;">
-            What can we help you with?
-          </h3>
-
-          <div class="choices">
-            <button class="choice" type="button" aria-pressed="false">I need to hire staff</button>
-            <button class="choice" type="button" aria-pressed="false">I&rsquo;m looking for a job</button>
-            <button class="choice" type="button" aria-pressed="false">GDP / compliance query</button>
-            <button class="choice" type="button" aria-pressed="false">General enquiry</button>
-          </div>
-
-          <p class="muted" style="font-size:13px; margin-top:20px;">
-            [ Steps 2 and 3 collect contact details and requirement detail. Field list to be
-            confirmed before the form is wired up. ]
-          </p>
+        <div class="step-row">
+          <span class="step" aria-current="step">1</span>
+          <span class="step">2</span>
+          <span class="step">3</span>
+          <span class="step-caption">Step 1 of 3</span>
         </div>
 
-        <div>
-          <div class="card">
-            <span class="eyebrow" style="margin-bottom:14px;">Response times</span>
-            <dl style="margin:0;">
-              <div class="kv"><dt>Emergency fill</dt><dd>Within 4 hours</dd></div>
-              <div class="kv"><dt>Standard enquiry</dt><dd>Within 30 minutes</dd></div>
-              <div class="kv"><dt>Out-of-hours</dt><dd>Next morning, 7am</dd></div>
-            </dl>
-          </div>
+        <h3 class="h3" style="margin-top:24px;">What can we help you with?</h3>
 
-          <div class="card" style="margin-top:20px;">
-            <span class="eyebrow" style="margin-bottom:14px;">Sector specialists</span>
-            <dl style="margin:0;">
-              <div class="kv"><dt>Vehicle &amp; Equipment Hire</dt><dd>[ Name ]</dd></div>
-              <div class="kv"><dt>Courier &amp; Delivery</dt><dd>[ Name ]</dd></div>
-              <div class="kv"><dt>Pharmaceutical</dt><dd>[ Name ]</dd></div>
-            </dl>
-          </div>
-
-          <div class="card" style="margin-top:20px;">
-            <span class="eyebrow" style="margin-bottom:14px;">Our offices</span>
-
-            <div class="office">
-              <h4>[ Location 1 ]</h4>
-              <p>[ Address ]</p>
-              <p>[ Phone ]</p>
-            </div>
-            <div class="office">
-              <h4>[ Location 2 ]</h4>
-              <p>[ Address ]</p>
-              <p>[ Phone ]</p>
-            </div>
-            <div class="office">
-              <h4>[ Location 3 ]</h4>
-              <p>[ Address ]</p>
-              <p>[ Phone ]</p>
-            </div>
-            <div class="office">
-              <h4>[ Location 4 ]</h4>
-              <p>[ Address ]</p>
-              <p>[ Phone ]</p>
-            </div>
-
-            <p class="muted" style="font-size:13.5px; margin-top:20px; padding-top:18px; border-top:1px solid var(--line);">
-              [ Email address ]
-            </p>
-          </div>
+        <div class="choice-list">
+          <button class="choice" type="button" aria-pressed="false">
+            I need to hire staff
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </button>
+          <button class="choice" type="button" aria-pressed="false">
+            I&rsquo;m looking for a job
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </button>
+          <button class="choice" type="button" aria-pressed="false">
+            GDP / compliance query
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </button>
+          <button class="choice" type="button" aria-pressed="false">
+            General enquiry
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </button>
         </div>
-
       </div>
+
+      <div>
+        <div class="card info-card">
+          <p class="eyebrow" style="margin-bottom:12px;">Response times</p>
+          <dl style="margin:0;">
+            <div class="info-row"><dt>Emergency fill</dt><dd>Within 4 hours</dd></div>
+            <div class="info-row"><dt>Standard enquiry</dt><dd>Within 30 minutes</dd></div>
+            <div class="info-row"><dt>Out-of-hours</dt><dd>Next morning, 7am</dd></div>
+          </dl>
+        </div>
+
+        <div class="card info-card">
+          <p class="eyebrow" style="margin-bottom:12px;">Sector specialists</p>
+          <dl style="margin:0;">
+            <div class="info-row"><dt>Vehicle &amp; Equipment Hire</dt><dd>Tom Baxter</dd></div>
+            <div class="info-row"><dt>Courier &amp; Delivery</dt><dd>Priya Nair</dd></div>
+            <div class="info-row"><dt>Pharmaceutical</dt><dd>Marcus Webb</dd></div>
+          </dl>
+        </div>
+
+        <div class="card info-card">
+          <p class="eyebrow" style="margin-bottom:12px;">Our offices</p>
+
+          <div class="office">
+            <h4>Birmingham (HQ)</h4>
+            <p>14 Stratford Road, Digbeth, B5 6NR</p>
+            <p>0121 456 7890</p>
+          </div>
+          <div class="office">
+            <h4>London</h4>
+            <p>3 Bermondsey Street, SE1 3UH</p>
+            <p>020 7946 0812</p>
+          </div>
+          <div class="office">
+            <h4>Manchester</h4>
+            <p>7 Piccadilly Place, M1 3BR</p>
+            <p>0161 234 5678</p>
+          </div>
+          <div class="office">
+            <h4>Bristol</h4>
+            <p>22 Temple Way, BS1 6JL</p>
+            <p>0117 900 1234</p>
+          </div>
+
+          <p style="margin-top:20px;padding-top:16px;border-top:var(--hairline) solid var(--border);font-size:13px;">
+            <a href="mailto:hello@scensob.co.uk" style="color:var(--accent);">hello@scensob.co.uk</a>
+          </p>
+        </div>
+      </div>
+
     </div>
   </section>
 
 </main>
 
-<footer class="site">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <span class="brand">SCENSOB</span>
-        <p>
-          Specialist staffing for vehicle hire, courier delivery, and
-          pharmaceutical logistics across the UK.
-        </p>
-        <div class="pills" style="margin-top:16px;">
-          <span class="pill">[ Accreditation 1 ]</span>
-          <span class="pill">[ Accreditation 2 ]</span>
-        </div>
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div class="footer-brand">
+      <div class="brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+        <span>SCENSOB</span>
       </div>
-      <div class="foot-col">
-        <h4>Services</h4>
-        <a href="services.html">Vehicle &amp; Equipment Hire</a>
-        <a href="services.html">Courier &amp; Delivery</a>
-        <a href="services.html">Pharmaceutical Logistics</a>
-        <a href="services.html">Emergency Cover</a>
-      </div>
-      <div class="foot-col">
-        <h4>Employers</h4>
-        <a href="contact.html">Request Staff</a>
-        <a href="services.html">Temp Cover</a>
-        <a href="services.html">Permanent Hire</a>
-        <a href="services.html">Compliance Support</a>
-      </div>
-      <div class="foot-col">
-        <h4>Candidates</h4>
-        <a href="catalog.html">Find a Job</a>
-        <a href="contact.html">Register</a>
-        <a href="services.html">GDP Briefing</a>
-        <a href="services.html">Licence Help</a>
-      </div>
-      <div class="foot-col">
-        <h4>Company</h4>
-        <a href="about.html">About</a>
-        <a href="services.html">SLA Guarantee</a>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
+      <p>Specialist staffing for vehicle hire, courier delivery, and pharmaceutical logistics across the UK.</p>
+      <div class="footer-accred">
+        <p>REC Member &middot; DVSA Partner</p>
+        <p>GDP Aware &middot; DBS Registered</p>
       </div>
     </div>
-    <div class="foot-base">
-      <span>&copy; 2026 SCENSOB. All rights reserved.</span>
-      <span>[ Office locations to be confirmed ]</span>
+    <div class="footer-cols">
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Vehicle &amp; Equipment Hire</a></li>
+          <li><a href="services.html">Courier &amp; Delivery</a></li>
+          <li><a href="services.html">Pharmaceutical Logistics</a></li>
+          <li><a href="services.html">Emergency Cover</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Employers</h4>
+        <ul>
+          <li><a href="contact.html">Request Staff</a></li>
+          <li><a href="services.html">Temp Cover</a></li>
+          <li><a href="services.html">Permanent Hire</a></li>
+          <li><a href="services.html">Compliance Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Candidates</h4>
+        <ul>
+          <li><a href="catalog.html">Find a Job</a></li>
+          <li><a href="contact.html">Register</a></li>
+          <li><a href="services.html">GDP Briefing</a></li>
+          <li><a href="services.html">Licence Help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">SLA Guarantee</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; 2026 SCENSOB Specialist Staffing Ltd. All rights reserved.</span>
+      <span>London &middot; Birmingham &middot; Manchester &middot; Bristol</span>
     </div>
   </div>
 </footer>

@@ -1,41 +1,38 @@
 <!doctype html>
-<!--
-  SCENSOB Transport & Delivery — Home
-  HTML/CSS build of the published Figma design.
-
-  Layout, palette, type and components reproduce the Figma site exactly.
-  Invented specifics from the generated draft — people's names, testimonial
-  quotes and attributions, office addresses, phone numbers, accreditation
-  claims, headline statistics and salary bands — are held as bracketed
-  placeholders in the same slots. The bracket shows the expected format.
--->
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SCENSOB — Specialist Transport Staffing</title>
-<meta name="description" content="SCENSOB places compliant, verified staff across vehicle and equipment hire, courier and delivery, and pharmaceutical logistics.">
+<meta name="description" content="SCENSOB places compliant, verified staff across vehicle &amp; equipment hire, courier &amp; delivery, and pharmaceutical logistics — fast.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Mulish:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Mulish:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 
-<header class="site">
-  <div class="navrow">
-    <a class="brand" href="index.html">SCENSOB</a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
-    <nav class="main" id="primary-nav">
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+      <span>SCENSOB</span>
+    </a>
+
+    <nav class="site-nav" id="primary-nav">
       <a href="index.html" aria-current="page">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
       <a href="catalog.html">Service Catalog</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <div class="nav-actions">
-      <a class="btn btn-ghost" href="contact.html">I&rsquo;m a candidate</a>
+
+    <div class="header-actions">
+      <a class="btn btn-quiet" href="contact.html">I&rsquo;m a candidate</a>
       <a class="btn btn-primary" href="contact.html">Request staff</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
     </div>
   </div>
 </header>
@@ -43,212 +40,289 @@
 <main>
 
   <!-- Hero -->
-  <section>
-    <div class="wrap">
-      <div class="grid grid-2" style="gap:56px; align-items:start;">
-        <div>
-          <span class="eyebrow">Specialist transport staffing</span>
-          <h1 class="display">Hire. Deliver.<br>Deliver safely.</h1>
-          <p class="lede" style="margin-top:24px;">
-            SCENSOB places compliant, verified staff across vehicle &amp; equipment hire,
-            courier &amp; delivery, and pharmaceutical logistics &mdash; fast.
-          </p>
+  <section class="container hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Specialist transport staffing</p>
 
-          <div class="grid grid-4" style="margin-top:40px; gap:16px;">
-            <div>
-              <span class="stat-figure">4 hrs</span>
-              <span class="stat-label">Emergency fill</span>
-            </div>
-            <div>
-              <span class="stat-figure">24 hrs</span>
-              <span class="stat-label">Standard placement</span>
-            </div>
-            <div>
-              <span class="stat-figure">48 hrs</span>
-              <span class="stat-label">Free replacement</span>
-            </div>
-            <div>
-              <span class="stat-figure">Always</span>
-              <span class="stat-label">On-call support</span>
-            </div>
-          </div>
+      <h1 class="h1">Hire. Deliver.<br><em>Deliver safely.</em></h1>
 
-          <div class="pills" style="margin-top:36px;">
-            <span class="pill">[ Accreditation 1 ]</span>
-            <span class="pill">[ Accreditation 2 ]</span>
-            <span class="pill">[ Accreditation 3 ]</span>
-            <span class="pill">[ Accreditation 4 ]</span>
-          </div>
+      <p class="lede">
+        SCENSOB places compliant, verified staff across vehicle &amp; equipment hire,
+        courier &amp; delivery, and pharmaceutical logistics &mdash; fast.
+      </p>
+
+      <div class="sla-grid">
+        <div class="sla-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          <p>4 hrs <span>Emergency fill</span></p>
         </div>
+        <div class="sla-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></svg>
+          <p>24 hrs <span>Standard placement</span></p>
+        </div>
+        <div class="sla-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          <p>48 hrs <span>Free replacement</span></p>
+        </div>
+        <div class="sla-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2a9 9 0 0 1 9 9"/><path d="M13 6a5 5 0 0 1 5 5"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <p>Always <span>On-call support</span></p>
+        </div>
+      </div>
 
-        <div class="card card-white">
-          <span class="eyebrow">Get started</span>
-          <h2 class="section-title" style="font-size:28px;">Talk to us today</h2>
-          <p class="muted" style="margin-top:12px; font-size:15px;">
-            We respond within 30 minutes during business hours.
-          </p>
-          <div class="grid grid-2" style="margin-top:26px; gap:12px;">
-            <a class="btn btn-dark btn-block" href="contact.html">I need staff</a>
-            <a class="btn btn-ghost btn-block" href="contact.html">I&rsquo;m a candidate</a>
-          </div>
-          <a class="btn btn-primary btn-block" href="contact.html" style="margin-top:12px;">Request staff</a>
-          <p class="muted" style="margin-top:16px; font-size:13px; text-align:center;">
-            Or use the <a href="contact.html">full contact form</a>
-          </p>
+      <div class="badge-row">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>REC Accredited</span>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span>DVSA Verified</span>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+          <span>GDP Compliant</span>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/><path d="M12 3v6"/></svg>
+          <span>DBS Checked</span>
         </div>
       </div>
     </div>
+
+    <aside class="card hero-card">
+      <p class="eyebrow">Get started</p>
+      <h2 class="h3">Talk to us today</h2>
+      <p class="body-sm">We respond within 30 minutes during business hours.</p>
+
+      <div class="segmented" role="group" aria-label="Enquiry type">
+        <button type="button" aria-pressed="true">I need staff</button>
+        <button type="button" aria-pressed="false">I&rsquo;m a candidate</button>
+      </div>
+
+      <form class="enquiry-form" action="#" method="post">
+        <input type="text" name="company" placeholder="Company name" aria-label="Company name">
+        <input type="email" name="email" placeholder="Email address" aria-label="Email address">
+        <input type="tel" name="phone" placeholder="Phone number" aria-label="Phone number">
+        <button class="btn btn-primary btn-block" type="submit">
+          Request staff
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <p class="form-note">Or <a href="contact.html">use the full contact form</a></p>
+      </form>
+    </aside>
   </section>
 
-  <!-- Headline figures -->
-  <section class="tight">
-    <div class="wrap">
+  <!-- Figures -->
+  <section class="band">
+    <div class="container stats">
       <div class="grid grid-4">
-        <div class="card card-deep">
-          <span class="stat-figure stat-figure-lg">[ 0,000+ ]</span>
-          <span class="stat-label">Operatives placed</span>
+        <div>
+          <p class="stat-figure">6,400+</p>
+          <p class="stat-label">Operatives placed</p>
         </div>
-        <div class="card card-deep">
-          <span class="stat-figure stat-figure-lg">[ 00% ]</span>
-          <span class="stat-label">GDP-compliant pharma runs</span>
+        <div>
+          <p class="stat-figure">100%</p>
+          <p class="stat-label">GDP-compliant pharma runs</p>
         </div>
-        <div class="card card-deep">
-          <span class="stat-figure stat-figure-lg">3</span>
-          <span class="stat-label">Core sectors</span>
+        <div>
+          <p class="stat-figure">3</p>
+          <p class="stat-label">Core sectors</p>
         </div>
-        <div class="card card-deep">
-          <span class="stat-figure stat-figure-lg">[ 0.0 hrs ]</span>
-          <span class="stat-label">Avg. emergency fill time</span>
+        <div>
+          <p class="stat-figure">4.2 hrs</p>
+          <p class="stat-label">Avg. emergency fill time</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- What we do -->
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">What we do</span>
-      <h2 class="section-title">Three sectors,<br>one specialist agency</h2>
+  <section class="container section">
+    <div class="section-head">
+      <p class="eyebrow">What we do</p>
+      <h2 class="h2">Three sectors,<br>one specialist agency</h2>
+    </div>
 
-      <div class="grid grid-3" style="margin-top:40px;">
-        <div class="card service-card">
+    <div class="grid grid-3">
+      <a class="service-card" href="services.html">
+        <div class="icon-tile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div>
           <h3>Vehicle &amp; Equipment Hire</h3>
-          <p class="muted" style="font-size:15px;">
-            Hire desk, PDI, workshop, and fleet staff for rental operators.
-          </p>
-          <a class="go" href="services.html">Learn more &rarr;</a>
+          <p>Hire desk, PDI, workshop, and fleet staff for rental operators.</p>
         </div>
-        <div class="card service-card">
+        <span class="card-link">Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a class="service-card" href="services.html">
+        <div class="icon-tile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+        </div>
+        <div>
           <h3>Courier &amp; Delivery</h3>
-          <p class="muted" style="font-size:15px;">
-            Van drivers, couriers, and last-mile operatives for any route type.
-          </p>
-          <a class="go" href="services.html">Learn more &rarr;</a>
+          <p>Van drivers, couriers, and last-mile operatives for any route type.</p>
         </div>
-        <div class="card service-card">
+        <span class="card-link">Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <a class="service-card" href="services.html">
+        <div class="icon-tile">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+        </div>
+        <div>
           <h3>Pharmaceutical Logistics</h3>
-          <p class="muted" style="font-size:15px;">
-            GDP-aware, cold-chain ready drivers for critical pharma supply chains.
-          </p>
-          <a class="go" href="services.html">Learn more &rarr;</a>
+          <p>GDP-aware, cold-chain ready drivers for critical pharma supply chains.</p>
         </div>
-      </div>
+        <span class="card-link">Learn more
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
     </div>
   </section>
 
   <!-- Testimonials -->
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">Client testimonials</span>
-      <h2 class="section-title">Heard from operators</h2>
+  <section class="band-dark">
+    <div class="container section">
+      <div class="section-head">
+        <p class="eyebrow">Client testimonials</p>
+        <h2 class="h2">Heard from operators</h2>
+      </div>
 
-      <div class="grid grid-3" style="margin-top:40px;">
-        <div class="card">
-          <p class="quote">&ldquo;[ Client quote &mdash; to be supplied with written permission to publish. ]&rdquo;</p>
-          <p class="attrib">[ Name ]</p>
-          <p class="attrib-role">[ Role ], [ Company ]</p>
-          <p class="attrib-sector">Vehicle &amp; equipment hire</p>
-        </div>
-        <div class="card">
-          <p class="quote">&ldquo;[ Client quote &mdash; to be supplied with written permission to publish. ]&rdquo;</p>
-          <p class="attrib">[ Name ]</p>
-          <p class="attrib-role">[ Role ], [ Company ]</p>
-          <p class="attrib-sector">Pharmaceutical logistics</p>
-        </div>
-        <div class="card">
-          <p class="quote">&ldquo;[ Client quote &mdash; to be supplied with written permission to publish. ]&rdquo;</p>
-          <p class="attrib">[ Name ]</p>
-          <p class="attrib-role">[ Role ], [ Company ]</p>
-          <p class="attrib-sector">Courier &amp; delivery</p>
-        </div>
+      <div class="grid grid-3">
+        <figure class="testimonial">
+          <div class="stars">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+          </div>
+          <blockquote>&ldquo;SCENSOB had three compliant hire desk coordinators with us within 24 hours of our call. Peak season saved.&rdquo;</blockquote>
+          <figcaption>
+            <p class="name">Rachel Finch</p>
+            <p class="role">Operations Director, NationWide Plant Hire</p>
+            <span class="sector-chip">Vehicle &amp; Equipment Hire</span>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial">
+          <div class="stars">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+          </div>
+          <blockquote>&ldquo;Every driver they&rsquo;ve placed for our pharma runs has arrived GDP-briefed and temperature-protocol ready. No exceptions.&rdquo;</blockquote>
+          <figcaption>
+            <p class="name">Dr. James Okafor</p>
+            <p class="role">Supply Chain Manager, MedLine Distribution</p>
+            <span class="sector-chip">Pharmaceutical Logistics</span>
+          </figcaption>
+        </figure>
+
+        <figure class="testimonial">
+          <div class="stars">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+          </div>
+          <blockquote>&ldquo;18 months, never missed a same-day fill. That&rsquo;s the kind of reliability you can build a business on.&rdquo;</blockquote>
+          <figcaption>
+            <p class="name">Sandra Hewitt</p>
+            <p class="role">Network Manager, SwiftDrop Logistics</p>
+            <span class="sector-chip">Courier &amp; Delivery</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
   <!-- Closing CTA -->
-  <section>
-    <div class="wrap">
-      <div class="cta">
-        <h2 class="section-title">Staff a vehicle, fill a<br>route, move a medicine.</h2>
-        <p class="lede" style="margin:0 auto;">
-          Whatever your sector, we place compliant, experienced people &mdash; fast.
-        </p>
-        <div class="cta-actions">
-          <a class="btn btn-primary" href="contact.html">Request staff now</a>
-          <a class="btn btn-ghost" href="catalog.html">Browse service catalog</a>
-        </div>
+  <section class="container section">
+    <div class="cta-panel">
+      <div>
+        <h2 class="h2">Staff a vehicle, fill a<br>route, move a medicine.</h2>
+        <p>Whatever your sector, we place compliant, experienced people &mdash; fast.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-lg btn-on-accent" href="contact.html">
+          Request staff now
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-lg btn-on-accent-ghost" href="catalog.html">Browse service catalog</a>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <span class="brand">SCENSOB</span>
-        <p>
-          Specialist staffing for vehicle hire, courier delivery, and
-          pharmaceutical logistics across the UK.
-        </p>
-        <div class="pills" style="margin-top:16px;">
-          <span class="pill">[ Accreditation 1 ]</span>
-          <span class="pill">[ Accreditation 2 ]</span>
-        </div>
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div class="footer-brand">
+      <div class="brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+        <span>SCENSOB</span>
       </div>
-      <div class="foot-col">
-        <h4>Services</h4>
-        <a href="services.html">Vehicle &amp; Equipment Hire</a>
-        <a href="services.html">Courier &amp; Delivery</a>
-        <a href="services.html">Pharmaceutical Logistics</a>
-        <a href="services.html">Emergency Cover</a>
-      </div>
-      <div class="foot-col">
-        <h4>Employers</h4>
-        <a href="contact.html">Request Staff</a>
-        <a href="services.html">Temp Cover</a>
-        <a href="services.html">Permanent Hire</a>
-        <a href="services.html">Compliance Support</a>
-      </div>
-      <div class="foot-col">
-        <h4>Candidates</h4>
-        <a href="catalog.html">Find a Job</a>
-        <a href="contact.html">Register</a>
-        <a href="services.html">GDP Briefing</a>
-        <a href="services.html">Licence Help</a>
-      </div>
-      <div class="foot-col">
-        <h4>Company</h4>
-        <a href="about.html">About</a>
-        <a href="services.html">SLA Guarantee</a>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
+      <p>Specialist staffing for vehicle hire, courier delivery, and pharmaceutical logistics across the UK.</p>
+      <div class="footer-accred">
+        <p>REC Member &middot; DVSA Partner</p>
+        <p>GDP Aware &middot; DBS Registered</p>
       </div>
     </div>
-    <div class="foot-base">
-      <span>&copy; 2026 SCENSOB. All rights reserved.</span>
-      <span>[ Office locations to be confirmed ]</span>
+
+    <div class="footer-cols">
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Vehicle &amp; Equipment Hire</a></li>
+          <li><a href="services.html">Courier &amp; Delivery</a></li>
+          <li><a href="services.html">Pharmaceutical Logistics</a></li>
+          <li><a href="services.html">Emergency Cover</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Employers</h4>
+        <ul>
+          <li><a href="contact.html">Request Staff</a></li>
+          <li><a href="services.html">Temp Cover</a></li>
+          <li><a href="services.html">Permanent Hire</a></li>
+          <li><a href="services.html">Compliance Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Candidates</h4>
+        <ul>
+          <li><a href="catalog.html">Find a Job</a></li>
+          <li><a href="contact.html">Register</a></li>
+          <li><a href="services.html">GDP Briefing</a></li>
+          <li><a href="services.html">Licence Help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">SLA Guarantee</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; 2026 SCENSOB Specialist Staffing Ltd. All rights reserved.</span>
+      <span>London &middot; Birmingham &middot; Manchester &middot; Bristol</span>
     </div>
   </div>
 </footer>

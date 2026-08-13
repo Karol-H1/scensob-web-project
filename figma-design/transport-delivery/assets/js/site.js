@@ -1,5 +1,5 @@
-/* SCENSOB Transport & Delivery — interaction for the static design build.
-   Plain JavaScript, no dependencies, so the pages work from the filesystem. */
+/* SCENSOB — interaction for the static build.
+   Plain JavaScript, no dependencies, so the pages work straight from disk. */
 
 (function () {
   'use strict';
@@ -15,11 +15,30 @@
     });
   }
 
-  /* Catalog sector filter ------------------------------------------------ */
-  var filters = Array.prototype.slice.call(document.querySelectorAll('.filter'));
-  var groups = Array.prototype.slice.call(document.querySelectorAll('.sector-group'));
+  /* Generic single-select button groups ---------------------------------- */
+  function singleSelect(selector) {
+    var buttons = Array.prototype.slice.call(document.querySelectorAll(selector));
+    if (!buttons.length) { return buttons; }
 
-  if (filters.length && groups.length) {
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        buttons.forEach(function (other) {
+          other.setAttribute('aria-pressed', other === button ? 'true' : 'false');
+        });
+      });
+    });
+
+    return buttons;
+  }
+
+  singleSelect('.segmented button');
+  singleSelect('.choice');
+
+  /* Catalog sector filter ------------------------------------------------- */
+  var filters = Array.prototype.slice.call(document.querySelectorAll('.filter'));
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('.sector-block'));
+
+  if (filters.length && blocks.length) {
     filters.forEach(function (button) {
       button.addEventListener('click', function () {
         var wanted = button.dataset.sector;
@@ -28,22 +47,8 @@
           other.setAttribute('aria-pressed', other === button ? 'true' : 'false');
         });
 
-        groups.forEach(function (group) {
-          var match = wanted === 'all' || group.dataset.sector === wanted;
-          group.hidden = !match;
-        });
-      });
-    });
-  }
-
-  /* Contact enquiry-type choices ----------------------------------------- */
-  var choices = Array.prototype.slice.call(document.querySelectorAll('.choice'));
-
-  if (choices.length) {
-    choices.forEach(function (choice) {
-      choice.addEventListener('click', function () {
-        choices.forEach(function (other) {
-          other.setAttribute('aria-pressed', other === choice ? 'true' : 'false');
+        blocks.forEach(function (block) {
+          block.hidden = !(wanted === 'all' || block.dataset.sector === wanted);
         });
       });
     });

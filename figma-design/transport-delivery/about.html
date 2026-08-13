@@ -1,253 +1,246 @@
 <!doctype html>
-<!--
-  SCENSOB Transport & Delivery — About
-  HTML/CSS build of the published Figma design. See index.html for the note on
-  which content is held as bracketed placeholder and why.
-
-  This page carried the most invented detail in the generated draft: a founder,
-  four named staff, a founding year, office cities and a milestone timeline.
-  The structure is reproduced; the specifics are placeholders.
--->
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About — SCENSOB</title>
-<meta name="description" content="SCENSOB is a specialist staffing agency for the transport and logistics sector.">
+<meta name="description" content="Built by transport people, for transport people. SCENSOB is a specialist staffing agency for vehicle hire, courier delivery and pharmaceutical logistics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Mulish:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Mulish:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 
-<header class="site">
-  <div class="navrow">
-    <a class="brand" href="index.html">SCENSOB</a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
-    <nav class="main" id="primary-nav">
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+      <span>SCENSOB</span>
+    </a>
+    <nav class="site-nav" id="primary-nav">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html" aria-current="page">About</a>
       <a href="catalog.html">Service Catalog</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <div class="nav-actions">
-      <a class="btn btn-ghost" href="contact.html">I&rsquo;m a candidate</a>
+    <div class="header-actions">
+      <a class="btn btn-quiet" href="contact.html">I&rsquo;m a candidate</a>
       <a class="btn btn-primary" href="contact.html">Request staff</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
     </div>
   </div>
 </header>
 
 <main>
 
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">About SCENSOB</span>
-      <h1 class="display">Built by transport<br>people, for<br>transport people.</h1>
-      <p class="lede" style="margin-top:24px;">
-        [ Founding story &mdash; to be confirmed. The generated draft invented a founder,
-        a founding year and a fifteen-year history; none of it is verified. ]
-      </p>
-    </div>
+  <section class="container" style="padding-top:56px;padding-bottom:32px;">
+    <p class="eyebrow">About SCENSOB</p>
+    <h1 class="h1" style="margin-top:24px;">Built by transport<br>people, for<br>transport people.</h1>
+    <p class="lede" style="margin-top:24px;max-width:640px;">
+      SCENSOB was founded in 2011 by a logistics manager who was tired of agencies that
+      didn&rsquo;t understand the difference between a Class 1 and a Class 2 &mdash; let alone
+      GDP. Fifteen years later, we&rsquo;re still the agency that gets it.
+    </p>
   </section>
 
-  <section class="tight">
-    <div class="wrap">
-      <span class="eyebrow">Our story</span>
-      <div class="grid grid-2" style="gap:40px; margin-top:8px;">
-        <div class="card card-plain" style="padding-left:0; border:0;">
-          <p class="muted">
-            [ Placeholder &mdash; how the business started and which sector came first. ]
-          </p>
-          <p class="muted" style="margin-top:18px;">
-            [ Placeholder &mdash; how it grew into the three sectors it covers today, and
-            where it operates from. ]
-          </p>
-        </div>
-        <div class="card card-plain" style="padding-right:0; border:0;">
-          <p class="muted">
-            [ Placeholder &mdash; the operating principle behind the business. ]
-          </p>
-          <p class="muted" style="margin-top:18px;">
-            [ Placeholder &mdash; what the company will and will not compromise on. ]
-          </p>
-        </div>
-      </div>
+  <section class="container section" style="padding-top:32px;">
+    <div class="section-head">
+      <p class="eyebrow">Our story</p>
     </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">Our values</span>
-      <h2 class="section-title">How we work</h2>
-
-      <div class="grid grid-4" style="margin-top:40px;">
-        <div class="card">
-          <h3 style="font-family:var(--display); font-size:20px;">Sector depth over breadth</h3>
-          <p class="muted" style="font-size:14.5px; margin-top:10px;">
-            We work in three sectors and we know them inside out. We don&rsquo;t try to be
-            everything to everyone.
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="font-family:var(--display); font-size:20px;">Compliance as standard</h3>
-          <p class="muted" style="font-size:14.5px; margin-top:10px;">
-            Licence checks, GDP briefings, DBS screening &mdash; these aren&rsquo;t add-ons.
-            They&rsquo;re in every placement, every time.
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="font-family:var(--display); font-size:20px;">Candidates are clients too</h3>
-          <p class="muted" style="font-size:14.5px; margin-top:10px;">
-            We treat drivers and operatives with the same care as the companies we place
-            them with. Good candidates come back.
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="font-family:var(--display); font-size:20px;">Built for the UK</h3>
-          <p class="muted" style="font-size:14.5px; margin-top:10px;">
-            [ Placeholder &mdash; coverage and office locations to be confirmed. ]
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">Timeline</span>
-      <h2 class="section-title">[ Milestones to be confirmed ]</h2>
-
-      <div class="timeline" style="margin-top:32px;">
-        <div class="timeline-row">
-          <span class="timeline-year">[ 20XX ]</span>
-          <p class="muted">[ Milestone &mdash; founding. ]</p>
-        </div>
-        <div class="timeline-row">
-          <span class="timeline-year">[ 20XX ]</span>
-          <p class="muted">[ Milestone &mdash; expansion into a second sector. ]</p>
-        </div>
-        <div class="timeline-row">
-          <span class="timeline-year">[ 20XX ]</span>
-          <p class="muted">[ Milestone &mdash; launch of the pharmaceutical logistics division. ]</p>
-        </div>
-        <div class="timeline-row">
-          <span class="timeline-year">[ 20XX ]</span>
-          <p class="muted">[ Milestone &mdash; new offices or a placement volume landmark. ]</p>
-        </div>
-        <div class="timeline-row">
-          <span class="timeline-year">[ 20XX ]</span>
-          <p class="muted">[ Milestone &mdash; accreditation achieved. ]</p>
-        </div>
-        <div class="timeline-row">
-          <span class="timeline-year">[ 20XX ]</span>
-          <p class="muted">[ Milestone &mdash; where the business stands today. ]</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">The team</span>
-      <h2 class="section-title">People who&rsquo;ve been there</h2>
-
-      <div class="grid grid-4" style="margin-top:40px;">
-        <div class="card">
-          <h3 style="font-size:17px;">[ Name ]</h3>
-          <p class="attrib-role">[ Role ]</p>
-          <p class="muted" style="font-size:14px; margin-top:12px;">
-            [ Short biography &mdash; background and responsibility. ]
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="font-size:17px;">[ Name ]</h3>
-          <p class="attrib-role">[ Role ]</p>
-          <p class="muted" style="font-size:14px; margin-top:12px;">
-            [ Short biography &mdash; background and responsibility. ]
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="font-size:17px;">[ Name ]</h3>
-          <p class="attrib-role">[ Role ]</p>
-          <p class="muted" style="font-size:14px; margin-top:12px;">
-            [ Short biography &mdash; background and responsibility. ]
-          </p>
-        </div>
-        <div class="card">
-          <h3 style="font-size:17px;">[ Name ]</h3>
-          <p class="attrib-role">[ Role ]</p>
-          <p class="muted" style="font-size:14px; margin-top:12px;">
-            [ Short biography &mdash; background and responsibility. ]
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="cta">
-        <h2 class="section-title">Want to work with us?</h2>
-        <p class="lede" style="margin:0 auto;">
-          Whether you need staff or you&rsquo;re looking for a role &mdash; we&rsquo;re ready to talk.
+    <div class="prose-cols">
+      <div>
+        <p>
+          We started with one sector &mdash; vehicle and equipment hire &mdash; because we
+          knew it well. As our clients grew, they asked us to help with their courier
+          networks. Then a cold-chain operator asked if we could source GDP-aware
+          pharmaceutical drivers. We said yes, built the protocol, and made it our
+          standard.
         </p>
-        <div class="cta-actions">
-          <a class="btn btn-primary" href="contact.html">Get in touch</a>
+        <p>
+          Today, SCENSOB operates across three specialist sectors from four UK offices.
+          Every placement we make goes through the same rigorous compliance screening
+          &mdash; whether it&rsquo;s a hire desk coordinator in Coventry or a pharmaceutical
+          courier running a controlled drugs route into London.
+        </p>
+      </div>
+      <div>
+        <p>
+          The agency was built on a simple belief: in transport and logistics, the cost
+          of a bad hire isn&rsquo;t just financial. It&rsquo;s reputational, regulatory, and
+          sometimes physical. So we don&rsquo;t cut corners. And we never will.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container section">
+      <div class="section-head">
+        <p class="eyebrow">Our values</p>
+        <h2 class="h2">How we work</h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="card value-card" style="background:var(--background);">
+          <h3>Sector depth over breadth</h3>
+          <p>We work in three sectors and we know them inside out. We don&rsquo;t try to be everything to everyone.</p>
         </div>
+        <div class="card value-card" style="background:var(--background);">
+          <h3>Compliance as standard</h3>
+          <p>Licence checks, GDP briefings, DBS screening &mdash; these aren&rsquo;t add-ons. They&rsquo;re in every placement, every time.</p>
+        </div>
+        <div class="card value-card" style="background:var(--background);">
+          <h3>Candidates are clients too</h3>
+          <p>We treat drivers and operatives with the same care as the companies we place them with. Good candidates come back.</p>
+        </div>
+        <div class="card value-card" style="background:var(--background);">
+          <h3>Built for the UK</h3>
+          <p>We operate across England from four regional offices. Local knowledge, national reach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="section-head">
+      <p class="eyebrow">Timeline</p>
+      <h2 class="h2">15 years on the road</h2>
+    </div>
+    <div>
+      <div class="timeline-row">
+        <span class="timeline-year">2011</span>
+        <p>Founded in Birmingham by Claire Hendricks, initially focused on vehicle hire staffing.</p>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-year">2015</span>
+        <p>Expanded into courier and delivery as e-commerce growth drove demand for last-mile operatives.</p>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-year">2018</span>
+        <p>Launched pharmaceutical logistics division with GDP-compliant candidate protocols.</p>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-year">2021</span>
+        <p>Opened Manchester and Bristol offices. Surpassed 5,000 cumulative placements.</p>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-year">2024</span>
+        <p>Achieved REC full accreditation. Launched on-call SLA guarantee across all sectors.</p>
+      </div>
+      <div class="timeline-row">
+        <span class="timeline-year">2026</span>
+        <p>6,400+ placements and counting. Three sectors. One team.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container section">
+      <div class="section-head">
+        <p class="eyebrow">The team</p>
+        <h2 class="h2">People who&rsquo;ve been there</h2>
+      </div>
+      <div class="grid grid-4">
+        <div class="card person" style="background:var(--background);">
+          <h3>Claire Hendricks</h3>
+          <p class="role">Managing Director</p>
+          <p>20 years in transport recruitment. Former logistics manager turned agency founder &mdash; she built SCENSOB on the belief that compliance and speed are not a trade-off.</p>
+        </div>
+        <div class="card person" style="background:var(--background);">
+          <h3>Marcus Webb</h3>
+          <p class="role">Head of Pharma Logistics</p>
+          <p>Specialist recruiter with a background in pharmaceutical supply chain. Developed SCENSOB&rsquo;s GDP placement protocol from the ground up.</p>
+        </div>
+        <div class="card person" style="background:var(--background);">
+          <h3>Priya Nair</h3>
+          <p class="role">Head of Courier &amp; Delivery</p>
+          <p>Built her career in last-mile logistics before moving into recruitment. Knows the operational reality of a missed delivery window better than anyone.</p>
+        </div>
+        <div class="card person" style="background:var(--background);">
+          <h3>Tom Baxter</h3>
+          <p class="role">Head of Vehicle &amp; Hire</p>
+          <p>Former branch manager at a national plant hire company. Spent 12 years on the operator side before joining SCENSOB to lead hire sector placements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="cta-panel">
+      <div>
+        <h2 class="h2">Want to work with us?</h2>
+        <p>Whether you need staff or you&rsquo;re looking for a role &mdash; we&rsquo;re ready to talk.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-lg btn-on-accent" href="contact.html">
+          Get in touch
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <span class="brand">SCENSOB</span>
-        <p>
-          Specialist staffing for vehicle hire, courier delivery, and
-          pharmaceutical logistics across the UK.
-        </p>
-        <div class="pills" style="margin-top:16px;">
-          <span class="pill">[ Accreditation 1 ]</span>
-          <span class="pill">[ Accreditation 2 ]</span>
-        </div>
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div class="footer-brand">
+      <div class="brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+        <span>SCENSOB</span>
       </div>
-      <div class="foot-col">
-        <h4>Services</h4>
-        <a href="services.html">Vehicle &amp; Equipment Hire</a>
-        <a href="services.html">Courier &amp; Delivery</a>
-        <a href="services.html">Pharmaceutical Logistics</a>
-        <a href="services.html">Emergency Cover</a>
-      </div>
-      <div class="foot-col">
-        <h4>Employers</h4>
-        <a href="contact.html">Request Staff</a>
-        <a href="services.html">Temp Cover</a>
-        <a href="services.html">Permanent Hire</a>
-        <a href="services.html">Compliance Support</a>
-      </div>
-      <div class="foot-col">
-        <h4>Candidates</h4>
-        <a href="catalog.html">Find a Job</a>
-        <a href="contact.html">Register</a>
-        <a href="services.html">GDP Briefing</a>
-        <a href="services.html">Licence Help</a>
-      </div>
-      <div class="foot-col">
-        <h4>Company</h4>
-        <a href="about.html">About</a>
-        <a href="services.html">SLA Guarantee</a>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
+      <p>Specialist staffing for vehicle hire, courier delivery, and pharmaceutical logistics across the UK.</p>
+      <div class="footer-accred">
+        <p>REC Member &middot; DVSA Partner</p>
+        <p>GDP Aware &middot; DBS Registered</p>
       </div>
     </div>
-    <div class="foot-base">
-      <span>&copy; 2026 SCENSOB. All rights reserved.</span>
-      <span>[ Office locations to be confirmed ]</span>
+    <div class="footer-cols">
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Vehicle &amp; Equipment Hire</a></li>
+          <li><a href="services.html">Courier &amp; Delivery</a></li>
+          <li><a href="services.html">Pharmaceutical Logistics</a></li>
+          <li><a href="services.html">Emergency Cover</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Employers</h4>
+        <ul>
+          <li><a href="contact.html">Request Staff</a></li>
+          <li><a href="services.html">Temp Cover</a></li>
+          <li><a href="services.html">Permanent Hire</a></li>
+          <li><a href="services.html">Compliance Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Candidates</h4>
+        <ul>
+          <li><a href="catalog.html">Find a Job</a></li>
+          <li><a href="contact.html">Register</a></li>
+          <li><a href="services.html">GDP Briefing</a></li>
+          <li><a href="services.html">Licence Help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">SLA Guarantee</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; 2026 SCENSOB Specialist Staffing Ltd. All rights reserved.</span>
+      <span>London &middot; Birmingham &middot; Manchester &middot; Bristol</span>
     </div>
   </div>
 </footer>

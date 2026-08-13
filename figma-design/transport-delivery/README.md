@@ -1,9 +1,10 @@
-# Transport & Delivery — Figma design, built in HTML/CSS
+# SCENSOB — Transport & Delivery site
 
-A hand-built HTML and CSS implementation of the published Figma design at
+Source code for the design published at
 <https://grow-mode-70103726.figma.site/>.
 
-No build step, no framework, no dependencies. Open `index.html` in a browser.
+Plain HTML, CSS and a little JavaScript. No build step, no framework, no
+package install. Open `index.html` in a browser and it runs.
 
 ```
 index.html        Home
@@ -15,64 +16,77 @@ assets/css/site.css
 assets/js/site.js
 ```
 
+## How this was made
+
+Figma Dev Mode wasn't available, so the design was measured directly from the
+published site — every colour, font size, weight, letter-spacing, grid track,
+gap and padding read from its computed styles — and rebuilt as hand-written
+code. It is a reconstruction, not an export, which means the markup is clean and
+meant to be edited.
+
+Verified against the source at 1440px:
+
+| | Figma | This build |
+| --- | --- | --- |
+| Hero grid | `732px 420px`, gap `48px` | identical |
+| Hero padding | `56px 40px 80px` | identical |
+| H1 | Playfair Display 68px / 500, line-height 71.4px | identical |
+| Accent phrase | italic, weight 400, `#1A3A8F` | identical |
+| Eyebrow | DM Mono 12px / 500, tracking `1.2px` | identical |
+| Header | 65px tall, `rgba(238,242,250,.95)` | identical |
+| Stat figure | Playfair Display 36px / 500 | identical |
+| Service card | `#E4EAF6`, padding `32px 28px` | identical |
+| Testimonial band | `#0F172A` on `#EEF2FA` | identical |
+| CTA panel | `#1A3A8F`, padding `64px 40px`, H2 48px | identical |
+
 ## Design tokens
 
-Taken from the Figma site's computed styles, so this is a like-for-like rebuild
-rather than an interpretation.
+All defined as custom properties at the top of `site.css`, so a rebrand is a
+handful of edits in one place.
 
-| Role | Value |
-| --- | --- |
-| Page ground | `#EEF2FA` |
-| Card surface | `#E4EAF6` |
-| Deeper panel | `#D8E2F4` |
-| Ink | `#0F172A` |
-| Primary action | `#1A3A8F` |
-| Hairline | `rgba(15, 23, 42, 0.12)` |
-| Corner radius | `6px` |
-| Content width | `1200px` |
+| Token | Value | Used for |
+| --- | --- | --- |
+| `--background` | `#EEF2FA` | page ground |
+| `--card` | `#E4EAF6` | cards, inputs, stats band |
+| `--secondary` | `#D8E2F4` | icon tiles, segmented control |
+| `--foreground` | `#0F172A` | body text, dark band |
+| `--muted-foreground` | `#475880` | secondary text |
+| `--accent` | `#1A3A8F` | actions, eyebrows, stars |
+| `--border` | `rgba(15,23,42,.12)` | hairlines |
+| `--radius` | `6px` | everything |
+| `--container` | `1280px` | max width, `40px` gutter |
 
-**Type.** Playfair Display for display and section headings (weight 500), Mulish
-for body and UI, DM Mono for the uppercase eyebrow labels, tags and figures.
-Loaded from Google Fonts, with system fallbacks if offline.
+**Type.** Playfair Display for display and headings, Mulish for body and UI
+(300 / 400 / 500), DM Mono for eyebrows, chips and figures. Loaded from Google
+Fonts with system fallbacks.
 
-Verified against the source: page ground, ink, primary action and the 68px
-display size all match exactly.
+**Icons** are inline Lucide SVGs — the same set the Figma design uses (`truck`,
+`wrench`, `thermometer`, `zap`, `timer`, `rotate-ccw`, `phone-call`,
+`badge-check`, `shield`, `package-2`, `star`, `arrow-right`, `check`). Inline
+rather than a font or sprite, so there is nothing to load and each one inherits
+`currentColor`.
 
-## Interaction
+## JavaScript
 
-`assets/js/site.js` is about sixty lines of plain JavaScript covering the three
-things the design needs:
+`assets/js/site.js` is about fifty lines and covers three things:
 
 - the mobile navigation toggle
-- the catalog's sector filter (All / Hire / Courier / Pharma)
-- the enquiry-type selector on the contact page
+- single-select button groups (the hero's staff/candidate switch and the contact
+  page's enquiry type)
+- the catalog's sector filter
 
-## A note on the content
+No dependencies. Nothing else on the page needs scripting.
 
-The Figma draft was generated, and it invented a large amount of specific
-detail: a named founder and four named staff, three client testimonials
-attributed to named people at named companies, four office addresses with UK
-phone numbers, accreditation claims, headline statistics and salary bands.
+## Responsive
 
-None of that is verified, so **none of it is reproduced here.** Every one of
-those is a bracketed placeholder sitting in the same slot, formatted to show
-what belongs there — `[ £00,000–£00,000 ]`, `[ Name ]`, `[ Phone ]`. The design
-reads exactly as designed; the fiction is gone.
+Breakpoints at 1100px, 900px and 560px. The hero stacks, the header collapses to
+a menu button, grids reduce to two columns and then one, and the catalog rows
+reflow to stacked blocks. No page scrolls sideways at any width.
 
-Kept verbatim, because it is descriptive rather than a claim of fact: section
-headings and body copy, the three sector names (which come from the project
-brief), the compliance checks each service performs, the SLA tiers, and standard
-industry role titles in the catalog.
+## Content
 
-This matters beyond tidiness. A fabricated testimonial or an invented phone
-number is exactly the kind of thing that survives quietly into a live site.
-
-## Relationship to the rest of the repo
-
-This is a standalone implementation of the Figma visual design.
-
-It is separate from `../../wordpress`, which is a WordPress block theme built on
-the SCENSOB group design system shared with the Global and IT sites, and from
-`../../static`, which is an export of that. The two look different because they
-are different designs — this one follows Figma, that one follows the group
-system.
+The copy is the demo content from the Figma design, reproduced exactly as
+requested so the pages match the comp. It should be replaced with real content
+before the site goes anywhere public — the names, testimonials, office
+addresses, phone numbers, statistics and salary bands were all generated by
+Figma and none of them are real.
