@@ -4,17 +4,36 @@ Source code for the design published at
 <https://grow-mode-70103726.figma.site/>.
 
 Plain HTML, CSS and a little JavaScript. No build step, no framework, no
-package install. Open `index.html` in a browser and it runs.
+package install.
 
 ```
-index.html        Home
-services.html     Services
-about.html        About
-catalog.html      Service Catalog
-contact.html      Contact
+index.html            Home             <- edit these
+services.html         Services
+about.html            About
+catalog.html          Service Catalog
+contact.html          Contact
 assets/css/site.css
 assets/js/site.js
+
+standalone/           Same five pages, CSS and JS inlined
+build-standalone.py   Regenerates standalone/ from the files above
 ```
+
+## Which folder to open
+
+**To view it:** open anything in `standalone/`. Those are single files with the
+CSS and JS built in, so they render correctly wherever they are.
+
+**To edit it:** work in the files at the top level, where the CSS and JS live in
+one place each. Run `python build-standalone.py` afterwards to refresh the
+standalone copies.
+
+> **Extract the zip before opening anything.** Windows lets you browse a zip as
+> though it were a folder, but double-clicking a file inside one unpacks only
+> that single file to a temporary directory. The stylesheet is left behind and
+> the page renders as unstyled HTML. Right-click the zip, choose *Extract All*,
+> then open from the extracted folder. The `standalone/` copies are immune to
+> this, which is why they exist.
 
 ## How this was made
 
