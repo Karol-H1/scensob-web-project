@@ -43,6 +43,11 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* The browser hides [hidden] with `display: none`, but any class that sets
+   `display` outranks it. Several things toggled by script carry such a class,
+   so make the attribute win outright. */
+[hidden] { display: none !important; }
+
 body {
   margin: 0;
   background: var(--background);
