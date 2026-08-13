@@ -1,0 +1,266 @@
+<!doctype html>
+<!--
+  SCENSOB Transport & Delivery — Service Catalog
+  HTML/CSS build of the published Figma design.
+
+  Role titles, tags and coverage are standard industry descriptors and are kept.
+  Pay bands were invented figures in the generated draft and are placeholders.
+  The sector filter is working, driven by assets/js/site.js.
+-->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service Catalog — SCENSOB</title>
+<meta name="description" content="The full range of roles SCENSOB recruits for across vehicle hire, courier delivery and pharmaceutical logistics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Mulish:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a class="brand" href="index.html">SCENSOB</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav class="main" id="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="catalog.html" aria-current="page">Service Catalog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="contact.html">I&rsquo;m a candidate</a>
+      <a class="btn btn-primary" href="contact.html">Request staff</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Service catalog</span>
+      <h1 class="display">Every role.<br>Every sector.<br>Every check.</h1>
+      <p class="lede" style="margin-top:24px;">
+        Browse the full range of positions SCENSOB recruits for across vehicle hire,
+        courier delivery, and pharmaceutical logistics &mdash; with compliance requirements
+        listed for each.
+      </p>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+
+      <div class="filters">
+        <button class="filter" type="button" data-sector="all" aria-pressed="true">All sectors</button>
+        <button class="filter" type="button" data-sector="hire" aria-pressed="false">Vehicle &amp; Equipment Hire</button>
+        <button class="filter" type="button" data-sector="courier" aria-pressed="false">Courier &amp; Delivery</button>
+        <button class="filter" type="button" data-sector="pharma" aria-pressed="false">Pharmaceutical Logistics</button>
+      </div>
+
+      <div class="sector-group" data-sector="hire">
+        <div class="sector-head">
+          <h3>Vehicle &amp; Equipment Hire</h3>
+          <span class="sector-count">6 roles</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Hire Desk Coordinator</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">PDI Technician</span>
+          <span class="role-tags"><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Midlands, North West, South West</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Delivery &amp; Collection Driver</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Fleet Administrator</span>
+          <span class="role-tags"><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Workshop Controller</span>
+          <span class="role-tags"><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Midlands, South East</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Branch Manager</span>
+          <span class="role-tags"><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+      </div>
+
+      <div class="sector-group" data-sector="courier">
+        <div class="sector-head">
+          <h3>Courier &amp; Delivery</h3>
+          <span class="sector-count">6 roles</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Multi-Drop Van Driver</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Same-Day Courier</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">[ Coverage to confirm ]</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Parcel Hub Sorter</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Route Planner</span>
+          <span class="role-tags"><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Last-Mile Supervisor</span>
+          <span class="role-tags"><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">[ Coverage to confirm ]</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Night-Line Driver</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+      </div>
+
+      <div class="sector-group" data-sector="pharma">
+        <div class="sector-head">
+          <h3>Pharmaceutical Logistics</h3>
+          <span class="sector-count">6 roles</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Pharmaceutical Courier</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Cold-Chain Delivery Driver</span>
+          <span class="role-tags"><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">[ Coverage to confirm ]</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Controlled Drugs Escort</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">[ Coverage to confirm ]</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Medical Supplies Driver</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">GDP Compliance Officer</span>
+          <span class="role-tags"><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">[ Coverage to confirm ]</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+        <div class="role">
+          <span class="role-name">Hospital Logistics Operative</span>
+          <span class="role-tags"><span class="tag tag-temp">Temp</span><span class="tag tag-perm">Permanent</span></span>
+          <span class="role-loc">Nationwide</span>
+          <span class="role-pay">[ &pound;00,000&ndash;&pound;00,000 ]</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <h2 class="section-title">Don&rsquo;t see exactly what you need?</h2>
+        <p class="lede" style="margin:0 auto;">
+          Our catalog covers the most common requirements &mdash; but we fill bespoke roles
+          too. Get in touch and we&rsquo;ll scope it together.
+        </p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="contact.html">Discuss a bespoke role</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand">SCENSOB</span>
+        <p>
+          Specialist staffing for vehicle hire, courier delivery, and
+          pharmaceutical logistics across the UK.
+        </p>
+        <div class="pills" style="margin-top:16px;">
+          <span class="pill">[ Accreditation 1 ]</span>
+          <span class="pill">[ Accreditation 2 ]</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="services.html">Vehicle &amp; Equipment Hire</a>
+        <a href="services.html">Courier &amp; Delivery</a>
+        <a href="services.html">Pharmaceutical Logistics</a>
+        <a href="services.html">Emergency Cover</a>
+      </div>
+      <div class="foot-col">
+        <h4>Employers</h4>
+        <a href="contact.html">Request Staff</a>
+        <a href="services.html">Temp Cover</a>
+        <a href="services.html">Permanent Hire</a>
+        <a href="services.html">Compliance Support</a>
+      </div>
+      <div class="foot-col">
+        <h4>Candidates</h4>
+        <a href="catalog.html">Find a Job</a>
+        <a href="contact.html">Register</a>
+        <a href="services.html">GDP Briefing</a>
+        <a href="services.html">Licence Help</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="services.html">SLA Guarantee</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 SCENSOB. All rights reserved.</span>
+      <span>[ Office locations to be confirmed ]</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
