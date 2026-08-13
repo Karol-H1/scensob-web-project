@@ -20,7 +20,7 @@ scensob_setup_site(
 	array(
 		'Home'      => scensob_pattern( 'hero' ) . "\n" . scensob_pattern( 'divisions-grid' ),
 		'Divisions' => scensob_pattern( 'divisions-grid' ),
-		'About'     => scensob_pattern( 'cta-band' ),
+		'About'     => scensob_pattern( 'about-panel' ) . "\n" . scensob_pattern( 'cta-band' ),
 		'Gallery'   => scensob_pattern( 'gallery-grid' ),
 		'Contact'   => scensob_pattern( 'contact-panel' ),
 	)
