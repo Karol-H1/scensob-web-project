@@ -172,6 +172,9 @@ svg { display: block; flex: none; }
 .btn-primary { background: var(--accent); color: var(--background); }
 .btn-primary:hover { background: #16307a; }
 
+.btn-outline { color: var(--foreground); border-color: var(--border); }
+.btn-outline:hover { background: var(--card); }
+
 .btn-quiet { color: var(--muted-foreground); }
 .btn-quiet:hover { color: var(--foreground); }
 
@@ -185,8 +188,36 @@ svg { display: block; flex: none; }
 /* --- Sections ------------------------------------------------------------ */
 
 .section { padding-block: 96px; }
+.section-80 { padding-block: 80px; }
 .section-head { margin-bottom: 48px; }
 .section-head .eyebrow { margin-bottom: 12px; }
+
+/* Inner-page hero: a full-bleed tinted band with the heading and its
+   supporting line in two equal columns, baselines aligned at the bottom. */
+.page-hero { background: var(--card); }
+.page-hero .container { padding-block: 64px; }
+.page-hero .eyebrow { margin-bottom: 24px; }
+
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  align-items: flex-end;
+}
+
+.page-hero h1 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.25;
+}
+
+.page-hero p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.625;
+  color: var(--muted-foreground);
+}
 
 .band {
   background: var(--card);
@@ -567,6 +598,9 @@ svg { display: block; flex: none; }
 
 @media (max-width: 900px) {
   :root { --gutter: 24px; }
+  .page-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }
+  .page-hero h1 { font-size: 34px; }
+  .section-80 { padding-block: 56px; }
   .site-nav, .header-actions .btn { display: none; }
   .nav-toggle { display: inline-flex; }
   .site-nav.is-open {
