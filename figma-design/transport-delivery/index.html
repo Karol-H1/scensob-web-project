@@ -96,16 +96,25 @@
       <p class="body-sm">We respond within 30 minutes during business hours.</p>
 
       <div class="segmented" role="group" aria-label="Enquiry type">
-        <button type="button" aria-pressed="true">I need staff</button>
-        <button type="button" aria-pressed="false">I&rsquo;m a candidate</button>
+        <button type="button" data-mode="employer" aria-pressed="true">I need staff</button>
+        <button type="button" data-mode="candidate" aria-pressed="false">I&rsquo;m a candidate</button>
       </div>
 
       <form class="enquiry-form" action="#" method="post">
-        <input type="text" name="company" placeholder="Company name" aria-label="Company name">
-        <input type="email" name="email" placeholder="Email address" aria-label="Email address">
-        <input type="tel" name="phone" placeholder="Phone number" aria-label="Phone number">
+        <div class="enquiry-fields" data-mode-fields="employer">
+          <input type="text" name="company" placeholder="Company name" aria-label="Company name">
+          <input type="email" name="email" placeholder="Email address" aria-label="Email address">
+          <input type="tel" name="phone" placeholder="Phone number" aria-label="Phone number">
+        </div>
+
+        <div class="enquiry-fields" data-mode-fields="candidate" hidden>
+          <input type="text" name="candidate-name" placeholder="Your name" aria-label="Your name">
+          <input type="email" name="candidate-email" placeholder="Email address" aria-label="Email address">
+          <input type="text" name="candidate-role" placeholder="Role or licence class" aria-label="Role or licence class">
+        </div>
+
         <button class="btn btn-primary btn-block" type="submit">
-          Request staff
+          <span data-mode-label>Request staff</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </button>
         <p class="form-note">Or <a href="contact.html">use the full contact form</a></p>

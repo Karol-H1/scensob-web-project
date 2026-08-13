@@ -51,41 +51,114 @@
   </section>
 
   <section class="container" style="padding-block:64px;">
-    <div class="contact-grid">
+    <div class="success" data-success hidden>
+      <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <h2>Message received</h2>
+      <p>
+        A dedicated account manager will be in touch within 30 minutes during business
+        hours &mdash; or first thing in the morning if out of hours.
+      </p>
+      <button class="btn btn-outline" type="button" data-restart>Submit another enquiry</button>
+    </div>
 
-      <div class="card" style="padding:32px;">
+    <div class="contact-grid" data-enquiry-grid>
+
+      <div class="card" id="enquiry-card" style="padding:32px;">
         <h2 class="h3" style="font-size:24px;">Send us an enquiry</h2>
         <p class="body-sm" style="margin-top:8px;">
           We respond within 30 minutes during business hours (Mon&ndash;Fri, 7am&ndash;7pm).
         </p>
 
         <div class="step-row">
-          <span class="step" aria-current="step">1</span>
-          <span class="step">2</span>
-          <span class="step">3</span>
-          <span class="step-caption">Step 1 of 3</span>
+          <span class="step-item">
+            <span class="step-dot" data-dot="1">1</span>
+            <span class="step-rule" data-rule="1"></span>
+          </span>
+          <span class="step-item">
+            <span class="step-dot" data-dot="2">2</span>
+            <span class="step-rule" data-rule="2"></span>
+          </span>
+          <span class="step-item">
+            <span class="step-dot" data-dot="3">3</span>
+          </span>
+          <span class="step-caption" data-step-caption>Step 1 of 3</span>
         </div>
 
-        <h3 class="h3" style="margin-top:24px;">What can we help you with?</h3>
-
-        <div class="choice-list">
-          <button class="choice" type="button" aria-pressed="false">
-            I need to hire staff
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          </button>
-          <button class="choice" type="button" aria-pressed="false">
-            I&rsquo;m looking for a job
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          </button>
-          <button class="choice" type="button" aria-pressed="false">
-            GDP / compliance query
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          </button>
-          <button class="choice" type="button" aria-pressed="false">
-            General enquiry
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          </button>
+        <!-- Step 1 — enquiry type -->
+        <div data-step="1">
+          <h3 class="step-question">What can we help you with?</h3>
+          <div class="choice-list">
+            <button class="choice" type="button" data-field="enquiry" data-value="I need to hire staff">
+              I need to hire staff
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+            <button class="choice" type="button" data-field="enquiry" data-value="I'm looking for a job">
+              I&rsquo;m looking for a job
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+            <button class="choice" type="button" data-field="enquiry" data-value="GDP / compliance query">
+              GDP / compliance query
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+            <button class="choice" type="button" data-field="enquiry" data-value="General enquiry">
+              General enquiry
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+          </div>
         </div>
+
+        <!-- Step 2 — sector -->
+        <div data-step="2" hidden>
+          <h3 class="step-question">Which sector?</h3>
+          <div class="choice-list">
+            <button class="choice" type="button" data-field="sector" data-value="Vehicle &amp; Equipment Hire">
+              Vehicle &amp; Equipment Hire
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+            <button class="choice" type="button" data-field="sector" data-value="Courier &amp; Delivery">
+              Courier &amp; Delivery
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+            <button class="choice" type="button" data-field="sector" data-value="Pharmaceutical Logistics">
+              Pharmaceutical Logistics
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+            <button class="choice" type="button" data-field="sector" data-value="Multiple / Unsure">
+              Multiple / Unsure
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+          </div>
+          <button class="back-link" type="button" data-back="1" style="margin-top:16px;">&larr; Back</button>
+        </div>
+
+        <!-- Step 3 — details -->
+        <form data-step="3" hidden novalidate>
+          <h3 class="step-question">Your details</h3>
+          <div class="field-stack">
+            <div class="field-pair">
+              <input class="field" type="text" name="first-name" placeholder="First name" aria-label="First name">
+              <input class="field" type="text" name="last-name" placeholder="Last name" aria-label="Last name">
+            </div>
+            <input class="field" type="text" name="company" placeholder="Company name" aria-label="Company name">
+            <input class="field" type="email" name="email" placeholder="Email address" aria-label="Email address">
+            <input class="field" type="tel" name="phone" placeholder="Phone number" aria-label="Phone number">
+            <div class="field-pair">
+              <input class="field" type="text" name="headcount" placeholder="No. of staff needed" aria-label="Number of staff needed">
+              <input class="field" type="text" name="location" placeholder="Location / depot" aria-label="Location or depot">
+            </div>
+            <textarea class="field" name="notes" rows="4" placeholder="Any additional information&hellip;" aria-label="Any additional information"></textarea>
+
+            <div class="chip-row" data-selection-chips></div>
+
+            <button class="btn btn-primary btn-block btn-submit" type="submit">
+              Send enquiry
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+            <button class="back-link" type="button" data-back="2">&larr; Back</button>
+          </div>
+        </form>
       </div>
 
       <div>

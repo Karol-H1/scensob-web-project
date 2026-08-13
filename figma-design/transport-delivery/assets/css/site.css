@@ -299,6 +299,7 @@ svg { display: block; flex: none; }
 .segmented button[aria-pressed="true"] { background: var(--foreground); color: var(--background); }
 
 .enquiry-form { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.enquiry-fields { display: flex; flex-direction: column; gap: 12px; }
 
 .enquiry-form input {
   width: 100%;
@@ -546,34 +547,107 @@ svg { display: block; flex: none; }
 
 /* Contact */
 .contact-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+/* Step indicator: a 24px dot per step, joined by a 32px rule. Completed steps
+   and the rule that follows them fill with the accent. */
 .step-row { display: flex; align-items: center; gap: 8px; margin-top: 24px; }
-.step {
+.step-item { display: flex; align-items: center; gap: 8px; }
+
+.step-dot {
   width: 24px; height: 24px;
   display: grid; place-items: center;
   border-radius: 999px;
-  border: var(--hairline) solid var(--border);
-  font-family: var(--mono); font-size: 11px;
+  background: #C9D5EC;
   color: var(--muted-foreground);
+  font-size: 12px;
+  flex: none;
 }
-.step[aria-current="step"] { background: var(--accent); border-color: var(--accent); color: var(--background); }
-.step-caption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-foreground); margin-left: 8px; }
 
-.choice-list { display: grid; gap: 10px; margin-top: 20px; }
+.step-dot.is-done,
+.step-dot.is-current { background: var(--accent); color: var(--background); }
+
+.step-rule { width: 32px; height: 1px; background: var(--border); flex: none; }
+.step-rule.is-done { background: var(--accent); }
+
+.step-caption { font-family: var(--mono); font-size: 12px; color: var(--muted-foreground); }
+
+.step-question { font-size: 14px; font-weight: 500; margin-top: 22px; }
+
+.choice-list { display: grid; gap: 10px; margin-top: 14px; }
+
 .choice {
   display: flex; align-items: center; justify-content: space-between;
   width: 100%;
   text-align: left;
-  font-size: 15px;
-  padding: 16px 18px;
-  background: var(--background);
-  border: var(--hairline) solid var(--border);
+  font-size: 14px;
+  padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: border-color .2s;
+  transition: border-color .2s, background-color .2s;
 }
 .choice:hover { border-color: var(--accent); }
-.choice[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 var(--hairline) var(--accent); }
+.choice[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .choice svg { color: var(--accent); opacity: 0; transition: opacity .2s; }
 .choice[aria-pressed="true"] svg { opacity: 1; }
+
+/* Details step */
+.field-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+.field-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+.field {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--foreground);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.field::placeholder { color: var(--muted-foreground); }
+textarea.field { min-height: 102px; resize: vertical; line-height: 1.5; }
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.sel-chip {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.btn-submit { padding-block: 14px; }
+
+.back-link {
+  align-self: flex-start;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  padding: 0;
+  transition: color .2s;
+}
+.back-link:hover { color: var(--foreground); }
+
+/* Success state, shown in place of the whole enquiry grid */
+.success { text-align: center; padding: 128px 24px; }
+.success-icon {
+  width: 56px; height: 56px;
+  margin: 0 auto 24px;
+  border-radius: 999px;
+  background: var(--secondary);
+  color: var(--accent);
+  display: grid; place-items: center;
+}
+.success h2 { font-family: var(--display); font-size: 36px; font-weight: 500; }
+.success p {
+  margin: 16px auto 28px;
+  max-width: 46ch;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.625;
+  color: var(--muted-foreground);
+}
 
 .info-card + .info-card { margin-top: 20px; }
 .info-card { padding: 24px; }
