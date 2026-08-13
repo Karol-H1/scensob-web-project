@@ -49,6 +49,18 @@
     });
   }
 
+  /* Hero card submit hands over to the full contact form. The form already
+     points at contact.html, so this only tidies the URL by dropping the query
+     string the browser would otherwise append. */
+  var heroForm = document.querySelector('.enquiry-form');
+
+  if (heroForm) {
+    heroForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      window.location.href = 'contact.html';
+    });
+  }
+
   /* ------------------------------------------------------------------ *
    * Catalog sector filter
    * ------------------------------------------------------------------ */

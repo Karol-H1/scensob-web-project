@@ -822,7 +822,7 @@ textarea.field { min-height: 102px; resize: vertical; line-height: 1.5; }
         <button type="button" data-mode="candidate" aria-pressed="false">I&rsquo;m a candidate</button>
       </div>
 
-      <form class="enquiry-form" action="#" method="post">
+      <form class="enquiry-form" action="contact.html" method="get">
         <div class="enquiry-fields" data-mode-fields="employer">
           <input type="text" name="company" placeholder="Company name" aria-label="Company name">
           <input type="email" name="email" placeholder="Email address" aria-label="Email address">
@@ -1107,6 +1107,18 @@ textarea.field { min-height: 102px; resize: vertical; line-height: 1.5; }
 
         if (modeLabel) { modeLabel.textContent = LABELS[mode] || LABELS.employer; }
       });
+    });
+  }
+
+  /* Hero card submit hands over to the full contact form. The form already
+     points at contact.html, so this only tidies the URL by dropping the query
+     string the browser would otherwise append. */
+  var heroForm = document.querySelector('.enquiry-form');
+
+  if (heroForm) {
+    heroForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      window.location.href = 'contact.html';
     });
   }
 
