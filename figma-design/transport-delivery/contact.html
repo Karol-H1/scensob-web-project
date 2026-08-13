@@ -109,27 +109,48 @@
           </div>
         </div>
 
-        <!-- Step 2 — sector -->
+        <!-- Step 2 — branches on the step 1 answer -->
         <div data-step="2" hidden>
-          <h3 class="step-question">Which sector?</h3>
-          <div class="choice-list">
-            <button class="choice" type="button" data-field="sector" data-value="Vehicle &amp; Equipment Hire">
-              Vehicle &amp; Equipment Hire
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            </button>
-            <button class="choice" type="button" data-field="sector" data-value="Courier &amp; Delivery">
-              Courier &amp; Delivery
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            </button>
-            <button class="choice" type="button" data-field="sector" data-value="Pharmaceutical Logistics">
-              Pharmaceutical Logistics
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            </button>
-            <button class="choice" type="button" data-field="sector" data-value="Multiple / Unsure">
-              Multiple / Unsure
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            </button>
+          <div data-branch-panel="sector">
+            <h3 class="step-question">Which sector?</h3>
+            <div class="choice-list">
+              <button class="choice" type="button" data-field="detail" data-value="Vehicle &amp; Equipment Hire">
+                Vehicle &amp; Equipment Hire
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+              <button class="choice" type="button" data-field="detail" data-value="Courier &amp; Delivery">
+                Courier &amp; Delivery
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+              <button class="choice" type="button" data-field="detail" data-value="Pharmaceutical Logistics">
+                Pharmaceutical Logistics
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+              <button class="choice" type="button" data-field="detail" data-value="Multiple / Unsure">
+                Multiple / Unsure
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+            </div>
           </div>
+
+          <div data-branch-panel="urgency" hidden>
+            <h3 class="step-question">How urgent is your query?</h3>
+            <div class="choice-list">
+              <button class="choice" type="button" data-field="detail" data-value="Same day">
+                Same day
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+              <button class="choice" type="button" data-field="detail" data-value="This week">
+                This week
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+              <button class="choice" type="button" data-field="detail" data-value="No rush">
+                No rush
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </button>
+            </div>
+          </div>
+
           <button class="back-link" type="button" data-back="1" style="margin-top:16px;">&larr; Back</button>
         </div>
 
@@ -141,13 +162,14 @@
               <input class="field" type="text" name="first-name" placeholder="First name" aria-label="First name">
               <input class="field" type="text" name="last-name" placeholder="Last name" aria-label="Last name">
             </div>
-            <input class="field" type="text" name="company" placeholder="Company name" aria-label="Company name">
+            <input class="field" type="text" name="company" placeholder="Company name" aria-label="Company name" data-when="hire">
             <input class="field" type="email" name="email" placeholder="Email address" aria-label="Email address">
             <input class="field" type="tel" name="phone" placeholder="Phone number" aria-label="Phone number">
-            <div class="field-pair">
+            <div class="field-pair" data-when="hire">
               <input class="field" type="text" name="headcount" placeholder="No. of staff needed" aria-label="Number of staff needed">
               <input class="field" type="text" name="location" placeholder="Location / depot" aria-label="Location or depot">
             </div>
+            <input class="field" type="text" name="licence" placeholder="Licence class or role type" aria-label="Licence class or role type" data-when="job">
             <textarea class="field" name="notes" rows="4" placeholder="Any additional information&hellip;" aria-label="Any additional information"></textarea>
 
             <div class="chip-row" data-selection-chips></div>
