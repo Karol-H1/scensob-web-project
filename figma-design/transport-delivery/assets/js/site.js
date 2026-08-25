@@ -78,26 +78,85 @@
   }
 
   /* ------------------------------------------------------------------ *
-   * Catalog sector filter
+   * Catalog — sector filter, live search, and per-role expand/collapse
    * ------------------------------------------------------------------ */
   var filters = Array.prototype.slice.call(document.querySelectorAll('.filter'));
   var blocks = Array.prototype.slice.call(document.querySelectorAll('.sector-block'));
+  var search = document.getElementById('role-search');
+  var noResults = document.querySelector('[data-no-results]');
+  var roles = Array.prototype.slice.call(document.querySelectorAll('[data-role]'));
 
   if (filters.length && blocks.length) {
+    var activeSector = 'all';
+
+    function applyCatalogFilters() {
+      var query = search ? search.value.trim().toLowerCase() : '';
+      var anyVisible = false;
+
+      blocks.forEach(function (block) {
+        var sectorMatch = activeSector === 'all' || block.dataset.sector === activeSector;
+        var visibleCount = 0;
+
+        var blockRoles = Array.prototype.slice.call(block.querySelectorAll('[data-role]'));
+        blockRoles.forEach(function (role) {
+          var haystack = (role.querySelector('[data-role-title]').textContent + ' ' +
+            role.querySelector('[data-role-desc]').textContent).toLowerCase();
+          var textMatch = !query || haystack.indexOf(query) !== -1;
+          var show = sectorMatch && textMatch;
+          role.hidden = !show;
+          if (show) { visibleCount += 1; }
+        });
+
+        block.hidden = visibleCount === 0;
+        if (visibleCount > 0) { anyVisible = true; }
+
+        var countLabel = block.querySelector('[data-role-count]');
+        if (countLabel) {
+          countLabel.textContent = visibleCount + (visibleCount === 1 ? ' role' : ' roles');
+        }
+      });
+
+      if (noResults) { noResults.style.display = anyVisible ? 'none' : 'block'; }
+    }
+
     filters.forEach(function (button) {
       button.addEventListener('click', function () {
-        var wanted = button.dataset.sector;
-
+        activeSector = button.dataset.sector;
         filters.forEach(function (other) {
           other.setAttribute('aria-pressed', other === button ? 'true' : 'false');
         });
-
-        blocks.forEach(function (block) {
-          block.hidden = !(wanted === 'all' || block.dataset.sector === wanted);
-        });
+        applyCatalogFilters();
       });
     });
+
+    if (search) {
+      search.addEventListener('input', applyCatalogFilters);
+    }
+
+    var clearBtn = document.querySelector('[data-clear-filters]');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        activeSector = 'all';
+        if (search) { search.value = ''; }
+        filters.forEach(function (other) {
+          other.setAttribute('aria-pressed', other.dataset.sector === 'all' ? 'true' : 'false');
+        });
+        applyCatalogFilters();
+      });
+    }
   }
+
+  roles.forEach(function (role) {
+    var toggleBtn = role.querySelector('[data-role-toggle]');
+    var detail = role.querySelector('[data-role-detail]');
+    if (!toggleBtn || !detail) { return; }
+
+    toggleBtn.addEventListener('click', function () {
+      var open = detail.hidden;
+      detail.hidden = !open;
+      role.classList.toggle('is-open', open);
+    });
+  });
 
   /* ------------------------------------------------------------------ *
    * Contact — three-step enquiry
@@ -220,11 +279,38 @@
     });
 
     if (form) {
+      var submitBtn = form.querySelector('.btn-submit');
+      var errorNote = form.querySelector('[data-form-error]');
+
       form.addEventListener('submit', function (event) {
         event.preventDefault();
-        if (grid) { grid.hidden = true; }
-        if (success) { success.hidden = false; }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        if (errorNote) { errorNote.hidden = true; }
+        if (submitBtn) { submitBtn.disabled = true; }
+
+        var data = new FormData(form);
+        data.set('enquiry', answers.enquiry || '');
+        data.set('detail', answers.detail || '');
+
+        fetch('submit.php', { method: 'POST', body: data })
+          .then(function (res) {
+            return res.json().catch(function () { return {}; }).then(function (body) {
+              return { ok: res.ok && body.ok, body: body };
+            });
+          })
+          .then(function (result) {
+            if (!result.ok) { throw new Error(result.body.error || 'Submission failed'); }
+            if (grid) { grid.hidden = true; }
+            if (success) { success.hidden = false; }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          })
+          .catch(function () {
+            if (errorNote) { errorNote.hidden = false; }
+          })
+          .then(function () {
+            if (submitBtn) { submitBtn.disabled = false; }
+          });
       });
     }
 

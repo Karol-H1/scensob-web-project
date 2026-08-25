@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Quote — SCENSOB IT</title>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect><rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">SCENSOB</span>
+        <span class="brand-sub">IT Division</span>
+      </span>
+    </a>
+    <nav class="primary-nav" id="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-primary btn-sm" href="quote.html" aria-current="page">Get a Quote</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav-panel" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a class="btn btn-primary btn-block" href="quote.html">Get a Quote</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="container" style="padding-block:64px;">
+      <span class="eyebrow eyebrow-on-dark">Request a quote</span>
+      <h1 style="font-size:36px;">Tell us what you need.</h1>
+      <p>Four quick steps. We&rsquo;ll get back to you with a tailored proposal within 2 hours.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div style="padding-block:0;">
+
+      <div class="wizard-card" id="wizard-card">
+
+        <div class="step-row">
+          <span class="step-item"><span class="step-dot" data-dot="1">1</span><span class="step-rule" data-rule="1"></span></span>
+          <span class="step-item"><span class="step-dot" data-dot="2">2</span><span class="step-rule" data-rule="2"></span></span>
+          <span class="step-item"><span class="step-dot" data-dot="3">3</span><span class="step-rule" data-rule="3"></span></span>
+          <span class="step-item"><span class="step-dot" data-dot="4">4</span></span>
+          <span class="step-caption" data-step-caption>Step 1 of 4</span>
+        </div>
+
+        <!-- Step 1 — services (multi-select) -->
+        <div data-step="1">
+          <h2 class="step-question">What service do you need?</h2>
+          <p class="step-sub">Select all that apply. You can pick more than one.</p>
+          <div class="multi-choice-list">
+            <button class="multi-choice" type="button" data-field="service" data-value="staffing" aria-pressed="false">
+              <span class="choice-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+              <span><span class="choice-title">IT Staffing</span><span class="choice-sub">Contract, temp-to-perm, or permanent IT professionals</span></span>
+            </button>
+            <button class="multi-choice" type="button" data-field="service" data-value="managed" aria-pressed="false">
+              <span class="choice-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg></span>
+              <span><span class="choice-title">Managed IT Services</span><span class="choice-sub">Helpdesk, server management, monitoring</span></span>
+            </button>
+            <button class="multi-choice" type="button" data-field="service" data-value="cloud" aria-pressed="false">
+              <span class="choice-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg></span>
+              <span><span class="choice-title">Cloud &amp; Infrastructure</span><span class="choice-sub">AWS, Azure, GCP &mdash; migration and management</span></span>
+            </button>
+            <button class="multi-choice" type="button" data-field="service" data-value="security" aria-pressed="false">
+              <span class="choice-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></span>
+              <span><span class="choice-title">Cybersecurity</span><span class="choice-sub">Pen testing, ISO 27001, security audits</span></span>
+            </button>
+            <button class="multi-choice" type="button" data-field="service" data-value="software" aria-pressed="false">
+              <span class="choice-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg></span>
+              <span><span class="choice-title">Software &amp; Digital</span><span class="choice-sub">Web apps, APIs, digital transformation</span></span>
+            </button>
+          </div>
+          <div class="wizard-nav">
+            <span></span>
+            <button class="btn btn-primary" type="button" data-next="2" disabled>Next</button>
+          </div>
+        </div>
+
+        <!-- Step 2 — timeline / size / budget -->
+        <div data-step="2" hidden>
+          <h2 class="step-question">When and how big?</h2>
+          <p class="step-sub">Help us understand your urgency and scale.</p>
+
+          <div class="choice-group">
+            <label>What&rsquo;s your timeline?</label>
+            <div class="choice-pills">
+              <button class="choice-pill" type="button" data-field="timeline" data-value="ASAP / this week" aria-pressed="false">ASAP / this week</button>
+              <button class="choice-pill" type="button" data-field="timeline" data-value="Within 2&ndash;4 weeks" aria-pressed="false">Within 2&ndash;4 weeks</button>
+              <button class="choice-pill" type="button" data-field="timeline" data-value="Within 1&ndash;3 months" aria-pressed="false">Within 1&ndash;3 months</button>
+              <button class="choice-pill" type="button" data-field="timeline" data-value="Planning for 3+ months" aria-pressed="false">Planning for 3+ months</button>
+            </div>
+          </div>
+
+          <div class="choice-group">
+            <label>Company size</label>
+            <div class="choice-pills">
+              <button class="choice-pill" type="button" data-field="size" data-value="1&ndash;10 employees" aria-pressed="false">1&ndash;10 employees</button>
+              <button class="choice-pill" type="button" data-field="size" data-value="11&ndash;50 employees" aria-pressed="false">11&ndash;50 employees</button>
+              <button class="choice-pill" type="button" data-field="size" data-value="51&ndash;250 employees" aria-pressed="false">51&ndash;250 employees</button>
+              <button class="choice-pill" type="button" data-field="size" data-value="250+ employees" aria-pressed="false">250+ employees</button>
+            </div>
+          </div>
+
+          <div class="choice-group">
+            <label>Approximate budget (optional)</label>
+            <div class="choice-pills">
+              <button class="choice-pill" type="button" data-field="budget" data-value="Under &pound;5,000" aria-pressed="false">Under &pound;5,000</button>
+              <button class="choice-pill" type="button" data-field="budget" data-value="&pound;5,000&ndash;&pound;25,000" aria-pressed="false">&pound;5,000&ndash;&pound;25,000</button>
+              <button class="choice-pill" type="button" data-field="budget" data-value="&pound;25,000&ndash;&pound;100,000" aria-pressed="false">&pound;25,000&ndash;&pound;100,000</button>
+              <button class="choice-pill" type="button" data-field="budget" data-value="&pound;100,000+" aria-pressed="false">&pound;100,000+</button>
+              <button class="choice-pill" type="button" data-field="budget" data-value="Prefer not to say" aria-pressed="false">Prefer not to say</button>
+            </div>
+          </div>
+
+          <div class="wizard-nav">
+            <button class="wizard-back" type="button" data-back="1">&larr; Back</button>
+            <button class="btn btn-primary" type="button" data-next="3" disabled>Next</button>
+          </div>
+        </div>
+
+        <!-- Step 3 — details -->
+        <div data-step="3" hidden>
+          <h2 class="step-question">Tell us more</h2>
+          <p class="step-sub">The more detail you give, the more accurate our proposal will be.</p>
+          <textarea class="wizard-textarea" data-brief placeholder="Describe your requirements, current situation, and any specific constraints or goals..."></textarea>
+          <p class="char-note">Minimum 50 characters helpful &mdash; more detail means a more tailored response.</p>
+          <div class="wizard-nav">
+            <button class="wizard-back" type="button" data-back="2">&larr; Back</button>
+            <button class="btn btn-primary" type="button" data-next="4">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 4 — contact details -->
+        <form data-step="4" hidden novalidate>
+          <h2 class="step-question">Your contact details</h2>
+          <p class="step-sub">We&rsquo;ll only use these to respond to your quote request.</p>
+          <div class="field-stack">
+            <div>
+              <label class="field-label" for="q-name">Full name*</label>
+              <input class="field" type="text" id="q-name" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div>
+              <label class="field-label" for="q-company">Company*</label>
+              <input class="field" type="text" id="q-company" name="company" placeholder="Acme Ltd" required>
+            </div>
+            <div>
+              <label class="field-label" for="q-email">Email address*</label>
+              <input class="field" type="email" id="q-email" name="email" placeholder="jane@acme.co.uk" required>
+            </div>
+            <div>
+              <label class="field-label" for="q-phone">Phone number</label>
+              <input class="field" type="tel" id="q-phone" name="phone" placeholder="07700 000 000">
+            </div>
+          </div>
+
+          <div class="summary-panel">
+            <h5>Brief summary</h5>
+            <div class="summary-chip-row" data-summary-services></div>
+            <p class="summary-line" data-summary-line></p>
+          </div>
+
+          <p class="form-error" data-form-error hidden>Something went wrong sending that &mdash; please try again, or call us directly.</p>
+
+          <div class="wizard-nav">
+            <button class="wizard-back" type="button" data-back="3">&larr; Back</button>
+            <button class="btn btn-primary" type="submit">Submit quote request</button>
+          </div>
+
+          <!-- Honeypot: hidden from sighted users and screen readers, real visitors never
+               fill it in. Any bot that does gets silently rejected server-side. -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="q-website">Leave this field blank</label>
+            <input type="text" id="q-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+        </form>
+
+      </div>
+
+      <div class="wizard-success" data-success hidden>
+        <div class="success-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></div>
+        <h2>Quote request received.</h2>
+        <p data-success-thanks>Thank you. A member of our IT team will review your requirements and respond within 2 hours during business hours.</p>
+        <div class="summary-panel">
+          <h5>Your brief summary</h5>
+          <div class="summary-chip-row" data-final-services></div>
+          <p class="summary-line" data-final-line></p>
+        </div>
+        <button class="btn btn-outline" type="button" data-restart>Submit another request</button>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand-name" style="color:#fff;">SCENSOB IT</span>
+        <p><a href="#" style="color:var(--on-dark-70);">Part of SCENSOB Group</a><br>IT staffing, managed services, cloud infrastructure, and cybersecurity solutions for UK businesses.</p>
+        <p class="locations">London &middot; Birmingham &middot; Manchester</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#staffing">IT Staffing</a></li>
+          <li><a href="services.html#managed">Managed Services</a></li>
+          <li><a href="services.html#cloud">Cloud &amp; Infrastructure</a></li>
+          <li><a href="services.html#security">Cybersecurity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="services.html#software">Software Development</a></li>
+          <li><a href="services.html#software">Digital Transformation</a></li>
+          <li><a href="quote.html">IT Procurement</a></li>
+          <li><a href="quote.html">Support Contracts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About IT Division</a></li>
+          <li><a href="portfolio.html">Project Portfolio</a></li>
+          <li><a href="about.html#team">Client Stories</a></li>
+          <li><a href="quote.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 SCENSOB Group Ltd &mdash; IT Division. All rights reserved.</span>
+      <a href="#">&larr; Back to SCENSOB Group</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

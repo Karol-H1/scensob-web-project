@@ -20,7 +20,7 @@ import re
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "standalone")
 
-PAGES = ["index.html", "services.html", "about.html", "catalog.html", "contact.html"]
+PAGES = ["index.html", "services.html", "portfolio.html", "about.html", "quote.html"]
 
 CSS_LINK = re.compile(r'[ \t]*<link rel="stylesheet" href="assets/css/site\.css">\n?')
 JS_TAG = re.compile(r'[ \t]*<script src="assets/js/site\.js"></script>\n?')

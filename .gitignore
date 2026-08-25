@@ -1,0 +1,12 @@
+# Database credentials — never commit these.
+# Each site ships config.sample.php; the real config.php is created on the
+# server and holds a live password.
+config.php
+
+# Packaged handoff zips are build artifacts — regenerate them from source
+# rather than versioning ~7MB of binary on every change.
+figma-design/*.zip
+
+# Python bytecode
+__pycache__/
+*.pyc
