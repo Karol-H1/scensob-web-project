@@ -51,148 +51,604 @@
     </div>
   </section>
 
-  <section class="container section-80">
-
-    <div class="filter-row">
-      <button class="filter" type="button" data-sector="all" aria-pressed="true">All sectors</button>
-      <button class="filter" type="button" data-sector="hire" aria-pressed="false">Vehicle &amp; Equipment Hire</button>
-      <button class="filter" type="button" data-sector="courier" aria-pressed="false">Courier &amp; Delivery</button>
-      <button class="filter" type="button" data-sector="pharma" aria-pressed="false">Pharmaceutical Logistics</button>
+  <section class="container" style="padding-block:16px;">
+    <div class="catalog-controls">
+      <div class="search-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input class="search-input" type="text" id="role-search" placeholder="Search roles&hellip;" aria-label="Search roles">
+      </div>
+      <div class="filter-row">
+        <button class="filter" type="button" data-sector="all" aria-pressed="true">All sectors</button>
+        <button class="filter" type="button" data-sector="hire" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Vehicle &amp; Equipment Hire</button>
+        <button class="filter" type="button" data-sector="courier" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>Courier &amp; Delivery</button>
+        <button class="filter" type="button" data-sector="pharma" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>Pharmaceutical Logistics</button>
+      </div>
     </div>
+  </section>
+
+  <section class="container section-80">
 
     <div class="sector-block" data-sector="hire">
       <div class="sector-header">
         <h3>Vehicle &amp; Equipment Hire</h3>
-        <span>6 roles</span>
+        <span data-role-count>6 roles</span>
       </div>
-      <div class="role-row">
-        <h4>Hire Desk Coordinator</h4>
-        <div class="role-tags"><span class="chip">Temp</span><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;24,000&ndash;&pound;30,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Hire Desk Coordinator</h4>
+              <span class="chip">Temp</span>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;24,000&ndash;&pound;30,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Customer-facing hire desk management, booking coordination, fleet availability tracking, and customer service for vehicle and equipment rental branches.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Driving licence (preferred)</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Right to Work</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>PDI Technician</h4>
-        <div class="role-tags"><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Midlands, North West, South West</p>
-        <p class="role-pay">&pound;26,000&ndash;&pound;33,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>PDI Technician</h4>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Midlands, North West, South West</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;26,000&ndash;&pound;33,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Pre-delivery inspection, vehicle preparation, safety checks, and documentation for outgoing hire fleet. Workshop and yard environment.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Full UK driving licence</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Technical assessment</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Delivery &amp; Collection Driver</h4>
-        <div class="role-tags"><span class="chip">Temp</span><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;25,000&ndash;&pound;30,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Delivery &amp; Collection Driver</h4>
+              <span class="chip">Temp</span>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;25,000&ndash;&pound;30,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Transporting hire vehicles and equipment to and from customer sites. Customer-facing role requiring strong communication and route planning.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DVSA licence check</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Clean driving record</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DBS (where required)</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Fleet Administrator</h4>
-        <div class="role-tags"><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;22,000&ndash;&pound;27,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Fleet Administrator</h4>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;22,000&ndash;&pound;27,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Fleet records, MOT/service scheduling, fuel card management, DVLA documentation, and fleet compliance reporting.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Right to Work</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Background check</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Workshop Controller</h4>
-        <div class="role-tags"><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Midlands, South East</p>
-        <p class="role-pay">&pound;32,000&ndash;&pound;40,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Workshop Controller</h4>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Midlands, South East</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;32,000&ndash;&pound;40,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Managing workshop workflow, scheduling technicians, liaising with suppliers, and maintaining fleet maintenance standards.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Technical qualification verified</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DBS</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Branch Manager</h4>
-        <div class="role-tags"><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;38,000&ndash;&pound;50,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Branch Manager</h4>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;38,000&ndash;&pound;50,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>P&amp;L accountability, team management, customer relationships, and operational delivery for a hire branch.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Background check</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Employment history verified</li>
+            </ul>
+          </div>
+        </div>
       </div>
+
     </div>
 
     <div class="sector-block" data-sector="courier">
       <div class="sector-header">
         <h3>Courier &amp; Delivery</h3>
-        <span>6 roles</span>
+        <span data-role-count>6 roles</span>
       </div>
-      <div class="role-row">
-        <h4>Multi-Drop Van Driver</h4>
-        <div class="role-tags"><span class="chip">Temp</span><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;26,000&ndash;&pound;31,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Multi-Drop Van Driver</h4>
+              <span class="chip">Temp</span>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;26,000&ndash;&pound;31,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>High-volume residential and commercial delivery across defined round routes. Typically 60&ndash;120 drops per shift. Own van or fleet vehicle.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Licence &amp; endorsement check</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DBS (where required)</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Route-type assessed</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Same-Day Courier</h4>
-        <div class="role-tags"><span class="chip">Temp</span><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">London, Birmingham, Manchester</p>
-        <p class="role-pay">&pound;28,000&ndash;&pound;34,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Same-Day Courier</h4>
+              <span class="chip">Temp</span>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>London, Birmingham, Manchester</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;28,000&ndash;&pound;34,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Time-critical B2B and B2C deliveries across urban zones. Strong navigation skills and professional presentation required.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Driving record verified</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DBS check</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Parcel Hub Sorter</h4>
-        <div class="role-tags"><span class="chip">Temp</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;23,000&ndash;&pound;27,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Parcel Hub Sorter</h4>
+              <span class="chip">Temp</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;23,000&ndash;&pound;27,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Sortation, scanning, and loading at parcel distribution hubs. Day, evening, and overnight shift patterns available.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Right to Work</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Background check</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Route Planner</h4>
-        <div class="role-tags"><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;28,000&ndash;&pound;36,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Route Planner</h4>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;28,000&ndash;&pound;36,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Optimising delivery routes, managing driver schedules, and reducing miles using routing software.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Employment history verified</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Last-Mile Supervisor</h4>
-        <div class="role-tags"><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">London, Manchester, Leeds</p>
-        <p class="role-pay">&pound;32,000&ndash;&pound;40,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Last-Mile Supervisor</h4>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>London, Manchester, Leeds</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;32,000&ndash;&pound;40,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Managing last-mile delivery teams, KPI reporting, exception handling, and driver welfare.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Background check</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DBS</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Night-Line Driver</h4>
-        <div class="role-tags"><span class="chip">Temp</span><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;30,000&ndash;&pound;36,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Night-Line Driver</h4>
+              <span class="chip">Temp</span>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;30,000&ndash;&pound;36,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Overnight trunk and linehaul between depots, typically CE or C licence. Monday&ndash;Friday nights common.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DVSA licence check</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Tachograph verified</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+            </ul>
+          </div>
+        </div>
       </div>
+
     </div>
 
     <div class="sector-block" data-sector="pharma">
       <div class="sector-header">
         <h3>Pharmaceutical Logistics</h3>
-        <span>6 roles</span>
+        <span data-role-count>6 roles</span>
       </div>
-      <div class="role-row">
-        <h4>Pharmaceutical Courier</h4>
-        <div class="role-tags"><span class="chip">Temp</span><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;30,000&ndash;&pound;38,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Pharmaceutical Courier</h4>
+              <span class="chip">Temp</span>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;30,000&ndash;&pound;38,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Time-critical delivery of pharmaceutical products, medical devices, and clinical samples. GDP-briefed, professional presentation essential.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>GDP awareness verified</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DBS enhanced</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>MHRA guidelines briefed</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Cold-chain protocol trained</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Cold-Chain Delivery Driver</h4>
-        <div class="role-tags"><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">London, Birmingham, Manchester, Bristol</p>
-        <p class="role-pay">&pound;34,000&ndash;&pound;42,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Cold-Chain Delivery Driver</h4>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>London, Birmingham, Manchester, Bristol</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;34,000&ndash;&pound;42,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Temperature-controlled delivery using chilled vans or refrigerated vehicles. Temperature monitoring and chain-of-custody documentation required.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>GDP awareness verified</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Cold-chain protocol trained</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DVSA check</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DBS enhanced</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Controlled Drugs Escort</h4>
-        <div class="role-tags"><span class="chip">Temp</span><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">London, South East</p>
-        <p class="role-pay">&pound;36,000&ndash;&pound;45,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Controlled Drugs Escort</h4>
+              <span class="chip">Temp</span>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>London, South East</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;36,000&ndash;&pound;45,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Accompanying controlled substances from secure pharmacy or warehouse to hospital or clinical setting. Strict chain-of-custody protocols.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Enhanced DBS mandatory</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>GDP awareness</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>MHRA briefed</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Home Office CD check</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Medical Supplies Driver</h4>
-        <div class="role-tags"><span class="chip">Temp</span><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;28,000&ndash;&pound;35,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Medical Supplies Driver</h4>
+              <span class="chip">Temp</span>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;28,000&ndash;&pound;35,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Delivery of medical devices, consumables, and non-controlled pharmaceutical products to NHS and private healthcare settings.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>GDP awareness</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>DBS (enhanced for NHS)</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>GDP Compliance Officer</h4>
-        <div class="role-tags"><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">London, Midlands</p>
-        <p class="role-pay">&pound;38,000&ndash;&pound;50,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>GDP Compliance Officer</h4>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>London, Midlands</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;38,000&ndash;&pound;50,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Internal compliance oversight for pharmaceutical logistics operations. GDP documentation, audit readiness, and staff training.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>GDP qualification</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Employment history verified</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="role-row">
-        <h4>Hospital Logistics Operative</h4>
-        <div class="role-tags"><span class="chip">Temp</span><span class="chip chip-perm">Permanent</span></div>
-        <p class="role-loc">Nationwide</p>
-        <p class="role-pay">&pound;24,000&ndash;&pound;30,000</p>
+
+      <div class="role-card" data-role>
+        <button class="role-toggle" type="button" data-role-toggle>
+          <div>
+            <div class="role-toggle-head">
+              <h4 data-role-title>Hospital Logistics Operative</h4>
+              <span class="chip">Temp</span>
+              <span class="chip">Permanent</span>
+            </div>
+            <div class="role-meta">
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Nationwide</span>
+              <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>&pound;24,000&ndash;&pound;30,000</span>
+            </div>
+          </div>
+          <svg class="role-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="role-detail" data-role-detail hidden>
+          <div>
+            <p class="role-desc" data-role-desc>Internal hospital logistics including pharmacy deliveries, sterile supply distribution, and specimen transport within NHS settings.</p>
+            <a class="role-enquire" href="contact.html">Enquire about this role <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          </div>
+          <div>
+            <p class="role-checks-label">Compliance checks</p>
+            <ul class="role-checks">
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Enhanced DBS mandatory</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>NHS ID check</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Reference screened</li>
+            </ul>
+          </div>
+        </div>
       </div>
+
     </div>
+
+    <p class="no-results" data-no-results>No roles match your search. <button type="button" data-clear-filters>Clear filters</button></p>
 
   </section>
 
-  <section class="container" style="padding-bottom:96px;">
-    <div class="cta-panel">
+  <section class="container" style="padding-bottom:80px;">
+    <div class="cta-panel cta-panel-sm">
       <div>
         <h2 class="h2">Don&rsquo;t see exactly what you need?</h2>
         <p>Our catalog covers the most common requirements &mdash; but we fill bespoke roles too. Get in touch and we&rsquo;ll scope it together.</p>
