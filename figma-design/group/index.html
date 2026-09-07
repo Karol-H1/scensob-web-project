@@ -57,175 +57,108 @@
   </div>
 </header>
 
-<main>
+<main class="home-stage">
 
-  <section class="hero">
-    <div class="container">
-      <p class="eyebrow eyebrow-gold">The SCENSOB Group</p>
-      <h1>One organisation.<br><em>Trusted across</em><br>every sector.</h1>
-      <p class="hero-lede">
-        SCENSOB is a UK specialist services group operating across transport &amp; logistics
-        staffing and IT services &mdash; built on compliance, expertise, and delivery.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-transport" href="../transport-delivery/index.html">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
-          Transport &amp; Delivery
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <a class="btn btn-it" href="../it/index.html">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
-          IT Division
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <a class="btn btn-ghost-navy" href="about.html">
-          About the Group
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- The Figma home page was scrapped on request. The body is now the globe
+       and the division sidebar, nothing else. The previous layout -- hero,
+       stats band, division cards, standards, story and closing CTA -- is in
+       the git history if any of it is wanted back. -->
 
-  <section class="stat-band">
-    <div class="container stat-grid">
-      <div><p class="stat-figure">18</p><p class="stat-label">Years operating</p></div>
-      <div><p class="stat-figure">6,600+</p><p class="stat-label">Professionals placed</p></div>
-      <div><p class="stat-figure">4</p><p class="stat-label">UK offices</p></div>
-      <div><p class="stat-figure">2</p><p class="stat-label">Specialist divisions</p></div>
-    </div>
-  </section>
+  <h1 class="sr-only">SCENSOB Group</h1>
 
-  <section class="container section-lg">
-    <div class="section-head">
-      <p class="eyebrow">Our Divisions</p>
-      <h2 class="h2" style="font-size:48px;">Two specialisms,<br>one group standard.</h2>
-    </div>
-
-    <div class="division-grid">
-      <a class="division-card" href="../transport-delivery/index.html">
-        <img src="assets/img/division-transport.jpg" alt="Transport &amp; Delivery" loading="lazy">
-        <span class="division-body">
-          <span class="division-tag tag-transport">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
-            Transport Division
-          </span>
-          <h3>Transport &amp; Delivery</h3>
-          <span class="division-lede">Specialist staffing for logistics, courier, and pharmaceutical supply chains</span>
-          <span class="division-services">
-            <span>Vehicle &amp; Equipment Hire</span>
-            <span>Courier &amp; Delivery</span>
-            <span>Pharmaceutical Logistics</span>
-          </span>
-          <span class="division-foot">
-            <span class="division-stat"><b>6,400+</b><span>operatives placed</span></span>
-            <span class="division-enter">
-              Enter site
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <aside class="division-nav" aria-labelledby="division-nav-title">
+      <p class="eyebrow" id="division-nav-title">All Divisions</p>
+      <ul class="division-nav-list">
+        <li class="division-nav-item">
+          <a href="../transport-delivery/index.html">
+            <span class="division-nav-mark mark-transport">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
             </span>
-          </span>
-        </span>
+            <span class="division-nav-text">
+              <span class="division-nav-name">Transport &amp; Delivery</span>
+              <span class="division-nav-meta">6,400+ operatives placed</span>
+            </span>
+            <svg class="division-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </li>
+        <li class="division-nav-item">
+          <a href="../it/index.html">
+            <span class="division-nav-mark mark-it">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+            </span>
+            <span class="division-nav-text">
+              <span class="division-nav-name">IT Division</span>
+              <span class="division-nav-meta">200+ tech placements</span>
+            </span>
+            <svg class="division-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </li>
+      </ul>
+      <p class="division-nav-note">More divisions joining the group soon.</p>
+    </aside>
+
+    <!-- The globe fills the rest of the body. This wrapper is the positioning
+         context for the clickable division overlay that goes on top of it
+         next, so hotspots can be placed as a percentage of the globe's box
+         and stay aligned at every size. -->
+    <div class="globe-stage">
+      <div class="globe-frame">
+        <img class="globe-media" src="assets/img/globe-placeholder.svg" alt="" width="320" height="320">
+
+        <!-- Division ring. --count is how many nodes there are and --i is each
+             node's place in the ring; the stylesheet works the angle out from
+             those two, so adding a division means adding one node and bumping
+             --count. Nothing here is hand-positioned. -->
+        <div class="globe-overlay" style="--count: 7">
+
+          <!-- The ring itself. Drawn as one continuous circle; each node sits
+               on top of it with an opaque fill, which is what makes the line
+               read as an arc running between one icon and the next. -->
+          <svg class="ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <!-- Two circles: a dark wider one underneath separates the ring from
+                 whatever is behind it, so it still reads once the globe here is
+                 swapped for the real GIF. -->
+            <circle class="ring-shadow" cx="50" cy="50" r="34" fill="none" vector-effect="non-scaling-stroke"/>
+            <circle class="ring-line" cx="50" cy="50" r="34" fill="none" vector-effect="non-scaling-stroke"/>
+          </svg>
+
+      <a class="division-node" style="--i: 0" href="../transport-delivery/index.html">
+        <span class="node-mark mark-transport"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+        <span class="node-label">Transport &amp; Delivery</span>
       </a>
 
-      <a class="division-card" href="../it/index.html">
-        <img src="assets/img/division-it.jpg" alt="IT Division" loading="lazy">
-        <span class="division-body">
-          <span class="division-tag tag-it">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
-            IT Division
-          </span>
-          <h3>IT Division</h3>
-          <span class="division-lede">IT staffing, managed services, cloud infrastructure, and cybersecurity solutions</span>
-          <span class="division-services">
-            <span>IT Staffing</span>
-            <span>Managed Services</span>
-            <span>Cloud &amp; Infrastructure</span>
-            <span>Cybersecurity</span>
-          </span>
-          <span class="division-foot">
-            <span class="division-stat"><b>200+</b><span>tech placements</span></span>
-            <span class="division-enter">
-              Enter site
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </span>
-          </span>
-        </span>
+      <a class="division-node" style="--i: 1" href="../it/index.html">
+        <span class="node-mark mark-it"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></span>
+        <span class="node-label">IT Division</span>
       </a>
-    </div>
-  </section>
 
-  <section class="band-tint">
-    <div class="container section">
-      <div class="section-head">
-        <p class="eyebrow">Group Standards</p>
-        <h2 class="h2">What every SCENSOB<br>engagement delivers</h2>
-      </div>
+      <span class="division-node is-placeholder" style="--i: 2" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 3</span>
+      </span>
 
-      <div class="standards-grid">
-        <div class="standard">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
-          <h3>Compliance first</h3>
-          <p>Every placement meets the regulatory standards of its sector &mdash; GDP, DVSA, DBS, and IT governance frameworks.</p>
-        </div>
-        <div class="standard">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-          <h3>Sector expertise</h3>
-          <p>We don&rsquo;t generalist-spread. Our recruiters specialise in their division, bringing genuine operational knowledge to every match.</p>
-        </div>
-        <div class="standard">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
-          <h3>Guaranteed delivery</h3>
-          <p>SLA commitments across both divisions: emergency fills, standard placements, and no-cost replacements built into every contract.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <span class="division-node is-placeholder" style="--i: 3" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 4</span>
+      </span>
 
-  <section class="container section-lg">
-    <div class="story-grid">
-      <div>
-        <p class="eyebrow">About the Group</p>
-        <h2 class="h2">Built on expertise,<br>expanded by demand.</h2>
-        <p>
-          SCENSOB was founded in 2008 as a specialist transport staffing agency in Birmingham.
-          Over 18 years, we built deep expertise in vehicle hire, courier delivery, and
-          pharmaceutical logistics &mdash; and a reputation for compliance no other agency could match.
-        </p>
-        <p>
-          In 2020, clients began asking for the same rigour applied to technology placements.
-          SCENSOB IT was born. Today the Group serves businesses across both sectors from four UK offices.
-        </p>
-        <a class="text-cta" href="about.html">
-          Our full story
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-      </div>
+      <span class="division-node is-placeholder" style="--i: 4" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 5</span>
+      </span>
 
-      <div class="story-media">
-        <img src="assets/img/group-offices.jpg" alt="SCENSOB Group offices" loading="lazy">
-        <div class="story-badge">
-          <p class="eyebrow">SCENSOB Group</p>
-          <b>2008</b>
-          <span>Founded, Birmingham</span>
+      <span class="division-node is-placeholder" style="--i: 5" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 6</span>
+      </span>
+
+      <span class="division-node is-placeholder" style="--i: 6" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 7</span>
+      </span>
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="container section-cta">
-    <div class="cta-panel">
-      <div>
-        <h2>Not sure which<br>division is right for you?</h2>
-        <p>Talk to our group team and we&rsquo;ll route your enquiry to the right specialist within the hour.</p>
-      </div>
-      <div class="cta-actions">
-        <a class="btn btn-gold" href="contact.html">
-          Get in touch
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <a class="btn btn-ghost-navy" href="about.html">Learn about the Group</a>
-      </div>
-    </div>
-  </section>
 
 </main>
 

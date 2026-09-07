@@ -52,20 +52,86 @@ and padding read from its computed styles — and rebuilt as hand-written code.
 It is a reconstruction, not an export, which means the markup is clean and
 meant to be edited.
 
-Verified against the source at 1440px:
+Verified against the source at 1440px. **The home page has since been replaced
+on request and no longer follows the comp at all** — see "The home page" below.
+The other three pages are unchanged and still match:
 
 | | Figma | This build |
 | --- | --- | --- |
-| Home page height | 3702px | 3698px |
 | Header | 65px, `rgba(247,248,252,.96)` | identical |
-| Hero H1 | Playfair 72px / 500, line-height 75.6px | identical |
-| Hero grid | max-width 768px, padding `144px 40px` | identical |
-| Stat band | `#0F1F3D`, 4 × 276px, gap 32px | identical |
-| Division card | 588 × 440, radius 6px | identical |
-| Closing CTA panel | 1200 × 312, padding `64px 40px` | identical |
 | About hero | 374px tall, H1 60px / lh 75px | identical |
+| About page height | 3893px | 3929px |
 | Portfolio grid | 2 × 586px, gap 28px | identical |
+| Portfolio page height | 3400px | 3433px |
 | Contact form column | 784px, fields 384px | identical |
+| Contact page height | 1685px | 1749px |
+
+## The home page
+
+**The home page no longer follows the Figma design.** It was replaced on
+request, and the other three pages are untouched.
+
+The body is now just two things: a globe filling the page, and a sidebar on the
+left listing every division. The header and footer are the same shared chrome as
+the rest of the site.
+
+The Figma layout it replaced — hero, stats band, division cards, group
+standards, story split and closing CTA — is in the git history if any of it is
+wanted back.
+
+### Swapping in the real globe
+
+`assets/img/globe-placeholder.svg` stands in for the spinning-globe GIF that
+hasn't been produced yet. It's a wireframe globe that turns on its own, so the
+page shows the intent rather than a static circle. It's declarative SMIL, not
+script, so it animates both as an `<img>` src and once inlined as a base64 data
+URI in the standalone builds.
+
+To replace it: drop the GIF into `assets/img/` and change the one `<img src>` in
+`index.html`. Sizing is on the container, so no CSS changes — and the image is
+clipped to a circle, so a GIF carrying its own square background still reads as
+a globe on the navy. Then re-run `python build-standalone.py`.
+
+### The division ring
+
+Seven divisions sit on a ring inside the globe, joined by a circle that runs
+between them. Two are live and link to their sites; the other five are
+placeholders for divisions that don't exist yet.
+
+**The ring positions itself.** Each node carries an index (`--i`) and the
+overlay carries the total (`--count`); the stylesheet derives the angle from
+those with `sin()`/`cos()`, so the nodes always space evenly. Nothing is
+hand-positioned, and the radius is a percentage of the globe, so the ring
+tracks the globe at any size.
+
+The circle is drawn once, whole. Each node sits on top of it with an opaque
+fill, and that masking is what makes the line read as an arc running from one
+icon to the next — so adding a division needs no change to the ring itself.
+It's drawn as two circles, a dark wider one beneath the gold, so the ring still
+separates from the artwork once the placeholder globe is swapped for the GIF.
+
+Node sizes are in `cqw` against the globe's own container, so icons and labels
+scale with the globe rather than with the viewport.
+
+**Live vs placeholder.** Live divisions are `<a>` elements. Placeholders are
+inert `<span>`s with `aria-disabled` — not links to nowhere — and are styled
+with a dashed ring so they read as unfinished. Promoting one is a small edit:
+change the `<span>` to an `<a href="...">`, drop `is-placeholder` and
+`aria-disabled`, swap the plus icon for a real one, and give it a
+`.mark-<name>` colour rule.
+
+### Adding a division
+
+Two places, both small:
+
+1. **The ring** — one more `.division-node` in `index.html`, with the next
+   `--i`, and bump `--count` on `.globe-overlay`. The ring re-spaces itself.
+2. **The sidebar** — one more `<li class="division-nav-item">` block. It
+   reflows on its own: down the sidebar on desktop, across an auto-fitting grid
+   below 900px, one per row below 560px.
+
+Plus a `.mark-<name>` colour rule next to `.mark-transport` in the stylesheet if
+the division has its own colour.
 
 ## Design tokens
 
@@ -154,9 +220,10 @@ Full deployment instructions, including what to do when it doesn't work, are in
 
 ## Responsive
 
-Breakpoints at 1100px, 900px and 560px. The hero scales down, the header
-collapses to a menu button, the division cards and portfolio grid drop to one
-column, and the contact layout stacks. No page scrolls sideways at any width.
+Breakpoints at 1100px, 900px and 560px. The header collapses to a menu button,
+the portfolio grid and contact layout drop to one column, and on the home page
+the sidebar moves from beside the globe to above it. No page scrolls sideways at
+any width.
 
 ## Content
 

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="Rotating globe">
+  <!-- PLACEHOLDER. Stands in for the spinning-globe GIF until that artwork
+       arrives. Swap the <img src> on index.html to the .gif and delete this
+       file; nothing else needs to change.
+
+       The meridians animate their horizontal radius, which reads as a sphere
+       turning on its axis. Declarative SMIL rather than script, so it still
+       animates when the file is used as an <img> src and when it is inlined
+       as a base64 data URI in the standalone builds. -->
+
+  <defs>
+    <radialGradient id="sphere" cx="38%" cy="32%" r="72%">
+      <stop offset="0%"  stop-color="#1B3A6B"/>
+      <stop offset="70%" stop-color="#0F1F3D"/>
+      <stop offset="100%" stop-color="#0A1628"/>
+    </radialGradient>
+    <clipPath id="ball">
+      <circle cx="160" cy="160" r="140"/>
+    </clipPath>
+  </defs>
+
+  <circle cx="160" cy="160" r="140" fill="url(#sphere)"/>
+
+  <g clip-path="url(#ball)" fill="none" stroke="#C9A84C" stroke-width="1.25" opacity="0.55">
+    <!-- Latitudes: fixed rings, flattened by perspective. -->
+    <ellipse cx="160" cy="160" rx="140"   ry="7"/>
+    <ellipse cx="160" cy="115" rx="132.6" ry="17"/>
+    <ellipse cx="160" cy="205" rx="132.6" ry="17"/>
+    <ellipse cx="160" cy="70"  rx="107.2" ry="24"/>
+    <ellipse cx="160" cy="250" rx="107.2" ry="24"/>
+    <ellipse cx="160" cy="40"  rx="72.1"  ry="20"/>
+    <ellipse cx="160" cy="280" rx="72.1"  ry="20"/>
+
+    <!-- Meridians: rx sweeps 140 -> 0 -> 140, each offset in phase, which is
+         what makes the sphere look like it is turning. -->
+    <ellipse cx="160" cy="160" ry="140">
+      <animate attributeName="rx" values="140;0;140" dur="12s" begin="0s"  repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="160" cy="160" ry="140">
+      <animate attributeName="rx" values="140;0;140" dur="12s" begin="-3s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="160" cy="160" ry="140">
+      <animate attributeName="rx" values="140;0;140" dur="12s" begin="-6s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="160" cy="160" ry="140">
+      <animate attributeName="rx" values="140;0;140" dur="12s" begin="-9s" repeatCount="indefinite"/>
+    </ellipse>
+  </g>
+
+  <circle cx="160" cy="160" r="140" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.85"/>
+</svg>
