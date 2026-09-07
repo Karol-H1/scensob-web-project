@@ -317,12 +317,118 @@ img, svg { display: block; max-width: 100%; }
 .hero-lede { max-width: 576px; margin-bottom: 48px; font-size: 18px; font-weight: 300; line-height: 1.625; color: var(--on-navy-60); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
 
+/* Copy on the left, globe on the right. minmax(0, ...) on the copy column so
+   the h1 can wrap instead of forcing the track wider than its share. */
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-globe { display: flex; justify-content: center; }
+.hero-globe img { width: 100%; max-width: 380px; height: auto; }
+
+/* The GIF that replaces the placeholder will almost certainly be a raster
+   file with its own background; keep it circular so it sits like the globe
+   does rather than as a square block on the navy. */
+.hero-globe img { border-radius: 50%; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* The placeholder animates itself in SVG and a GIF animates regardless, so
+     neither can be paused from here. Soften it instead of leaving full motion
+     for anyone who has asked for less. */
+  .hero-globe img { opacity: .85; }
+}
+
 /* --- Stats band ---------------------------------------------------------- */
 
 .stat-band { background: var(--navy-raised); color: var(--on-navy); }
 .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; padding-block: 40px; }
 .stat-figure { font-family: var(--display); font-size: 36px; font-weight: 500; line-height: 40px; margin-bottom: 4px; }
 .stat-label { font-size: 14px; line-height: 20px; color: var(--on-navy-45); }
+
+/* --- Division sidebar (home) --------------------------------------------- */
+
+/* Sidebar beside the division cards. The track is fixed so the sidebar keeps
+   its width as divisions are added and the list grows downward. */
+.divisions-layout {
+  display: grid;
+  /* 312px is what the longest current division name and its stat line need to
+     sit on one line each, so the two items come out the same height. Longer
+     text added later wraps inside the track rather than widening it. */
+  grid-template-columns: 312px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+/* Sticks while the cards scroll past. align-self keeps it from stretching to
+   the full row height, which would stop position: sticky doing anything. */
+.division-nav {
+  position: sticky;
+  top: 89px;
+  align-self: start;
+  padding: 24px;
+  background: var(--surface);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius);
+}
+
+.division-nav .eyebrow { margin-bottom: 20px; }
+.division-nav-list { list-style: none; margin: 0; padding: 0; }
+.division-nav-item + .division-nav-item { margin-top: 8px; }
+
+.division-nav-item a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: background .15s ease;
+}
+
+.division-nav-item a:hover { background: var(--tint); }
+.division-nav-item a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.division-nav-mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  color: #fff;
+}
+
+.division-nav-mark svg { width: 18px; height: 18px; }
+.mark-transport { background: var(--transport); }
+.mark-it { background: var(--it); }
+
+.division-nav-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.division-nav-name { font-size: 15px; font-weight: 500; line-height: 20px; color: var(--foreground); }
+.division-nav-meta { font-size: 13px; line-height: 18px; color: var(--muted); }
+
+.division-nav-arrow {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--muted);
+  transition: transform .15s ease;
+}
+
+.division-nav-item a:hover .division-nav-arrow { transform: translateX(3px); color: var(--gold); }
+
+.division-nav-note {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: var(--hairline) solid var(--border);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--muted);
+}
 
 /* --- Division cards (home) ----------------------------------------------- */
 
@@ -704,6 +810,13 @@ textarea.field { min-height: 121px; resize: vertical; }
 
 @media (max-width: 1100px) {
   .hero h1 { font-size: 56px; }
+
+  .divisions-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  /* Full width now, so it runs across rather than down -- and auto-fit keeps
+     that working as more divisions are added. */
+  .division-nav { position: static; }
+  .division-nav-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
+  .division-nav-item + .division-nav-item { margin-top: 0; }
   .story-grid,
   .about-story { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .case-card { grid-template-columns: minmax(0, 1fr); }
@@ -718,6 +831,10 @@ textarea.field { min-height: 121px; resize: vertical; }
 
 @media (max-width: 900px) {
   :root { --gutter: 24px; }
+
+  .hero-split { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .hero-globe { order: -1; }
+  .hero-globe img { max-width: 240px; }
 
   .site-nav, .header-cta { display: none; }
   .nav-toggle { display: inline-flex; }
@@ -753,6 +870,8 @@ textarea.field { min-height: 121px; resize: vertical; }
 }
 
 @media (max-width: 560px) {
+  .division-nav-list { grid-template-columns: minmax(0, 1fr); }
+  .hero-globe img { max-width: 180px; }
   .hero h1 { font-size: 36px; }
   .page-hero h1 { font-size: 32px; }
   .stat-grid,

@@ -317,12 +317,118 @@ img, svg { display: block; max-width: 100%; }
 .hero-lede { max-width: 576px; margin-bottom: 48px; font-size: 18px; font-weight: 300; line-height: 1.625; color: var(--on-navy-60); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
 
+/* Copy on the left, globe on the right. minmax(0, ...) on the copy column so
+   the h1 can wrap instead of forcing the track wider than its share. */
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-globe { display: flex; justify-content: center; }
+.hero-globe img { width: 100%; max-width: 380px; height: auto; }
+
+/* The GIF that replaces the placeholder will almost certainly be a raster
+   file with its own background; keep it circular so it sits like the globe
+   does rather than as a square block on the navy. */
+.hero-globe img { border-radius: 50%; }
+
+@media (prefers-reduced-motion: reduce) {
+  /* The placeholder animates itself in SVG and a GIF animates regardless, so
+     neither can be paused from here. Soften it instead of leaving full motion
+     for anyone who has asked for less. */
+  .hero-globe img { opacity: .85; }
+}
+
 /* --- Stats band ---------------------------------------------------------- */
 
 .stat-band { background: var(--navy-raised); color: var(--on-navy); }
 .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; padding-block: 40px; }
 .stat-figure { font-family: var(--display); font-size: 36px; font-weight: 500; line-height: 40px; margin-bottom: 4px; }
 .stat-label { font-size: 14px; line-height: 20px; color: var(--on-navy-45); }
+
+/* --- Division sidebar (home) --------------------------------------------- */
+
+/* Sidebar beside the division cards. The track is fixed so the sidebar keeps
+   its width as divisions are added and the list grows downward. */
+.divisions-layout {
+  display: grid;
+  /* 312px is what the longest current division name and its stat line need to
+     sit on one line each, so the two items come out the same height. Longer
+     text added later wraps inside the track rather than widening it. */
+  grid-template-columns: 312px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+/* Sticks while the cards scroll past. align-self keeps it from stretching to
+   the full row height, which would stop position: sticky doing anything. */
+.division-nav {
+  position: sticky;
+  top: 89px;
+  align-self: start;
+  padding: 24px;
+  background: var(--surface);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius);
+}
+
+.division-nav .eyebrow { margin-bottom: 20px; }
+.division-nav-list { list-style: none; margin: 0; padding: 0; }
+.division-nav-item + .division-nav-item { margin-top: 8px; }
+
+.division-nav-item a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: background .15s ease;
+}
+
+.division-nav-item a:hover { background: var(--tint); }
+.division-nav-item a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.division-nav-mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  color: #fff;
+}
+
+.division-nav-mark svg { width: 18px; height: 18px; }
+.mark-transport { background: var(--transport); }
+.mark-it { background: var(--it); }
+
+.division-nav-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.division-nav-name { font-size: 15px; font-weight: 500; line-height: 20px; color: var(--foreground); }
+.division-nav-meta { font-size: 13px; line-height: 18px; color: var(--muted); }
+
+.division-nav-arrow {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--muted);
+  transition: transform .15s ease;
+}
+
+.division-nav-item a:hover .division-nav-arrow { transform: translateX(3px); color: var(--gold); }
+
+.division-nav-note {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: var(--hairline) solid var(--border);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--muted);
+}
 
 /* --- Division cards (home) ----------------------------------------------- */
 
@@ -704,6 +810,13 @@ textarea.field { min-height: 121px; resize: vertical; }
 
 @media (max-width: 1100px) {
   .hero h1 { font-size: 56px; }
+
+  .divisions-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  /* Full width now, so it runs across rather than down -- and auto-fit keeps
+     that working as more divisions are added. */
+  .division-nav { position: static; }
+  .division-nav-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
+  .division-nav-item + .division-nav-item { margin-top: 0; }
   .story-grid,
   .about-story { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .case-card { grid-template-columns: minmax(0, 1fr); }
@@ -718,6 +831,10 @@ textarea.field { min-height: 121px; resize: vertical; }
 
 @media (max-width: 900px) {
   :root { --gutter: 24px; }
+
+  .hero-split { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .hero-globe { order: -1; }
+  .hero-globe img { max-width: 240px; }
 
   .site-nav, .header-cta { display: none; }
   .nav-toggle { display: inline-flex; }
@@ -753,6 +870,8 @@ textarea.field { min-height: 121px; resize: vertical; }
 }
 
 @media (max-width: 560px) {
+  .division-nav-list { grid-template-columns: minmax(0, 1fr); }
+  .hero-globe img { max-width: 180px; }
   .hero h1 { font-size: 36px; }
   .page-hero h1 { font-size: 32px; }
   .stat-grid,
@@ -822,28 +941,37 @@ textarea.field { min-height: 121px; resize: vertical; }
 <main>
 
   <section class="hero">
-    <div class="container">
-      <p class="eyebrow eyebrow-gold">The SCENSOB Group</p>
-      <h1>One organisation.<br><em>Trusted across</em><br>every sector.</h1>
-      <p class="hero-lede">
-        SCENSOB is a UK specialist services group operating across transport &amp; logistics
-        staffing and IT services &mdash; built on compliance, expertise, and delivery.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-transport" href="../transport-delivery/index.html">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
-          Transport &amp; Delivery
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <a class="btn btn-it" href="../it/index.html">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
-          IT Division
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <a class="btn btn-ghost-navy" href="about.html">
-          About the Group
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
+    <div class="container hero-split">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-gold">The SCENSOB Group</p>
+        <h1>One organisation.<br><em>Trusted across</em><br>every sector.</h1>
+        <p class="hero-lede">
+          SCENSOB is a UK specialist services group operating across transport &amp; logistics
+          staffing and IT services &mdash; built on compliance, expertise, and delivery.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-transport" href="../transport-delivery/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+            Transport &amp; Delivery
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn-it" href="../it/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+            IT Division
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn-ghost-navy" href="about.html">
+            About the Group
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Placeholder for the spinning-globe GIF. When that artwork arrives,
+           point this src at the .gif -- the sizing below is set on the
+           container, so a different file needs no CSS change. -->
+      <div class="hero-globe">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMzIwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJSb3RhdGluZyBnbG9iZSI+CiAgPCEtLSBQTEFDRUhPTERFUi4gU3RhbmRzIGluIGZvciB0aGUgc3Bpbm5pbmctZ2xvYmUgR0lGIHVudGlsIHRoYXQgYXJ0d29yawogICAgICAgYXJyaXZlcy4gU3dhcCB0aGUgPGltZyBzcmM+IG9uIGluZGV4Lmh0bWwgdG8gdGhlIC5naWYgYW5kIGRlbGV0ZSB0aGlzCiAgICAgICBmaWxlOyBub3RoaW5nIGVsc2UgbmVlZHMgdG8gY2hhbmdlLgoKICAgICAgIFRoZSBtZXJpZGlhbnMgYW5pbWF0ZSB0aGVpciBob3Jpem9udGFsIHJhZGl1cywgd2hpY2ggcmVhZHMgYXMgYSBzcGhlcmUKICAgICAgIHR1cm5pbmcgb24gaXRzIGF4aXMuIERlY2xhcmF0aXZlIFNNSUwgcmF0aGVyIHRoYW4gc2NyaXB0LCBzbyBpdCBzdGlsbAogICAgICAgYW5pbWF0ZXMgd2hlbiB0aGUgZmlsZSBpcyB1c2VkIGFzIGFuIDxpbWc+IHNyYyBhbmQgd2hlbiBpdCBpcyBpbmxpbmVkCiAgICAgICBhcyBhIGJhc2U2NCBkYXRhIFVSSSBpbiB0aGUgc3RhbmRhbG9uZSBidWlsZHMuIC0tPgoKICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ic3BoZXJlIiBjeD0iMzglIiBjeT0iMzIlIiByPSI3MiUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgc3RvcC1jb2xvcj0iIzFCM0E2QiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzBGMUYzRCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwQTE2MjgiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImJhbGwiPgogICAgICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxNjAiIHI9IjE0MCIvPgogICAgPC9jbGlwUGF0aD4KICA8L2RlZnM+CgogIDxjaXJjbGUgY3g9IjE2MCIgY3k9IjE2MCIgcj0iMTQwIiBmaWxsPSJ1cmwoI3NwaGVyZSkiLz4KCiAgPGcgY2xpcC1wYXRoPSJ1cmwoI2JhbGwpIiBmaWxsPSJub25lIiBzdHJva2U9IiNDOUE4NEMiIHN0cm9rZS13aWR0aD0iMS4yNSIgb3BhY2l0eT0iMC41NSI+CiAgICA8IS0tIExhdGl0dWRlczogZml4ZWQgcmluZ3MsIGZsYXR0ZW5lZCBieSBwZXJzcGVjdGl2ZS4gLS0+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMTYwIiByeD0iMTQwIiAgIHJ5PSI3Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMTE1IiByeD0iMTMyLjYiIHJ5PSIxNyIvPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjIwNSIgcng9IjEzMi42IiByeT0iMTciLz4KICAgIDxlbGxpcHNlIGN4PSIxNjAiIGN5PSI3MCIgIHJ4PSIxMDcuMiIgcnk9IjI0Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMjUwIiByeD0iMTA3LjIiIHJ5PSIyNCIvPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjQwIiAgcng9IjcyLjEiICByeT0iMjAiLz4KICAgIDxlbGxpcHNlIGN4PSIxNjAiIGN5PSIyODAiIHJ4PSI3Mi4xIiAgcnk9IjIwIi8+CgogICAgPCEtLSBNZXJpZGlhbnM6IHJ4IHN3ZWVwcyAxNDAgLT4gMCAtPiAxNDAsIGVhY2ggb2Zmc2V0IGluIHBoYXNlLCB3aGljaCBpcwogICAgICAgICB3aGF0IG1ha2VzIHRoZSBzcGhlcmUgbG9vayBsaWtlIGl0IGlzIHR1cm5pbmcuIC0tPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjE2MCIgcnk9IjE0MCI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InJ4IiB2YWx1ZXM9IjE0MDswOzE0MCIgZHVyPSIxMnMiIGJlZ2luPSIwcyIgIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2VsbGlwc2U+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMTYwIiByeT0iMTQwIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0icngiIHZhbHVlcz0iMTQwOzA7MTQwIiBkdXI9IjEycyIgYmVnaW49Ii0zcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvZWxsaXBzZT4KICAgIDxlbGxpcHNlIGN4PSIxNjAiIGN5PSIxNjAiIHJ5PSIxNDAiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJyeCIgdmFsdWVzPSIxNDA7MDsxNDAiIGR1cj0iMTJzIiBiZWdpbj0iLTZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9lbGxpcHNlPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjE2MCIgcnk9IjE0MCI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InJ4IiB2YWx1ZXM9IjE0MDswOzE0MCIgZHVyPSIxMnMiIGJlZ2luPSItOXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2VsbGlwc2U+CiAgPC9nPgoKICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxNjAiIHI9IjE0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzlBODRDIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuODUiLz4KPC9zdmc+Cg==" alt="" width="320" height="320" aria-hidden="true">
       </div>
     </div>
   </section>
@@ -858,6 +986,43 @@ textarea.field { min-height: 121px; resize: vertical; }
   </section>
 
   <section class="container section-lg">
+    <div class="divisions-layout">
+
+      <!-- Sidebar: every division in the group. Two for now; adding another is
+           one more <li class="division-nav-item"> block, and the layout below
+           grows without any CSS change. -->
+      <aside class="division-nav" aria-labelledby="division-nav-title">
+        <p class="eyebrow" id="division-nav-title">All Divisions</p>
+        <ul class="division-nav-list">
+          <li class="division-nav-item">
+            <a href="../transport-delivery/index.html">
+              <span class="division-nav-mark mark-transport">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+              </span>
+              <span class="division-nav-text">
+                <span class="division-nav-name">Transport &amp; Delivery</span>
+                <span class="division-nav-meta">6,400+ operatives placed</span>
+              </span>
+              <svg class="division-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </li>
+          <li class="division-nav-item">
+            <a href="../it/index.html">
+              <span class="division-nav-mark mark-it">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
+              </span>
+              <span class="division-nav-text">
+                <span class="division-nav-name">IT Division</span>
+                <span class="division-nav-meta">200+ tech placements</span>
+              </span>
+              <svg class="division-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </li>
+        </ul>
+        <p class="division-nav-note">More divisions joining the group soon.</p>
+      </aside>
+
+      <div class="divisions-main">
     <div class="section-head">
       <p class="eyebrow">Our Divisions</p>
       <h2 class="h2" style="font-size:48px;">Two specialisms,<br>one group standard.</h2>
@@ -912,6 +1077,9 @@ textarea.field { min-height: 121px; resize: vertical; }
           </span>
         </span>
       </a>
+    </div>
+
+      </div>
     </div>
   </section>
 

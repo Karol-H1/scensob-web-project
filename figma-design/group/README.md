@@ -52,11 +52,13 @@ and padding read from its computed styles — and rebuilt as hand-written code.
 It is a reconstruction, not an export, which means the markup is clean and
 meant to be edited.
 
-Verified against the source at 1440px:
+Verified against the source at 1440px. **The home page has since been changed
+on request and no longer matches the comp** — see "Home page changes" below;
+the other three pages are unchanged.
 
 | | Figma | This build |
 | --- | --- | --- |
-| Home page height | 3702px | 3698px |
+| Home page height | 3702px | superseded, see below |
 | Header | 65px, `rgba(247,248,252,.96)` | identical |
 | Hero H1 | Playfair 72px / 500, line-height 75.6px | identical |
 | Hero grid | max-width 768px, padding `144px 40px` | identical |
@@ -66,6 +68,38 @@ Verified against the source at 1440px:
 | About hero | 374px tall, H1 60px / lh 75px | identical |
 | Portfolio grid | 2 × 586px, gap 28px | identical |
 | Contact form column | 784px, fields 384px | identical |
+
+## Home page changes
+
+Requested after the original build, so these are deliberate departures from the
+Figma comp:
+
+- **A globe in the hero.** The hero is now two columns — the existing copy and
+  buttons on the left, the globe on the right. Below 900px it stacks and the
+  globe moves above the copy.
+- **A sidebar listing every division**, beside the division cards. Two entries
+  today; the note under it says more are coming.
+
+The header and the stats band are untouched.
+
+### Swapping in the real globe
+
+`assets/img/globe-placeholder.svg` is a stand-in for the spinning-globe GIF that
+hasn't been produced yet. It's a wireframe globe that turns on its own, so the
+page shows the intent rather than a static square.
+
+To replace it: drop the GIF into `assets/img/` and change the one `<img src>` in
+`index.html`. Sizing lives on the container, so no CSS changes — and the image
+is clipped to a circle, so a GIF with its own square background still sits
+correctly on the navy. Then re-run `python build-standalone.py`.
+
+### Adding a division
+
+The sidebar is built to grow. One more `<li class="division-nav-item">` block in
+`index.html` is the whole change — copy an existing one, swap the name, stat,
+link and icon, and add a `.mark-<name>` colour rule next to `.mark-transport`
+in the stylesheet. The layout reflows on its own: the list runs down the sidebar
+on desktop and across in an auto-fitting grid below 1100px.
 
 ## Design tokens
 
