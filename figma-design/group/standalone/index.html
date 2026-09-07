@@ -319,7 +319,7 @@ img, svg { display: block; max-width: 100%; }
   /* Fills the screen under the header so the globe is the page, rather than
      something you scroll down to. 89px is the header's height. */
   min-height: calc(100vh - 89px);
-  padding: 48px var(--gutter);
+  padding: 32px var(--gutter);
   background: var(--navy);
 }
 
@@ -333,14 +333,27 @@ img, svg { display: block; max-width: 100%; }
   min-height: 0;
 }
 
-/* Square, and never taller than the room it has, so the globe grows with the
-   viewport instead of overflowing it. The 220px is the header (89) plus the
-   stage's own vertical padding (2 x 48) and a little slack. */
+/* The frame is exactly the globe's box, which is what the ring overlay pins
+   itself to -- pinning to .globe-stage instead would size the ring to the whole
+   grid cell and pull the nodes off the globe.
+
+   Square, and never taller than the room it has, so the globe grows with the
+   viewport instead of overflowing it. The 180px is the header (89) plus the
+   stage's own vertical padding (2 x 32) and a little slack.
+
+   container-type lets everything on the ring be sized in cqw, so the nodes and
+   their labels scale with the globe rather than with the viewport. */
+.globe-frame {
+  position: relative;
+  width: min(100%, calc(100vh - 180px));
+  aspect-ratio: 1;
+  container-type: size;
+}
+
 .globe-media {
   display: block;
-  width: min(100%, calc(100vh - 220px));
-  aspect-ratio: 1;
-  height: auto;
+  width: 100%;
+  height: 100%;
   /* Keeps a GIF that carries its own square background reading as a globe. */
   border-radius: 50%;
 }
@@ -351,6 +364,79 @@ img, svg { display: block; max-width: 100%; }
      for anyone who has asked for less. */
   .globe-media { opacity: .85; }
 }
+
+/* --- Division ring (home) ------------------------------------------------- */
+
+.globe-overlay { position: absolute; inset: 0; }
+
+/* One continuous circle. Each node sits on top of it with an opaque fill, and
+   that is what makes the line read as an arc running between one icon and the
+   next -- so adding a division needs no change here. */
+.ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ring-shadow { stroke: rgba(10, 22, 40, .75); stroke-width: 6; }
+.ring-line { stroke: var(--gold); stroke-width: 2; opacity: .95; }
+
+/* Angle comes from the node's index and the total count, so the ring spaces
+   itself evenly however many divisions there are. Percentages on left/top
+   resolve against the frame, which keeps the radius at 34% of the globe. */
+.division-node {
+  --angle: calc(var(--i) * 360deg / var(--count));
+  position: absolute;
+  left: calc(50% + 34% * sin(var(--angle)));
+  top: calc(50% - 34% * cos(var(--angle)));
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8cqw;
+  width: 21cqw;
+  text-align: center;
+  text-decoration: none;
+}
+
+.node-mark {
+  display: grid;
+  place-items: center;
+  width: 11cqw;
+  height: 11cqw;
+  border-radius: 50%;
+  /* Opaque, so it masks the ring behind it. */
+  background: var(--navy-raised);
+  border: 1px solid rgba(201, 168, 76, .55);
+  color: #fff;
+  transition: transform .15s ease, border-color .15s ease;
+}
+
+.node-mark svg { width: 5.5cqw; height: 5.5cqw; }
+
+/* The live divisions keep their own colour; .mark-transport and .mark-it are
+   the same classes the sidebar uses. */
+.node-mark.mark-transport { background: var(--transport); }
+.node-mark.mark-it { background: var(--it); }
+
+.node-label {
+  font-size: clamp(9px, 2.5cqw, 13px);
+  line-height: 1.3;
+  color: var(--on-navy);
+  /* The label sits directly on the globe, so it needs its own separation. */
+  text-shadow: 0 1px 3px rgba(10, 22, 40, .9), 0 0 8px rgba(10, 22, 40, .7);
+  transition: color .15s ease;
+}
+
+a.division-node:hover .node-mark { transform: scale(1.08); border-color: var(--gold); }
+a.division-node:hover .node-label { color: var(--on-navy); }
+a.division-node:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: var(--radius); }
+
+/* Not sites yet, so these are inert spans rather than links to nowhere. The
+   dashed ring and dimmer type say so without needing a caption. */
+.division-node.is-placeholder { cursor: default; }
+.is-placeholder .node-mark {
+  background: var(--navy-raised);
+  border-style: dashed;
+  border-color: rgba(201, 168, 76, .45);
+  color: var(--on-navy-55);
+}
+.is-placeholder .node-label { color: var(--on-navy-70); }
 
 /* Visually hidden, still read aloud. The page has no visible heading now, and
    absolute positioning also keeps it out of the grid's flow. */
@@ -700,7 +786,7 @@ textarea.field { min-height: 121px; resize: vertical; }
     min-height: 0;
     padding-block: 32px;
   }
-  .globe-media { width: min(100%, 420px); }
+  .globe-frame { width: min(100%, 420px); }
   .division-nav-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
   .division-nav-item + .division-nav-item { margin-top: 0; }
 
@@ -731,7 +817,7 @@ textarea.field { min-height: 121px; resize: vertical; }
 
 @media (max-width: 560px) {
   .division-nav-list { grid-template-columns: minmax(0, 1fr); }
-  .globe-media { width: min(100%, 280px); }
+  .globe-frame { width: min(100%, 300px); }
   .page-hero h1 { font-size: 32px; }
   .values-grid,
   .office-grid,
@@ -840,7 +926,62 @@ textarea.field { min-height: 121px; resize: vertical; }
          next, so hotspots can be placed as a percentage of the globe's box
          and stay aligned at every size. -->
     <div class="globe-stage">
-      <img class="globe-media" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMzIwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJSb3RhdGluZyBnbG9iZSI+CiAgPCEtLSBQTEFDRUhPTERFUi4gU3RhbmRzIGluIGZvciB0aGUgc3Bpbm5pbmctZ2xvYmUgR0lGIHVudGlsIHRoYXQgYXJ0d29yawogICAgICAgYXJyaXZlcy4gU3dhcCB0aGUgPGltZyBzcmM+IG9uIGluZGV4Lmh0bWwgdG8gdGhlIC5naWYgYW5kIGRlbGV0ZSB0aGlzCiAgICAgICBmaWxlOyBub3RoaW5nIGVsc2UgbmVlZHMgdG8gY2hhbmdlLgoKICAgICAgIFRoZSBtZXJpZGlhbnMgYW5pbWF0ZSB0aGVpciBob3Jpem9udGFsIHJhZGl1cywgd2hpY2ggcmVhZHMgYXMgYSBzcGhlcmUKICAgICAgIHR1cm5pbmcgb24gaXRzIGF4aXMuIERlY2xhcmF0aXZlIFNNSUwgcmF0aGVyIHRoYW4gc2NyaXB0LCBzbyBpdCBzdGlsbAogICAgICAgYW5pbWF0ZXMgd2hlbiB0aGUgZmlsZSBpcyB1c2VkIGFzIGFuIDxpbWc+IHNyYyBhbmQgd2hlbiBpdCBpcyBpbmxpbmVkCiAgICAgICBhcyBhIGJhc2U2NCBkYXRhIFVSSSBpbiB0aGUgc3RhbmRhbG9uZSBidWlsZHMuIC0tPgoKICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ic3BoZXJlIiBjeD0iMzglIiBjeT0iMzIlIiByPSI3MiUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgc3RvcC1jb2xvcj0iIzFCM0E2QiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzBGMUYzRCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwQTE2MjgiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImJhbGwiPgogICAgICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxNjAiIHI9IjE0MCIvPgogICAgPC9jbGlwUGF0aD4KICA8L2RlZnM+CgogIDxjaXJjbGUgY3g9IjE2MCIgY3k9IjE2MCIgcj0iMTQwIiBmaWxsPSJ1cmwoI3NwaGVyZSkiLz4KCiAgPGcgY2xpcC1wYXRoPSJ1cmwoI2JhbGwpIiBmaWxsPSJub25lIiBzdHJva2U9IiNDOUE4NEMiIHN0cm9rZS13aWR0aD0iMS4yNSIgb3BhY2l0eT0iMC41NSI+CiAgICA8IS0tIExhdGl0dWRlczogZml4ZWQgcmluZ3MsIGZsYXR0ZW5lZCBieSBwZXJzcGVjdGl2ZS4gLS0+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMTYwIiByeD0iMTQwIiAgIHJ5PSI3Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMTE1IiByeD0iMTMyLjYiIHJ5PSIxNyIvPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjIwNSIgcng9IjEzMi42IiByeT0iMTciLz4KICAgIDxlbGxpcHNlIGN4PSIxNjAiIGN5PSI3MCIgIHJ4PSIxMDcuMiIgcnk9IjI0Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMjUwIiByeD0iMTA3LjIiIHJ5PSIyNCIvPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjQwIiAgcng9IjcyLjEiICByeT0iMjAiLz4KICAgIDxlbGxpcHNlIGN4PSIxNjAiIGN5PSIyODAiIHJ4PSI3Mi4xIiAgcnk9IjIwIi8+CgogICAgPCEtLSBNZXJpZGlhbnM6IHJ4IHN3ZWVwcyAxNDAgLT4gMCAtPiAxNDAsIGVhY2ggb2Zmc2V0IGluIHBoYXNlLCB3aGljaCBpcwogICAgICAgICB3aGF0IG1ha2VzIHRoZSBzcGhlcmUgbG9vayBsaWtlIGl0IGlzIHR1cm5pbmcuIC0tPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjE2MCIgcnk9IjE0MCI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InJ4IiB2YWx1ZXM9IjE0MDswOzE0MCIgZHVyPSIxMnMiIGJlZ2luPSIwcyIgIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2VsbGlwc2U+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMTYwIiByeT0iMTQwIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0icngiIHZhbHVlcz0iMTQwOzA7MTQwIiBkdXI9IjEycyIgYmVnaW49Ii0zcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvZWxsaXBzZT4KICAgIDxlbGxpcHNlIGN4PSIxNjAiIGN5PSIxNjAiIHJ5PSIxNDAiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJyeCIgdmFsdWVzPSIxNDA7MDsxNDAiIGR1cj0iMTJzIiBiZWdpbj0iLTZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9lbGxpcHNlPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjE2MCIgcnk9IjE0MCI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InJ4IiB2YWx1ZXM9IjE0MDswOzE0MCIgZHVyPSIxMnMiIGJlZ2luPSItOXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2VsbGlwc2U+CiAgPC9nPgoKICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxNjAiIHI9IjE0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzlBODRDIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuODUiLz4KPC9zdmc+Cg==" alt="" width="320" height="320">
+      <div class="globe-frame">
+        <img class="globe-media" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMzIwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJSb3RhdGluZyBnbG9iZSI+CiAgPCEtLSBQTEFDRUhPTERFUi4gU3RhbmRzIGluIGZvciB0aGUgc3Bpbm5pbmctZ2xvYmUgR0lGIHVudGlsIHRoYXQgYXJ0d29yawogICAgICAgYXJyaXZlcy4gU3dhcCB0aGUgPGltZyBzcmM+IG9uIGluZGV4Lmh0bWwgdG8gdGhlIC5naWYgYW5kIGRlbGV0ZSB0aGlzCiAgICAgICBmaWxlOyBub3RoaW5nIGVsc2UgbmVlZHMgdG8gY2hhbmdlLgoKICAgICAgIFRoZSBtZXJpZGlhbnMgYW5pbWF0ZSB0aGVpciBob3Jpem9udGFsIHJhZGl1cywgd2hpY2ggcmVhZHMgYXMgYSBzcGhlcmUKICAgICAgIHR1cm5pbmcgb24gaXRzIGF4aXMuIERlY2xhcmF0aXZlIFNNSUwgcmF0aGVyIHRoYW4gc2NyaXB0LCBzbyBpdCBzdGlsbAogICAgICAgYW5pbWF0ZXMgd2hlbiB0aGUgZmlsZSBpcyB1c2VkIGFzIGFuIDxpbWc+IHNyYyBhbmQgd2hlbiBpdCBpcyBpbmxpbmVkCiAgICAgICBhcyBhIGJhc2U2NCBkYXRhIFVSSSBpbiB0aGUgc3RhbmRhbG9uZSBidWlsZHMuIC0tPgoKICA8ZGVmcz4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0ic3BoZXJlIiBjeD0iMzglIiBjeT0iMzIlIiByPSI3MiUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgc3RvcC1jb2xvcj0iIzFCM0E2QiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzBGMUYzRCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwQTE2MjgiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8Y2xpcFBhdGggaWQ9ImJhbGwiPgogICAgICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxNjAiIHI9IjE0MCIvPgogICAgPC9jbGlwUGF0aD4KICA8L2RlZnM+CgogIDxjaXJjbGUgY3g9IjE2MCIgY3k9IjE2MCIgcj0iMTQwIiBmaWxsPSJ1cmwoI3NwaGVyZSkiLz4KCiAgPGcgY2xpcC1wYXRoPSJ1cmwoI2JhbGwpIiBmaWxsPSJub25lIiBzdHJva2U9IiNDOUE4NEMiIHN0cm9rZS13aWR0aD0iMS4yNSIgb3BhY2l0eT0iMC41NSI+CiAgICA8IS0tIExhdGl0dWRlczogZml4ZWQgcmluZ3MsIGZsYXR0ZW5lZCBieSBwZXJzcGVjdGl2ZS4gLS0+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMTYwIiByeD0iMTQwIiAgIHJ5PSI3Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMTE1IiByeD0iMTMyLjYiIHJ5PSIxNyIvPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjIwNSIgcng9IjEzMi42IiByeT0iMTciLz4KICAgIDxlbGxpcHNlIGN4PSIxNjAiIGN5PSI3MCIgIHJ4PSIxMDcuMiIgcnk9IjI0Ii8+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMjUwIiByeD0iMTA3LjIiIHJ5PSIyNCIvPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjQwIiAgcng9IjcyLjEiICByeT0iMjAiLz4KICAgIDxlbGxpcHNlIGN4PSIxNjAiIGN5PSIyODAiIHJ4PSI3Mi4xIiAgcnk9IjIwIi8+CgogICAgPCEtLSBNZXJpZGlhbnM6IHJ4IHN3ZWVwcyAxNDAgLT4gMCAtPiAxNDAsIGVhY2ggb2Zmc2V0IGluIHBoYXNlLCB3aGljaCBpcwogICAgICAgICB3aGF0IG1ha2VzIHRoZSBzcGhlcmUgbG9vayBsaWtlIGl0IGlzIHR1cm5pbmcuIC0tPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjE2MCIgcnk9IjE0MCI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InJ4IiB2YWx1ZXM9IjE0MDswOzE0MCIgZHVyPSIxMnMiIGJlZ2luPSIwcyIgIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2VsbGlwc2U+CiAgICA8ZWxsaXBzZSBjeD0iMTYwIiBjeT0iMTYwIiByeT0iMTQwIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0icngiIHZhbHVlcz0iMTQwOzA7MTQwIiBkdXI9IjEycyIgYmVnaW49Ii0zcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiLz4KICAgIDwvZWxsaXBzZT4KICAgIDxlbGxpcHNlIGN4PSIxNjAiIGN5PSIxNjAiIHJ5PSIxNDAiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJyeCIgdmFsdWVzPSIxNDA7MDsxNDAiIGR1cj0iMTJzIiBiZWdpbj0iLTZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIvPgogICAgPC9lbGxpcHNlPgogICAgPGVsbGlwc2UgY3g9IjE2MCIgY3k9IjE2MCIgcnk9IjE0MCI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9InJ4IiB2YWx1ZXM9IjE0MDswOzE0MCIgZHVyPSIxMnMiIGJlZ2luPSItOXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+CiAgICA8L2VsbGlwc2U+CiAgPC9nPgoKICA8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxNjAiIHI9IjE0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzlBODRDIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuODUiLz4KPC9zdmc+Cg==" alt="" width="320" height="320">
+
+        <!-- Division ring. --count is how many nodes there are and --i is each
+             node's place in the ring; the stylesheet works the angle out from
+             those two, so adding a division means adding one node and bumping
+             --count. Nothing here is hand-positioned. -->
+        <div class="globe-overlay" style="--count: 7">
+
+          <!-- The ring itself. Drawn as one continuous circle; each node sits
+               on top of it with an opaque fill, which is what makes the line
+               read as an arc running between one icon and the next. -->
+          <svg class="ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <!-- Two circles: a dark wider one underneath separates the ring from
+                 whatever is behind it, so it still reads once the globe here is
+                 swapped for the real GIF. -->
+            <circle class="ring-shadow" cx="50" cy="50" r="34" fill="none" vector-effect="non-scaling-stroke"/>
+            <circle class="ring-line" cx="50" cy="50" r="34" fill="none" vector-effect="non-scaling-stroke"/>
+          </svg>
+
+      <a class="division-node" style="--i: 0" href="../transport-delivery/index.html">
+        <span class="node-mark mark-transport"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+        <span class="node-label">Transport &amp; Delivery</span>
+      </a>
+
+      <a class="division-node" style="--i: 1" href="../it/index.html">
+        <span class="node-mark mark-it"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></span>
+        <span class="node-label">IT Division</span>
+      </a>
+
+      <span class="division-node is-placeholder" style="--i: 2" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 3</span>
+      </span>
+
+      <span class="division-node is-placeholder" style="--i: 3" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 4</span>
+      </span>
+
+      <span class="division-node is-placeholder" style="--i: 4" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 5</span>
+      </span>
+
+      <span class="division-node is-placeholder" style="--i: 5" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 6</span>
+      </span>
+
+      <span class="division-node is-placeholder" style="--i: 6" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 7</span>
+      </span>
+        </div>
+      </div>
     </div>
 
 </main>

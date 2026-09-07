@@ -102,7 +102,62 @@
          next, so hotspots can be placed as a percentage of the globe's box
          and stay aligned at every size. -->
     <div class="globe-stage">
-      <img class="globe-media" src="assets/img/globe-placeholder.svg" alt="" width="320" height="320">
+      <div class="globe-frame">
+        <img class="globe-media" src="assets/img/globe-placeholder.svg" alt="" width="320" height="320">
+
+        <!-- Division ring. --count is how many nodes there are and --i is each
+             node's place in the ring; the stylesheet works the angle out from
+             those two, so adding a division means adding one node and bumping
+             --count. Nothing here is hand-positioned. -->
+        <div class="globe-overlay" style="--count: 7">
+
+          <!-- The ring itself. Drawn as one continuous circle; each node sits
+               on top of it with an opaque fill, which is what makes the line
+               read as an arc running between one icon and the next. -->
+          <svg class="ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <!-- Two circles: a dark wider one underneath separates the ring from
+                 whatever is behind it, so it still reads once the globe here is
+                 swapped for the real GIF. -->
+            <circle class="ring-shadow" cx="50" cy="50" r="34" fill="none" vector-effect="non-scaling-stroke"/>
+            <circle class="ring-line" cx="50" cy="50" r="34" fill="none" vector-effect="non-scaling-stroke"/>
+          </svg>
+
+      <a class="division-node" style="--i: 0" href="../transport-delivery/index.html">
+        <span class="node-mark mark-transport"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+        <span class="node-label">Transport &amp; Delivery</span>
+      </a>
+
+      <a class="division-node" style="--i: 1" href="../it/index.html">
+        <span class="node-mark mark-it"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></span>
+        <span class="node-label">IT Division</span>
+      </a>
+
+      <span class="division-node is-placeholder" style="--i: 2" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 3</span>
+      </span>
+
+      <span class="division-node is-placeholder" style="--i: 3" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 4</span>
+      </span>
+
+      <span class="division-node is-placeholder" style="--i: 4" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 5</span>
+      </span>
+
+      <span class="division-node is-placeholder" style="--i: 5" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 6</span>
+      </span>
+
+      <span class="division-node is-placeholder" style="--i: 6" aria-disabled="true">
+        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
+        <span class="node-label">Division 7</span>
+      </span>
+        </div>
+      </div>
     </div>
 
 </main>

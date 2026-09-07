@@ -92,19 +92,46 @@ To replace it: drop the GIF into `assets/img/` and change the one `<img src>` in
 clipped to a circle, so a GIF carrying its own square background still reads as
 a globe on the navy. Then re-run `python build-standalone.py`.
 
-### The clickable overlay
+### The division ring
 
-Not built yet. `.globe-stage` is already the positioning context for it:
-it's `position: relative`, so hotspots placed inside it as percentages will stay
-aligned to the globe at every screen size.
+Seven divisions sit on a ring inside the globe, joined by a circle that runs
+between them. Two are live and link to their sites; the other five are
+placeholders for divisions that don't exist yet.
+
+**The ring positions itself.** Each node carries an index (`--i`) and the
+overlay carries the total (`--count`); the stylesheet derives the angle from
+those with `sin()`/`cos()`, so the nodes always space evenly. Nothing is
+hand-positioned, and the radius is a percentage of the globe, so the ring
+tracks the globe at any size.
+
+The circle is drawn once, whole. Each node sits on top of it with an opaque
+fill, and that masking is what makes the line read as an arc running from one
+icon to the next — so adding a division needs no change to the ring itself.
+It's drawn as two circles, a dark wider one beneath the gold, so the ring still
+separates from the artwork once the placeholder globe is swapped for the GIF.
+
+Node sizes are in `cqw` against the globe's own container, so icons and labels
+scale with the globe rather than with the viewport.
+
+**Live vs placeholder.** Live divisions are `<a>` elements. Placeholders are
+inert `<span>`s with `aria-disabled` — not links to nowhere — and are styled
+with a dashed ring so they read as unfinished. Promoting one is a small edit:
+change the `<span>` to an `<a href="...">`, drop `is-placeholder` and
+`aria-disabled`, swap the plus icon for a real one, and give it a
+`.mark-<name>` colour rule.
 
 ### Adding a division
 
-One more `<li class="division-nav-item">` block in `index.html` — copy an
-existing one, swap the name, stat, link and icon — plus a `.mark-<name>` colour
-rule next to `.mark-transport` in the stylesheet. The layout reflows on its own:
-down the sidebar on desktop, across an auto-fitting grid below 900px, one per
-row below 560px.
+Two places, both small:
+
+1. **The ring** — one more `.division-node` in `index.html`, with the next
+   `--i`, and bump `--count` on `.globe-overlay`. The ring re-spaces itself.
+2. **The sidebar** — one more `<li class="division-nav-item">` block. It
+   reflows on its own: down the sidebar on desktop, across an auto-fitting grid
+   below 900px, one per row below 560px.
+
+Plus a `.mark-<name>` colour rule next to `.mark-transport` in the stylesheet if
+the division has its own colour.
 
 ## Design tokens
 
