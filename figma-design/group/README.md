@@ -52,54 +52,59 @@ and padding read from its computed styles — and rebuilt as hand-written code.
 It is a reconstruction, not an export, which means the markup is clean and
 meant to be edited.
 
-Verified against the source at 1440px. **The home page has since been changed
-on request and no longer matches the comp** — see "Home page changes" below;
-the other three pages are unchanged.
+Verified against the source at 1440px. **The home page has since been replaced
+on request and no longer follows the comp at all** — see "The home page" below.
+The other three pages are unchanged and still match:
 
 | | Figma | This build |
 | --- | --- | --- |
-| Home page height | 3702px | superseded, see below |
 | Header | 65px, `rgba(247,248,252,.96)` | identical |
-| Hero H1 | Playfair 72px / 500, line-height 75.6px | identical |
-| Hero grid | max-width 768px, padding `144px 40px` | identical |
-| Stat band | `#0F1F3D`, 4 × 276px, gap 32px | identical |
-| Division card | 588 × 440, radius 6px | identical |
-| Closing CTA panel | 1200 × 312, padding `64px 40px` | identical |
 | About hero | 374px tall, H1 60px / lh 75px | identical |
+| About page height | 3893px | 3929px |
 | Portfolio grid | 2 × 586px, gap 28px | identical |
+| Portfolio page height | 3400px | 3433px |
 | Contact form column | 784px, fields 384px | identical |
+| Contact page height | 1685px | 1749px |
 
-## Home page changes
+## The home page
 
-Requested after the original build, so these are deliberate departures from the
-Figma comp:
+**The home page no longer follows the Figma design.** It was replaced on
+request, and the other three pages are untouched.
 
-- **A globe in the hero.** The hero is now two columns — the existing copy and
-  buttons on the left, the globe on the right. Below 900px it stacks and the
-  globe moves above the copy.
-- **A sidebar listing every division**, beside the division cards. Two entries
-  today; the note under it says more are coming.
+The body is now just two things: a globe filling the page, and a sidebar on the
+left listing every division. The header and footer are the same shared chrome as
+the rest of the site.
 
-The header and the stats band are untouched.
+The Figma layout it replaced — hero, stats band, division cards, group
+standards, story split and closing CTA — is in the git history if any of it is
+wanted back.
 
 ### Swapping in the real globe
 
-`assets/img/globe-placeholder.svg` is a stand-in for the spinning-globe GIF that
+`assets/img/globe-placeholder.svg` stands in for the spinning-globe GIF that
 hasn't been produced yet. It's a wireframe globe that turns on its own, so the
-page shows the intent rather than a static square.
+page shows the intent rather than a static circle. It's declarative SMIL, not
+script, so it animates both as an `<img>` src and once inlined as a base64 data
+URI in the standalone builds.
 
 To replace it: drop the GIF into `assets/img/` and change the one `<img src>` in
-`index.html`. Sizing lives on the container, so no CSS changes — and the image
-is clipped to a circle, so a GIF with its own square background still sits
-correctly on the navy. Then re-run `python build-standalone.py`.
+`index.html`. Sizing is on the container, so no CSS changes — and the image is
+clipped to a circle, so a GIF carrying its own square background still reads as
+a globe on the navy. Then re-run `python build-standalone.py`.
+
+### The clickable overlay
+
+Not built yet. `.globe-stage` is already the positioning context for it:
+it's `position: relative`, so hotspots placed inside it as percentages will stay
+aligned to the globe at every screen size.
 
 ### Adding a division
 
-The sidebar is built to grow. One more `<li class="division-nav-item">` block in
-`index.html` is the whole change — copy an existing one, swap the name, stat,
-link and icon, and add a `.mark-<name>` colour rule next to `.mark-transport`
-in the stylesheet. The layout reflows on its own: the list runs down the sidebar
-on desktop and across in an auto-fitting grid below 1100px.
+One more `<li class="division-nav-item">` block in `index.html` — copy an
+existing one, swap the name, stat, link and icon — plus a `.mark-<name>` colour
+rule next to `.mark-transport` in the stylesheet. The layout reflows on its own:
+down the sidebar on desktop, across an auto-fitting grid below 900px, one per
+row below 560px.
 
 ## Design tokens
 
@@ -188,9 +193,10 @@ Full deployment instructions, including what to do when it doesn't work, are in
 
 ## Responsive
 
-Breakpoints at 1100px, 900px and 560px. The hero scales down, the header
-collapses to a menu button, the division cards and portfolio grid drop to one
-column, and the contact layout stacks. No page scrolls sideways at any width.
+Breakpoints at 1100px, 900px and 560px. The header collapses to a menu button,
+the portfolio grid and contact layout drop to one column, and on the home page
+the sidebar moves from beside the globe to above it. No page scrolls sideways at
+any width.
 
 ## Content
 
