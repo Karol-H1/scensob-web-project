@@ -311,40 +311,103 @@ img, svg { display: block; max-width: 100%; }
 
 /* --- Home stage (globe + division sidebar) -------------------------------- */
 
-/* White sidebar column, blue stage beside it. The approved design puts the
-   divisions in a plain list on white, not in a card. */
+/* Navy throughout, to match the rest of the site. */
 .home-stage {
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: 312px minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
   min-height: calc(100vh - 89px);
+  padding: 32px var(--gutter);
+  background: var(--navy);
+}
+
+/* --- Division sidebar (home) --------------------------------------------- */
+
+.division-nav-card {
+  padding: 24px;
   background: var(--surface);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius);
 }
 
-.division-nav { padding: 40px 0 40px 32px; }
+.division-nav-card .eyebrow { margin-bottom: 20px; }
 .division-nav-list { list-style: none; margin: 0; padding: 0; }
-.division-nav-list li + li { margin-top: 26px; }
+.division-nav-item + .division-nav-item { margin-top: 4px; }
 
-.division-nav-list a {
-  display: block;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: var(--foreground);
+.division-nav-item a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
   text-decoration: none;
-  transition: color .15s ease;
+  color: inherit;
+  transition: background .15s ease;
 }
 
-.division-nav-list a:hover { color: var(--globe-blue); }
-.division-nav-list a:focus-visible { outline: 2px solid var(--globe-blue); outline-offset: 3px; }
+.division-nav-item a:hover { background: var(--tint); }
+.division-nav-item a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-/* The stage is painted the same blue as the video, so where the video does not
-   reach the edge on an unusual viewport shape the join is invisible. */
+.division-nav-mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius);
+  color: #fff;
+}
+
+.division-nav-mark svg { width: 16px; height: 16px; }
+
+/* One colour per division, drawn from the group's own wheel and the two
+   division blues already in use. Scoped to the sidebar mark: the ring nodes
+   carry the same classes for future use, and an unscoped rule would paint a
+   coloured box behind each of their circles. */
+.division-nav-mark.mark-staffing    { background: #D97706; }
+.division-nav-mark.mark-consulting  { background: #B08A2E; }
+.division-nav-mark.mark-bosnecs     { background: #0F7DCA; }
+.division-nav-mark.mark-it          { background: var(--it); }
+.division-nav-mark.mark-transport   { background: var(--transport); }
+.division-nav-mark.mark-rpm         { background: #BE185D; }
+.division-nav-mark.mark-homehealth  { background: #C2261A; }
+.division-nav-mark.mark-foundation  { background: #6D28D9; }
+
+.division-nav-name {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--foreground);
+}
+
+.division-nav-arrow {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--muted);
+  transition: transform .15s ease;
+}
+
+.division-nav-item a:hover .division-nav-arrow { transform: translateX(3px); color: var(--gold); }
+
+.division-nav-note {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: var(--hairline) solid var(--border);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+/* --- Globe stage ---------------------------------------------------------- */
+
 .globe-stage {
   position: relative;
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: var(--globe-blue);
 }
 
 /* The frame carries the video's own aspect ratio, so the video fills it without
@@ -352,80 +415,101 @@ img, svg { display: block; max-width: 100%; }
    stage instead would let the globe drift as the viewport changes shape. */
 .globe-frame {
   position: relative;
-  width: min(100%, calc((100vh - 89px) * 1280 / 742));
+  width: min(100%, calc((100vh - 200px) * 1280 / 742));
   aspect-ratio: 1280 / 742;
   container-type: size;
 }
 
-.globe-media { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* The artwork is drawn on a bright blue. Darkened so it sits on the navy
+   instead of fighting it, then masked so it fades out rather than ending at a
+   visible rectangle edge.
+
+   Masking the video itself, not the frame: a mask on the frame would take the
+   ring and its nodes with it.
+
+   closest-side, not the default farthest-corner: the frame is much wider than
+   it is tall, and a corner-sized mask is still half opaque where it meets the
+   top and bottom edges, which shows as a band. */
+.globe-media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.46) saturate(1.25) contrast(1.05);
+  -webkit-mask-image: radial-gradient(circle closest-side at 48.3% 51%, #000 38%, rgba(0,0,0,.55) 70%, transparent 100%);
+  mask-image: radial-gradient(circle closest-side at 48.3% 51%, #000 38%, rgba(0,0,0,.55) 70%, transparent 100%);
+}
+
+/* The ring the nodes sit on, in cqh so it is always a true circle and always
+   the same radius the nodes use. */
+.globe-ring {
+  position: absolute;
+  left: 48.3%;
+  top: 51%;
+  width: 80cqh;
+  height: 80cqh;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(201, 168, 76, .4);
+  border-radius: 50%;
+  pointer-events: none;
+}
 
 /* --- Division ring (home) ------------------------------------------------- */
 
 .globe-overlay { position: absolute; inset: 0; }
 
 /* The ring is centred on the globe, not on the frame -- the globe sits at
-   48.3% across and 51% down of the artwork, measured off the video itself. */
+   48.3% across and 51% down of the artwork, measured off the video. */
 .division-node {
   --angle: calc(var(--i) * 360deg / var(--count));
   --r: 40cqh;
   position: absolute;
   left: 48.3%;
   top: 51%;
-  /* Rotate out to the ring, then counter-rotate so the label stays upright. */
+  /* Rotate out to the ring, then counter-rotate so the text stays upright. */
   transform:
     translate(-50%, -50%)
     rotate(var(--angle))
     translateY(calc(-1 * var(--r)))
     rotate(calc(-1 * var(--angle)));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.4cqh;
-  width: 26cqh;
-  text-align: center;
   text-decoration: none;
 }
 
-/* The group's colour wheel, with the gap it has in the brand mark. */
 .node-mark {
-  position: relative;
-  width: 12cqh;
-  height: 12cqh;
+  display: grid;
+  place-items: center;
+  width: 17.5cqh;
+  height: 17.5cqh;
+  padding: 1.6cqh;
   border-radius: 50%;
-  background: conic-gradient(
-    #FFA300   0deg  35deg,
-    #FFD60A  35deg  58deg,
-    #FFFFFF  58deg 155deg,
-    #0F7DCA 155deg 185deg,
-    #110AD6 185deg 205deg,
-    #6807B6 205deg 245deg,
-    #951F99 245deg 265deg,
-    #CD2177 265deg 295deg,
-    #E71113 295deg 325deg,
-    #FA6507 325deg 360deg
-  );
-  transition: transform .15s ease;
+  background: var(--navy-raised);
+  border: 2px solid var(--gold);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
 }
 
-/* Inset white disc, so the gradient reads as a ring around it. */
-.node-face {
-  position: absolute;
-  inset: 1.1cqh;
-  border-radius: 50%;
-  background: #fff;
-}
+/* Shown only once the names are hidden, so the small-screen discs are not
+   blank circles. */
+.node-icon { display: none; color: var(--gold); }
+.node-icon svg { width: 9cqh; height: 9cqh; }
 
-.node-label {
-  font-size: clamp(10px, 2.1cqh, 15px);
+.node-name {
+  font-size: clamp(9px, 1.95cqh, 14px);
   font-weight: 600;
-  line-height: 1.25;
-  color: #fff;
-  /* The label sits on the artwork, so it needs its own separation. */
-  text-shadow: 0 1px 3px rgba(4, 48, 92, .9), 0 0 10px rgba(4, 48, 92, .75);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--on-navy);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
-.division-node:hover .node-mark { transform: scale(1.08); }
-.division-node:focus-visible { outline: 2px solid #fff; outline-offset: 4px; border-radius: 6px; }
+.division-node:hover .node-mark {
+  transform: scale(1.07);
+  background: var(--navy);
+  border-color: #fff;
+}
+
+.division-node:focus-visible .node-mark { outline: 2px solid #fff; outline-offset: 3px; }
 
 /* Visually hidden, still read aloud. Absolute positioning also keeps it out of
    the stage grid's flow rather than taking a column. */
@@ -690,9 +774,7 @@ textarea.field { min-height: 121px; resize: vertical; }
 /* --- Responsive ---------------------------------------------------------- */
 
 @media (max-width: 1100px) {
-  .home-stage { grid-template-columns: 200px minmax(0, 1fr); }
-  .division-nav-list a { font-size: 17px; }
-  .division-nav-list li + li { margin-top: 20px; }
+  .home-stage { grid-template-columns: 280px minmax(0, 1fr); gap: 28px; }
   .about-story { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .case-media img { height: 320px; }
   .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -704,13 +786,17 @@ textarea.field { min-height: 121px; resize: vertical; }
 @media (max-width: 900px) {
   :root { --gutter: 24px; }
 
-  /* Sidebar above the stage, and the stage stops chasing the viewport height so
-     the globe is not squeezed into whatever is left. */
-  .home-stage { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-  .division-nav { padding: 24px var(--gutter); }
-  .division-nav-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px 20px; }
-  .division-nav-list li + li { margin-top: 0; }
+  /* Stacked, and the stage stops chasing the viewport height so the globe is
+     not squeezed into whatever is left over. */
+  .home-stage { grid-template-columns: minmax(0, 1fr); min-height: 0; gap: 28px; }
+
+  /* Globe first. Otherwise the eight-row division card fills the screen and the
+     globe -- the point of the page -- starts below the fold. */
+  .globe-stage { order: -1; }
+
   .globe-frame { width: 100%; }
+  .division-nav-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px 12px; }
+  .division-nav-item + .division-nav-item { margin-top: 0; }
 
   .site-nav, .header-cta { display: none; }
   .nav-toggle { display: inline-flex; }
@@ -738,15 +824,12 @@ textarea.field { min-height: 121px; resize: vertical; }
 }
 
 @media (max-width: 560px) {
-  /* Eight labelled nodes will not fit round a globe this small -- the labels
-     collide. Drop them and grow the marks: the sidebar directly above is the
-     same eight divisions as full-width tappable links, so nothing is lost. */
-  .node-label { display: none; }
-  /* 20cqh clears the 44px touch target with room to spare -- the nodes are
-     71px apart at this size, so they still do not collide. */
-  .node-mark { width: 20cqh; height: 20cqh; }
-  .node-face { inset: 1.9cqh; }
-  .division-node { width: auto; }
+  /* The names will not fit legibly round a globe this small. The discs stay as
+     tappable targets and the card above carries the names. 23cqh clears the
+     44px touch target, and the nodes are 62px apart, so they do not collide. */
+  .node-name { display: none; }
+  .node-icon { display: block; }
+  .node-mark { width: 23cqh; height: 23cqh; padding: 0; }
 
   .page-hero h1 { font-size: 32px; }
   .values-grid,

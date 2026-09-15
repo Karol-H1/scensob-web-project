@@ -68,61 +68,65 @@ The other three pages are unchanged and still match:
 
 ## The home page
 
-**The home page follows the approved landing-page design, not the Figma comp.**
-The other three pages are still the Figma build.
-
 The body is the globe animation with all eight divisions on a ring around it,
-and the same eight listed in a sidebar on the left. The header and footer are
-the shared chrome from the original build, kept deliberately until the new
-navigation is settled.
+and the same eight in the sidebar card on the left. Both lists are in the same
+order and point at the same places.
+
+Styled to match the navy used across the rest of the site. The approved
+landing-page mockup was a bright blue, but it was supplied as a reference for
+the idea rather than as a style to copy.
 
 ### The globe video
 
 `assets/video/globe.mp4` — 1280x742, one 10-second loop, 880 KB.
 
-It was cut from the supplied master (`scensob LLC website.mp4`, 1920x1080,
-29.8 MB) in three steps:
+Cut from the supplied master (`scensob LLC website.mp4`, 1920x1080, 29.8 MB) in
+three steps:
 
-1. **Cropped** 58px off the right edge. The master carries a white bar down
-   that edge on every frame, which would otherwise show as a white stripe
-   beside the blue.
+1. **Cropped** 58px off the right edge. The master carries a white bar down that
+   edge on every frame.
 2. **Trimmed** to 10.033s. The master runs 15s, but frame 304 is identical to
-   frame 0 — it is one cycle plus a partial repeat, so the rest is wasted bytes.
+   frame 0 — it is one cycle plus a partial repeat.
 3. **Re-encoded** to H.264 at CRF 30, scaled to 1280 wide. The master's
    16.6 Mbps is far beyond what flat artwork needs.
 
-The result is 97% smaller than the master and 77% smaller than the original GIF.
-WebM was tried and came out *larger* than the MP4 here, so it was dropped rather
-than shipped for no gain.
+97% smaller than the master, 77% smaller than the original GIF. WebM was tried
+and came out *larger* here, so it was dropped rather than shipped for no gain.
 
-To regenerate after a new master arrives, the ffmpeg filter chain is
-`crop=1862:1080:0:0,scale=1280:-2` with `-t 10.033`.
+To regenerate from a new master: `crop=1862:1080:0:0,scale=1280:-2` with
+`-t 10.033`.
 
-The page background is `#0D6CC2`, sampled from the video itself, so where the
-video does not reach the edge of an unusually shaped viewport the join is
-invisible.
+**The artwork is drawn on a bright blue**, which would sit on the navy as a
+glowing rectangle. Two things deal with that: a `brightness()` filter darkens it
+until the blue lands near `--navy-raised`, and a radial mask fades its edges out
+so there is no rectangle to see.
+
+The mask is on the video, not the frame — a mask on the frame would take the
+ring and its nodes with it. It is sized `closest-side` rather than the default
+`farthest-corner`, because the frame is far wider than it is tall and a
+corner-sized mask is still half opaque where it meets the top and bottom edges,
+which shows as a band.
 
 ### The division ring
 
-Eight nodes, evenly spaced, each a white disc inside a ring of the group's
-colours — a `conic-gradient` with the gap the brand mark has.
+Eight nodes, each a navy disc with a gold rim and the division name inside it.
 
-**The ring positions itself.** Each node carries an index (`--i`) and the
-overlay carries the total (`--count`); the angle is derived from those two with
-`sin()`/`cos()`. Nothing is hand-placed.
+**The ring positions itself.** Each node carries an index (`--i`) and the overlay
+carries the total (`--count`); the angle comes from those two via `sin()`/`cos()`.
+Nothing is hand-placed.
 
 It is centred on **the globe, not the video frame** — the globe sits at 48.3%
-across and 51% down of the artwork, measured off the video. The radius is 40% of
-the frame height, which puts the nodes on the artwork's own outer orbital ring
-(measured at 295–305px against our 297px).
+across and 51% down of the artwork, measured off the video itself. The radius is
+40% of the frame height.
 
-The video sits in a wrapper carrying its exact aspect ratio, so it fills without
-cropping and the ring stays aligned. Pinning the ring to the stage instead would
-let the globe drift as the viewport changes shape.
+The connecting circle is drawn in CSS at that same radius rather than relying on
+the orbital rings inside the artwork, because the artwork is faded towards its
+edges and those rings fade with it.
 
-Below 560px the labels are dropped and the discs grow — eight labelled nodes
-collide around a globe that small, and the sidebar directly above is the same
-eight divisions as full-width links.
+Below 560px the names are swapped for each division's icon — the names cannot be
+read round a globe that small — and the discs grow past the 44px touch target.
+The stage also moves above the card, so the globe is not pushed below the fold by
+an eight-row list.
 
 ### Adding a division
 
@@ -130,9 +134,12 @@ Two places:
 
 1. **The ring** — one more `.division-node` in `index.html` with the next `--i`,
    and bump `--count` on `.globe-overlay`.
-2. **The sidebar** — one more `<li>` in `.division-nav-list`.
+2. **The sidebar** — one more `.division-nav-item`, plus a
+   `.division-nav-mark.mark-<name>` colour rule.
 
-Both re-space themselves; no other change is needed.
+Both re-space themselves. Note the colour rules are scoped to
+`.division-nav-mark`: the ring nodes carry the same classes, and an unscoped
+rule paints a coloured box behind each of their circles.
 
 ## Design tokens
 
