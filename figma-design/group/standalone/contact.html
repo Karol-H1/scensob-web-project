@@ -221,8 +221,14 @@ img, svg { display: block; max-width: 100%; }
 }
 .divisions-menu a:hover { background: var(--tint); }
 .divisions-menu .swatch { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-.swatch-transport { background: var(--transport); }
-.swatch-it { background: var(--it); }
+.swatch-staffing   { background: #D97706; }
+.swatch-consulting { background: #B08A2E; }
+.swatch-bosnecs    { background: #0F7DCA; }
+.swatch-it         { background: var(--it); }
+.swatch-transport  { background: var(--transport); }
+.swatch-rpm        { background: #BE185D; }
+.swatch-homehealth { background: #C2261A; }
+.swatch-foundation { background: #6D28D9; }
 
 .nav-toggle {
   display: none;
@@ -416,38 +422,29 @@ img, svg { display: block; max-width: 100%; }
 }
 
 /* The frame keeps the video's own aspect ratio -- the ring is positioned
-   against it, and stretching it would pull the nodes off the globe -- and it
-   fits inside the stage rather than covering it. Covering was tried and clips
-   the ring: on a stage shorter than the artwork's 1280:742 the frame overflows
-   top and bottom, taking the top and bottom nodes with it. */
+   against it, and stretching it would pull the nodes off the globe -- and it is
+   scaled to cover the stage, with the stage clipping the overflow. Fitting it
+   inside the stage instead letterboxes the artwork and leaves the globe small.
+
+   Covering also removes the edge problem: with no stage background showing
+   beside the video there is no mismatched join to hide. */
 .globe-frame {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(100cqw, calc(100cqh * 1280 / 742));
+  width: max(100cqw, calc(100cqh * 1280 / 742));
   aspect-ratio: 1280 / 742;
   container-type: size;
 }
 
-/* The stage behind is painted the artwork's blue, but the artwork's own edge
-   pixels are not one flat colour -- they run from #0569C9 to #1465B7 -- so no
-   CSS value matches them exactly and the join shows as a hard line. Feathering
-   the outermost couple of percent turns that line into a blend nobody notices.
-   The two gradients are intersected so all four edges are feathered. */
+/* No mask needed now the frame covers the stage: the artwork's edges fall
+   outside the stage and are clipped, so there is no join to blend. */
 .globe-media {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0, #000 2.5%, #000 97.5%, transparent 100%),
-    linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
-  mask-image:
-    linear-gradient(to right, transparent 0, #000 2.5%, #000 97.5%, transparent 100%),
-    linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
 }
 
 /* --- Division ring (home) ------------------------------------------------- */
@@ -459,7 +456,7 @@ img, svg { display: block; max-width: 100%; }
    puts the discs on the artwork's own outer orbital ring. */
 .division-node {
   --angle: calc(var(--i) * 360deg / var(--count));
-  --r: 40cqh;
+  --r: 38cqh;
   position: absolute;
   left: 48.3%;
   top: 51%;
@@ -476,9 +473,9 @@ img, svg { display: block; max-width: 100%; }
    is what shows as the rim around the disc. */
 .node-mark {
   display: block;
-  width: 19cqh;
-  height: 19cqh;
-  padding: 1.3cqh;
+  width: 18cqh;
+  height: 18cqh;
+  padding: 1.25cqh;
   border-radius: 50%;
   background: conic-gradient(
     #FFA300   0deg  35deg,
@@ -843,6 +840,29 @@ textarea.field { min-height: 121px; resize: vertical; }
      44px touch target, and the nodes are 62px apart, so they do not collide. */
   .node-name { display: none; }
   .node-icon { display: block; }
+  /* Back to fitting inside the stage here. Covering is what makes the globe
+     big on a wide screen, but on a narrow one it blows the frame out sideways
+     -- the frame's width comes from the stage's height -- and the ring, which
+     is sized off the frame, ends up wider than the stage and loses its outer
+     nodes. */
+  .globe-frame { width: min(100cqw, calc(100cqh * 1280 / 742)); }
+
+  /* Fitting inside the stage means stage background shows beside the video
+     again, and the artwork's edge pixels are not one flat colour -- they run
+     from #0569C9 to #1465B7 -- so no CSS value matches them and the join reads
+     as a rectangle. Feathering the outermost few percent blends it away. The
+     two gradients are intersected so all four edges are covered. */
+  .globe-media {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%),
+      linear-gradient(to bottom, transparent 0, #000 5%, #000 95%, transparent 100%);
+    mask-image:
+      linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%),
+      linear-gradient(to bottom, transparent 0, #000 5%, #000 95%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
   /* Keep a rim: zero padding hides the colour wheel entirely. */
   .node-mark { width: 23cqh; height: 23cqh; padding: 1.7cqh; }
   .node-face { padding: 0; }
@@ -883,8 +903,14 @@ textarea.field { min-height: 121px; resize: vertical; }
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <span class="divisions-menu">
-          <a href="../transport-delivery/index.html"><span class="swatch swatch-transport"></span>Transport &amp; Delivery</a>
-          <a href="../it/index.html"><span class="swatch swatch-it"></span>IT Division</a>
+          <a href="https://scensobstaffing.com/"><span class="swatch swatch-staffing"></span>Staffing</a>
+          <a href="https://www.scensobconsulting.com/"><span class="swatch swatch-consulting"></span>Consulting</a>
+          <a href="https://www.bosnecs.com/"><span class="swatch swatch-bosnecs"></span>Bosnecs</a>
+          <a href="../it/index.html"><span class="swatch swatch-it"></span>IT</a>
+          <a href="../transport-delivery/index.html"><span class="swatch swatch-transport"></span>Transport</a>
+          <a href="https://www.scensobrpm.com/"><span class="swatch swatch-rpm"></span>RPM</a>
+          <a href="https://scensobhomecare.com/"><span class="swatch swatch-homehealth"></span>Home Health</a>
+          <a href="https://www.scensobfoundation.org/"><span class="swatch swatch-foundation"></span>Scensob Foundation</a>
         </span>
       </span>
     </nav>
@@ -904,8 +930,14 @@ textarea.field { min-height: 121px; resize: vertical; }
     <a href="about.html">About</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="contact.html">Contact</a>
-    <a href="../transport-delivery/index.html">Transport &amp; Delivery</a>
-    <a href="../it/index.html">IT Division</a>
+    <a href="https://scensobstaffing.com/">Staffing</a>
+    <a href="https://www.scensobconsulting.com/">Consulting</a>
+    <a href="https://www.bosnecs.com/">Bosnecs</a>
+    <a href="../it/index.html">IT</a>
+    <a href="../transport-delivery/index.html">Transport</a>
+    <a href="https://www.scensobrpm.com/">RPM</a>
+    <a href="https://scensobhomecare.com/">Home Health</a>
+    <a href="https://www.scensobfoundation.org/">Scensob Foundation</a>
     <a class="btn btn-gold btn-block" href="contact.html">Contact us</a>
   </div>
 </header>

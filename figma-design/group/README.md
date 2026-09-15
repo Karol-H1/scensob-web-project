@@ -96,13 +96,20 @@ and came out *larger* here, so it was dropped rather than shipped for no gain.
 To regenerate from a new master: `crop=1862:1080:0:0,scale=1280:-2` with
 `-t 10.033`.
 
-**The video's edges are feathered.** The stage behind it is painted the
-artwork's blue, but the artwork's own edge pixels are not one flat colour — they
-run from `#0569C9` to `#1465B7` — so no CSS value matches them exactly and the
-join shows as a hard line. Fading the outermost couple of percent turns that
-line into a blend. Scaling the video to cover the stage instead was tried, and
-it clips the ring: on a stage shorter than 1280:742 the frame overflows top and
-bottom and takes the top and bottom nodes with it.
+**The video covers the stage rather than fitting inside it.** Fitting it inside
+letterboxes the artwork and leaves the globe small; covering fills the space and
+the stage clips the overflow. It also removes the edge problem — with no stage
+background showing beside the video, there is no join to hide.
+
+**Below 560px it goes back to fitting inside.** Covering is what makes the globe
+big on a wide screen, but on a narrow one the frame's width comes from the
+stage's *height*, so it blows out sideways and the ring — which is sized off the
+frame — ends up wider than the stage and loses its outer nodes.
+
+Because fitting inside leaves stage background showing again, the video's edges
+are feathered at that size. The artwork's own edge pixels are not one flat
+colour — they run from `#0569C9` to `#1465B7` — so no CSS value matches them
+exactly and the join otherwise reads as a rectangle.
 
 ### The division ring
 
@@ -115,8 +122,8 @@ Nothing is hand-placed.
 
 It is centred on **the globe, not the video frame** — the globe sits at 48.3%
 across and 51% down of the artwork, measured off the video itself. The radius is
-40% of the frame height, which puts the discs on the artwork's own outer orbital
-ring (measured at 295–305px against our 297px).
+38% of the frame height: the globe's centre sits at 51%, so the radius plus half
+a disc has to stay under 100% or the bottom node is clipped.
 
 Below 560px the names are swapped for each division's icon — they cannot be read
 round a globe that small — the discs grow past the 44px touch target, and the
@@ -137,6 +144,8 @@ Two places:
    and bump `--count` on `.globe-overlay`.
 2. **The sidebar** — one more `.division-nav-item`, plus a
    `.division-nav-mark.mark-<name>` colour rule.
+3. **The header** — one more link in `.divisions-menu` *and* in `#mobile-nav`,
+   on all four pages, plus a `.swatch-<name>` colour rule.
 
 Both re-space themselves. Note the colour rules are scoped to
 `.division-nav-mark`: the ring nodes carry the same classes, and an unscoped
