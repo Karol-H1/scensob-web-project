@@ -59,106 +59,84 @@
 
 <main class="home-stage">
 
-  <!-- The Figma home page was scrapped on request. The body is now the globe
-       and the division sidebar, nothing else. The previous layout -- hero,
-       stats band, division cards, standards, story and closing CTA -- is in
-       the git history if any of it is wanted back. -->
-
   <h1 class="sr-only">SCENSOB Group</h1>
 
-    <aside class="division-nav" aria-labelledby="division-nav-title">
-      <p class="eyebrow" id="division-nav-title">All Divisions</p>
-      <ul class="division-nav-list">
-        <li class="division-nav-item">
-          <a href="../transport-delivery/index.html">
-            <span class="division-nav-mark mark-transport">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
-            </span>
-            <span class="division-nav-text">
-              <span class="division-nav-name">Transport &amp; Delivery</span>
-              <span class="division-nav-meta">6,400+ operatives placed</span>
-            </span>
-            <svg class="division-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </li>
-        <li class="division-nav-item">
-          <a href="../it/index.html">
-            <span class="division-nav-mark mark-it">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
-            </span>
-            <span class="division-nav-text">
-              <span class="division-nav-name">IT Division</span>
-              <span class="division-nav-meta">200+ tech placements</span>
-            </span>
-            <svg class="division-nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-        </li>
-      </ul>
-      <p class="division-nav-note">More divisions joining the group soon.</p>
-    </aside>
+  <!-- Sidebar: every division in the group, in the order the approved design
+       lists them. The ring below repeats the same eight in the same order. -->
+  <aside class="division-nav" aria-labelledby="divisions-heading">
+    <h2 class="sr-only" id="divisions-heading">Our divisions</h2>
+    <ul class="division-nav-list">
+        <li><a href="https://scensobstaffing.com/">Staffing</a></li>
+        <li><a href="https://www.scensobconsulting.com/">Consulting</a></li>
+        <li><a href="https://www.bosnecs.com/">Bosnecs</a></li>
+        <li><a href="../it/index.html">Technologies</a></li>
+        <li><a href="../transport-delivery/index.html">Transport</a></li>
+        <li><a href="https://www.scensobrpm.com/">RPM</a></li>
+        <li><a href="https://scensobhomecare.com/">Homehealth</a></li>
+        <li><a href="https://www.scensobfoundation.org/">Scensob Foundation</a></li>
+    </ul>
+  </aside>
 
-    <!-- The globe fills the rest of the body. This wrapper is the positioning
-         context for the clickable division overlay that goes on top of it
-         next, so hotspots can be placed as a percentage of the globe's box
-         and stay aligned at every size. -->
-    <div class="globe-stage">
-      <div class="globe-frame">
-        <img class="globe-media" src="assets/img/globe-placeholder.svg" alt="" width="320" height="320">
+  <div class="globe-stage">
+    <div class="globe-frame">
 
-        <!-- Division ring. --count is how many nodes there are and --i is each
-             node's place in the ring; the stylesheet works the angle out from
-             those two, so adding a division means adding one node and bumping
-             --count. Nothing here is hand-positioned. -->
-        <div class="globe-overlay" style="--count: 7">
+    <!-- Cropped, trimmed and re-encoded from the supplied master: the white bar
+         down the right edge is gone and it is cut to one clean loop. Muted and
+         playsinline so it autoplays on mobile; the poster covers the moment
+         before it starts. aria-hidden because it is decorative -- the divisions
+         are in the sidebar and the ring, both of which are real links. -->
+    <video class="globe-media" autoplay muted loop playsinline preload="metadata"
+           poster="assets/video/globe-poster.jpg" aria-hidden="true" tabindex="-1">
+      <source src="assets/video/globe.mp4" type="video/mp4">
+    </video>
 
-          <!-- The ring itself. Drawn as one continuous circle; each node sits
-               on top of it with an opaque fill, which is what makes the line
-               read as an arc running between one icon and the next. -->
-          <svg class="ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-            <!-- Two circles: a dark wider one underneath separates the ring from
-                 whatever is behind it, so it still reads once the globe here is
-                 swapped for the real GIF. -->
-            <circle class="ring-shadow" cx="50" cy="50" r="34" fill="none" vector-effect="non-scaling-stroke"/>
-            <circle class="ring-line" cx="50" cy="50" r="34" fill="none" vector-effect="non-scaling-stroke"/>
-          </svg>
+    <!-- Division ring. --count drives the spacing, so adding a ninth division
+         means one more node and bumping the number. The ring is centred on the
+         globe rather than on the video frame, because the globe does not sit at
+         the centre of the frame. -->
+    <div class="globe-overlay" style="--count: 8">
+        <a class="division-node" style="--i: 0" href="https://scensobstaffing.com/">
+          <span class="node-mark"><span class="node-face"></span></span>
+          <span class="node-label">Staffing</span>
+        </a>
 
-      <a class="division-node" style="--i: 0" href="../transport-delivery/index.html">
-        <span class="node-mark mark-transport"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
-        <span class="node-label">Transport &amp; Delivery</span>
-      </a>
+        <a class="division-node" style="--i: 1" href="https://www.scensobconsulting.com/">
+          <span class="node-mark"><span class="node-face"></span></span>
+          <span class="node-label">Consulting</span>
+        </a>
 
-      <a class="division-node" style="--i: 1" href="../it/index.html">
-        <span class="node-mark mark-it"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></span>
-        <span class="node-label">IT Division</span>
-      </a>
+        <a class="division-node" style="--i: 2" href="https://www.bosnecs.com/">
+          <span class="node-mark"><span class="node-face"></span></span>
+          <span class="node-label">Bosnecs</span>
+        </a>
 
-      <span class="division-node is-placeholder" style="--i: 2" aria-disabled="true">
-        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
-        <span class="node-label">Division 3</span>
-      </span>
+        <a class="division-node" style="--i: 3" href="../it/index.html">
+          <span class="node-mark"><span class="node-face"></span></span>
+          <span class="node-label">Technologies</span>
+        </a>
 
-      <span class="division-node is-placeholder" style="--i: 3" aria-disabled="true">
-        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
-        <span class="node-label">Division 4</span>
-      </span>
+        <a class="division-node" style="--i: 4" href="../transport-delivery/index.html">
+          <span class="node-mark"><span class="node-face"></span></span>
+          <span class="node-label">Transport</span>
+        </a>
 
-      <span class="division-node is-placeholder" style="--i: 4" aria-disabled="true">
-        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
-        <span class="node-label">Division 5</span>
-      </span>
+        <a class="division-node" style="--i: 5" href="https://www.scensobrpm.com/">
+          <span class="node-mark"><span class="node-face"></span></span>
+          <span class="node-label">RPM</span>
+        </a>
 
-      <span class="division-node is-placeholder" style="--i: 5" aria-disabled="true">
-        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
-        <span class="node-label">Division 6</span>
-      </span>
+        <a class="division-node" style="--i: 6" href="https://scensobhomecare.com/">
+          <span class="node-mark"><span class="node-face"></span></span>
+          <span class="node-label">Homehealth</span>
+        </a>
 
-      <span class="division-node is-placeholder" style="--i: 6" aria-disabled="true">
-        <span class="node-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></span>
-        <span class="node-label">Division 7</span>
-      </span>
-        </div>
-      </div>
+        <a class="division-node" style="--i: 7" href="https://www.scensobfoundation.org/">
+          <span class="node-mark"><span class="node-face"></span></span>
+          <span class="node-label">Scensob Foundation</span>
+        </a>
     </div>
+    </div>
+  </div>
 
 </main>
 

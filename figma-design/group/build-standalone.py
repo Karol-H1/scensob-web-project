@@ -25,11 +25,15 @@ PAGES = ["index.html", "about.html", "portfolio.html", "contact.html"]
 CSS_LINK = re.compile(r'[ \t]*<link rel="stylesheet" href="assets/css/site\.css">\n?')
 JS_TAG = re.compile(r'[ \t]*<script src="assets/js/site\.js"></script>\n?')
 IMG_SRC = re.compile(r'src="assets/img/([^"]+)"')
+# The home page's globe is a video, with a poster image beside it. Both live
+# under assets/video/ and both have to travel with a single-file build.
+MEDIA_SRC = re.compile(r'(src|poster)="assets/video/([^"]+)"')
 
 NOTE = (
     "<!--\n"
-    "  Single-file build. The CSS, JS and images below are inlined copies of\n"
-    "  assets/css/site.css, assets/js/site.js and assets/img/*.\n"
+    "  Single-file build. The CSS, JS, images and video below are inlined\n"
+    "  copies of assets/css/site.css, assets/js/site.js, assets/img/* and\n"
+    "  assets/video/*.\n"
     "\n"
     "  Edit the multi-file source in the parent folder, not this file, then\n"
     "  re-run build-standalone.py.\n"
@@ -42,8 +46,8 @@ def read(*parts):
         return fh.read()
 
 
-def image_data_uri(name):
-    path = os.path.join(HERE, "assets", "img", name)
+def data_uri(*parts):
+    path = os.path.join(HERE, *parts)
     mime = mimetypes.guess_type(path)[0] or "application/octet-stream"
     with open(path, "rb") as fh:
         encoded = base64.b64encode(fh.read()).decode("ascii")
@@ -51,7 +55,13 @@ def image_data_uri(name):
 
 
 def inline_images(html):
-    return IMG_SRC.sub(lambda m: 'src="%s"' % image_data_uri(m.group(1)), html)
+    html = IMG_SRC.sub(
+        lambda m: 'src="%s"' % data_uri("assets", "img", m.group(1)), html)
+    # Base64 costs about a third in size, so the standalone home page is a few
+    # megabytes. That is the trade these builds exist to make: one file that
+    # works wherever it is opened.
+    return MEDIA_SRC.sub(
+        lambda m: '%s="%s"' % (m.group(1), data_uri("assets", "video", m.group(2))), html)
 
 
 def main():

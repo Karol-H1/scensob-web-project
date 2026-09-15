@@ -68,70 +68,71 @@ The other three pages are unchanged and still match:
 
 ## The home page
 
-**The home page no longer follows the Figma design.** It was replaced on
-request, and the other three pages are untouched.
+**The home page follows the approved landing-page design, not the Figma comp.**
+The other three pages are still the Figma build.
 
-The body is now just two things: a globe filling the page, and a sidebar on the
-left listing every division. The header and footer are the same shared chrome as
-the rest of the site.
+The body is the globe animation with all eight divisions on a ring around it,
+and the same eight listed in a sidebar on the left. The header and footer are
+the shared chrome from the original build, kept deliberately until the new
+navigation is settled.
 
-The Figma layout it replaced — hero, stats band, division cards, group
-standards, story split and closing CTA — is in the git history if any of it is
-wanted back.
+### The globe video
 
-### Swapping in the real globe
+`assets/video/globe.mp4` — 1280x742, one 10-second loop, 880 KB.
 
-`assets/img/globe-placeholder.svg` stands in for the spinning-globe GIF that
-hasn't been produced yet. It's a wireframe globe that turns on its own, so the
-page shows the intent rather than a static circle. It's declarative SMIL, not
-script, so it animates both as an `<img>` src and once inlined as a base64 data
-URI in the standalone builds.
+It was cut from the supplied master (`scensob LLC website.mp4`, 1920x1080,
+29.8 MB) in three steps:
 
-To replace it: drop the GIF into `assets/img/` and change the one `<img src>` in
-`index.html`. Sizing is on the container, so no CSS changes — and the image is
-clipped to a circle, so a GIF carrying its own square background still reads as
-a globe on the navy. Then re-run `python build-standalone.py`.
+1. **Cropped** 58px off the right edge. The master carries a white bar down
+   that edge on every frame, which would otherwise show as a white stripe
+   beside the blue.
+2. **Trimmed** to 10.033s. The master runs 15s, but frame 304 is identical to
+   frame 0 — it is one cycle plus a partial repeat, so the rest is wasted bytes.
+3. **Re-encoded** to H.264 at CRF 30, scaled to 1280 wide. The master's
+   16.6 Mbps is far beyond what flat artwork needs.
+
+The result is 97% smaller than the master and 77% smaller than the original GIF.
+WebM was tried and came out *larger* than the MP4 here, so it was dropped rather
+than shipped for no gain.
+
+To regenerate after a new master arrives, the ffmpeg filter chain is
+`crop=1862:1080:0:0,scale=1280:-2` with `-t 10.033`.
+
+The page background is `#0D6CC2`, sampled from the video itself, so where the
+video does not reach the edge of an unusually shaped viewport the join is
+invisible.
 
 ### The division ring
 
-Seven divisions sit on a ring inside the globe, joined by a circle that runs
-between them. Two are live and link to their sites; the other five are
-placeholders for divisions that don't exist yet.
+Eight nodes, evenly spaced, each a white disc inside a ring of the group's
+colours — a `conic-gradient` with the gap the brand mark has.
 
 **The ring positions itself.** Each node carries an index (`--i`) and the
-overlay carries the total (`--count`); the stylesheet derives the angle from
-those with `sin()`/`cos()`, so the nodes always space evenly. Nothing is
-hand-positioned, and the radius is a percentage of the globe, so the ring
-tracks the globe at any size.
+overlay carries the total (`--count`); the angle is derived from those two with
+`sin()`/`cos()`. Nothing is hand-placed.
 
-The circle is drawn once, whole. Each node sits on top of it with an opaque
-fill, and that masking is what makes the line read as an arc running from one
-icon to the next — so adding a division needs no change to the ring itself.
-It's drawn as two circles, a dark wider one beneath the gold, so the ring still
-separates from the artwork once the placeholder globe is swapped for the GIF.
+It is centred on **the globe, not the video frame** — the globe sits at 48.3%
+across and 51% down of the artwork, measured off the video. The radius is 40% of
+the frame height, which puts the nodes on the artwork's own outer orbital ring
+(measured at 295–305px against our 297px).
 
-Node sizes are in `cqw` against the globe's own container, so icons and labels
-scale with the globe rather than with the viewport.
+The video sits in a wrapper carrying its exact aspect ratio, so it fills without
+cropping and the ring stays aligned. Pinning the ring to the stage instead would
+let the globe drift as the viewport changes shape.
 
-**Live vs placeholder.** Live divisions are `<a>` elements. Placeholders are
-inert `<span>`s with `aria-disabled` — not links to nowhere — and are styled
-with a dashed ring so they read as unfinished. Promoting one is a small edit:
-change the `<span>` to an `<a href="...">`, drop `is-placeholder` and
-`aria-disabled`, swap the plus icon for a real one, and give it a
-`.mark-<name>` colour rule.
+Below 560px the labels are dropped and the discs grow — eight labelled nodes
+collide around a globe that small, and the sidebar directly above is the same
+eight divisions as full-width links.
 
 ### Adding a division
 
-Two places, both small:
+Two places:
 
-1. **The ring** — one more `.division-node` in `index.html`, with the next
-   `--i`, and bump `--count` on `.globe-overlay`. The ring re-spaces itself.
-2. **The sidebar** — one more `<li class="division-nav-item">` block. It
-   reflows on its own: down the sidebar on desktop, across an auto-fitting grid
-   below 900px, one per row below 560px.
+1. **The ring** — one more `.division-node` in `index.html` with the next `--i`,
+   and bump `--count` on `.globe-overlay`.
+2. **The sidebar** — one more `<li>` in `.division-nav-list`.
 
-Plus a `.mark-<name>` colour rule next to `.mark-transport` in the stylesheet if
-the division has its own colour.
+Both re-space themselves; no other change is needed.
 
 ## Design tokens
 
