@@ -44,7 +44,7 @@
   --sans:    "Mulish", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
   --mono:    "DM Mono", ui-monospace, Consolas, monospace;
 
-  --globe-blue:     #0D6CC2;
+  --globe-blue:     #0968C3;
   --radius:    6px;
   --container: 1280px;
   --gutter:    40px;
@@ -303,7 +303,9 @@ img, svg { display: block; max-width: 100%; }
   align-items: center;
   min-height: calc(100vh - 89px);
   padding: 32px var(--gutter);
-  background: var(--navy);
+  /* The artwork's own blue, so the video has nothing to blend against and no
+     edge to hide. */
+  background: var(--globe-blue);
 }
 
 /* --- Division sidebar (home) --------------------------------------------- */
@@ -331,7 +333,7 @@ img, svg { display: block; max-width: 100%; }
 }
 
 .division-nav-item a:hover { background: var(--tint); }
-.division-nav-item a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.division-nav-item a:focus-visible { outline: 2px solid var(--globe-blue); outline-offset: 2px; }
 
 .division-nav-mark {
   flex: none;
@@ -374,7 +376,7 @@ img, svg { display: block; max-width: 100%; }
   transition: transform .15s ease;
 }
 
-.division-nav-item a:hover .division-nav-arrow { transform: translateX(3px); color: var(--gold); }
+.division-nav-item a:hover .division-nav-arrow { transform: translateX(3px); color: var(--globe-blue); }
 
 .division-nav-note {
   margin-top: 20px;
@@ -387,55 +389,49 @@ img, svg { display: block; max-width: 100%; }
 
 /* --- Globe stage ---------------------------------------------------------- */
 
+/* The frame inside is absolutely positioned, so the stage has no content to
+   give it height -- it has to take its own. */
 .globe-stage {
   position: relative;
-  display: grid;
-  place-items: center;
+  align-self: stretch;
+  min-height: 460px;
   overflow: hidden;
+  container-type: size;
 }
 
-/* The frame carries the video's own aspect ratio, so the video fills it without
-   cropping and the ring can be positioned against it. Pinning the ring to the
-   stage instead would let the globe drift as the viewport changes shape. */
+/* The frame keeps the video's own aspect ratio -- the ring is positioned
+   against it, and stretching it would pull the nodes off the globe -- and it
+   fits inside the stage rather than covering it. Covering was tried and clips
+   the ring: on a stage shorter than the artwork's 1280:742 the frame overflows
+   top and bottom, taking the top and bottom nodes with it. */
 .globe-frame {
-  position: relative;
-  width: min(100%, calc((100vh - 200px) * 1280 / 742));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(100cqw, calc(100cqh * 1280 / 742));
   aspect-ratio: 1280 / 742;
   container-type: size;
 }
 
-/* The artwork is drawn on a bright blue. Darkened so it sits on the navy
-   instead of fighting it, then masked so it fades out rather than ending at a
-   visible rectangle edge.
-
-   Masking the video itself, not the frame: a mask on the frame would take the
-   ring and its nodes with it.
-
-   closest-side, not the default farthest-corner: the frame is much wider than
-   it is tall, and a corner-sized mask is still half opaque where it meets the
-   top and bottom edges, which shows as a band. */
+/* The stage behind is painted the artwork's blue, but the artwork's own edge
+   pixels are not one flat colour -- they run from #0569C9 to #1465B7 -- so no
+   CSS value matches them exactly and the join shows as a hard line. Feathering
+   the outermost couple of percent turns that line into a blend nobody notices.
+   The two gradients are intersected so all four edges are feathered. */
 .globe-media {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(.46) saturate(1.25) contrast(1.05);
-  -webkit-mask-image: radial-gradient(circle closest-side at 48.3% 51%, #000 38%, rgba(0,0,0,.55) 70%, transparent 100%);
-  mask-image: radial-gradient(circle closest-side at 48.3% 51%, #000 38%, rgba(0,0,0,.55) 70%, transparent 100%);
-}
-
-/* The ring the nodes sit on, in cqh so it is always a true circle and always
-   the same radius the nodes use. */
-.globe-ring {
-  position: absolute;
-  left: 48.3%;
-  top: 51%;
-  width: 80cqh;
-  height: 80cqh;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(201, 168, 76, .4);
-  border-radius: 50%;
-  pointer-events: none;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 2.5%, #000 97.5%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 2.5%, #000 97.5%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 4%, #000 96%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 /* --- Division ring (home) ------------------------------------------------- */
@@ -443,7 +439,8 @@ img, svg { display: block; max-width: 100%; }
 .globe-overlay { position: absolute; inset: 0; }
 
 /* The ring is centred on the globe, not on the frame -- the globe sits at
-   48.3% across and 51% down of the artwork, measured off the video. */
+   48.3% across and 51% down of the artwork, measured off the video. The radius
+   puts the discs on the artwork's own outer orbital ring. */
 .division-node {
   --angle: calc(var(--i) * 360deg / var(--count));
   --r: 40cqh;
@@ -459,40 +456,55 @@ img, svg { display: block; max-width: 100%; }
   text-decoration: none;
 }
 
+/* The group's colour wheel, with the gap it has in the brand mark. The padding
+   is what shows as the rim around the disc. */
 .node-mark {
+  display: block;
+  width: 19cqh;
+  height: 19cqh;
+  padding: 1.3cqh;
+  border-radius: 50%;
+  background: conic-gradient(
+    #FFA300   0deg  35deg,
+    #FFD60A  35deg  58deg,
+    #FFFFFF  58deg 155deg,
+    #0F7DCA 155deg 185deg,
+    #110AD6 185deg 205deg,
+    #6807B6 205deg 245deg,
+    #951F99 245deg 265deg,
+    #CD2177 265deg 295deg,
+    #E71113 295deg 325deg,
+    #FA6507 325deg 360deg
+  );
+  box-shadow: 0 4px 14px rgba(4, 40, 78, .3);
+  transition: transform .15s ease;
+}
+
+.node-face {
   display: grid;
   place-items: center;
-  width: 17.5cqh;
-  height: 17.5cqh;
-  padding: 1.6cqh;
+  width: 100%;
+  height: 100%;
+  padding: 1.1cqh;
   border-radius: 50%;
-  background: var(--navy-raised);
-  border: 2px solid var(--gold);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
-  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  background: #fff;
 }
 
 /* Shown only once the names are hidden, so the small-screen discs are not
-   blank circles. */
-.node-icon { display: none; color: var(--gold); }
-.node-icon svg { width: 9cqh; height: 9cqh; }
+   blank. */
+.node-icon { display: none; color: var(--foreground); }
+.node-icon svg { width: 8cqh; height: 8cqh; }
 
 .node-name {
-  font-size: clamp(9px, 1.95cqh, 14px);
+  font-size: clamp(9px, 2cqh, 14px);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.15;
   text-align: center;
-  color: var(--on-navy);
+  color: var(--foreground);
   overflow-wrap: break-word;
-  hyphens: auto;
 }
 
-.division-node:hover .node-mark {
-  transform: scale(1.07);
-  background: var(--navy);
-  border-color: #fff;
-}
-
+.division-node:hover .node-mark { transform: scale(1.07); }
 .division-node:focus-visible .node-mark { outline: 2px solid #fff; outline-offset: 3px; }
 
 /* Visually hidden, still read aloud. Absolute positioning also keeps it out of
@@ -776,9 +788,11 @@ textarea.field { min-height: 121px; resize: vertical; }
 
   /* Globe first. Otherwise the eight-row division card fills the screen and the
      globe -- the point of the page -- starts below the fold. */
-  .globe-stage { order: -1; }
-
-  .globe-frame { width: 100%; }
+  /* A real height, not min-height. The stage is a size container, and
+     min-height leaves its block size indefinite -- which makes every cqh inside
+     it resolve to zero and collapses the frame, the video and the ring to
+     nothing. */
+  .globe-stage { order: -1; height: clamp(300px, 92vw, 430px); }
   .division-nav-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px 12px; }
   .division-nav-item + .division-nav-item { margin-top: 0; }
 
@@ -813,7 +827,9 @@ textarea.field { min-height: 121px; resize: vertical; }
      44px touch target, and the nodes are 62px apart, so they do not collide. */
   .node-name { display: none; }
   .node-icon { display: block; }
-  .node-mark { width: 23cqh; height: 23cqh; padding: 0; }
+  /* Keep a rim: zero padding hides the colour wheel entirely. */
+  .node-mark { width: 23cqh; height: 23cqh; padding: 1.7cqh; }
+  .node-face { padding: 0; }
 
   .page-hero h1 { font-size: 32px; }
   .values-grid,
