@@ -12,7 +12,7 @@ Deliberately excluded:
   database/           the SQL is served separately, see scensob-all-tables.sql
   *.md                developer notes, no reason to publish them
 """
-import os, zipfile
+import io, os, re, zipfile
 
 SRC   = os.path.dirname(os.path.abspath(__file__))
 OUT   = os.path.join(SRC, 'scensob-upload-to-htdocs.zip')
@@ -23,8 +23,31 @@ EXCLUDE_FILES = {'config.php', 'build-standalone.py'}
 EXCLUDE_DIRS  = {'standalone', 'database', '__pycache__', '.git'}
 EXCLUDE_EXT   = {'.md', '.pyc'}
 
-# Anything that must never appear in a file that leaves this machine.
-SECRETS = (b'rGsrUonWid1J7Q4CsSPK2yKB', b'Bug123s')
+def live_credentials():
+    """Values that must never appear in a file leaving this machine.
+
+    Read out of the local config.php files at run time rather than written in
+    here. Listing them literally would put the very credentials this check
+    exists to protect into the repository -- which is exactly what happened
+    before, and it went public.
+    """
+    found = []
+    for site in SITES:
+        path = os.path.join(SRC, site, 'config.php')
+        if not os.path.exists(path):
+            continue
+        with io.open(path, encoding='utf-8') as fh:
+            text = fh.read()
+        for value in re.findall(r"'(?:username|password)'\s*=>\s*'([^']+)'", text):
+            if value and value != 'CHANGE_ME':
+                found.append(value.encode('utf-8'))
+    return found
+
+
+SECRETS = live_credentials()
+if not SECRETS:
+    print('WARNING: no config.php found, so the archive cannot be checked for '
+          'live credentials. Verify by hand before sending it anywhere.')
 
 if os.path.exists(OUT):
     os.remove(OUT)
