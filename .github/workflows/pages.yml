@@ -1,0 +1,86 @@
+# Publishes the three sites to GitHub Pages.
+#
+# Nothing in the repository has to move: this assembles a _site folder from
+# figma-design/ and hands that to Pages, so the sites stay where they are and
+# the cross-site links between them keep working.
+#
+# Requires one setting, once: Settings -> Pages -> Source -> GitHub Actions.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; queue instead, and don't cancel one midway.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble the site
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+
+          # The three sites stay siblings -- every link between them is
+          # relative (../it/, ../transport-delivery/), so flattening one to the
+          # root would break the other two.
+          cp -r figma-design/group             _site/group
+          cp -r figma-design/it                _site/it
+          cp -r figma-design/transport-delivery _site/transport-delivery
+
+          # Sends the bare URL to the group site.
+          cp figma-design/deploy-index.html _site/index.html
+
+          # Pages cannot run PHP, so the endpoints would be served as plain
+          # text and still not work. Drop them: a 404 is a cleaner failure than
+          # a page of source, and the forms show their error either way.
+          find _site -name '*.php' -delete
+          find _site -name '*.py'  -delete
+          find _site -name '*.md'  -delete
+          rm -rf _site/*/database
+          # Single-file preview builds; the real pages are already here.
+          rm -rf _site/*/standalone
+
+          # The copy is demo content under a real company's name. Keep it out
+          # of search results until it is replaced.
+          printf 'User-agent: *\nDisallow: /\n' > _site/robots.txt
+
+          echo "--- assembled ---"
+          du -sh _site
+          find _site -maxdepth 2 -type d | sort
+
+      - name: Fail if any credential slipped in
+        run: |
+          set -euo pipefail
+          if grep -rIlE 'rGsrUonWid1J7Q4CsSPK2yKB|Bug123s' _site 2>/dev/null; then
+            echo "A credential is present in the build output. Refusing to publish."
+            exit 1
+          fi
+          echo "No known credential found in the build output."
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
